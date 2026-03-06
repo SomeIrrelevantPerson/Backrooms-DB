@@ -278,6 +278,141 @@
     opacity: 0;
   }
 
+  /* ===== DECORATIVE ELEMENTS ===== */
+
+  /* Corner bracket on section labels */
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: var(--yellow-dim);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(122, 101, 32, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .section-label::before {
+    content: '▸';
+    color: rgba(122, 101, 32, 0.4);
+    font-size: 0.7rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(122, 101, 32, 0.2);
+  }
+
+  /* Classified stamp */
+  .classified-stamp {
+    display: inline-block;
+    border: 2px solid rgba(200, 75, 75, 0.35);
+    color: rgba(200, 75, 75, 0.35);
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.4em;
+    padding: 0.15rem 0.6rem;
+    transform: rotate(-2deg);
+    margin: 0.5rem 0 1.2rem;
+    display: block;
+    width: fit-content;
+    user-select: none;
+  }
+
+  /* Redacted text block */
+  .redacted {
+    background: rgba(122, 101, 32, 0.18);
+    color: transparent;
+    user-select: none;
+    border-radius: 1px;
+    position: relative;
+    display: inline-block;
+    padding: 0 0.2em;
+  }
+
+  /* Status ticker in header */
+  .header-ticker {
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    color: rgba(122, 101, 32, 0.35);
+    border-top: 1px solid rgba(122, 101, 32, 0.15);
+    padding: 0.25rem 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    background: rgba(5, 4, 0, 0.6);
+  }
+  .ticker-inner {
+    display: inline-block;
+    animation: tickerScroll 40s linear infinite;
+  }
+  @keyframes tickerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Subtle dot-grid on content background */
+  .db-content {
+    background-image: radial-gradient(circle, rgba(122,101,32,0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Classification bar on level header */
+  .level-class-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid rgba(122, 101, 32, 0.15);
+    background: rgba(122, 101, 32, 0.03);
+  }
+  .level-class-bar .bar-item {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: rgba(122, 101, 32, 0.4);
+  }
+  .level-class-bar .bar-sep {
+    width: 1px;
+    height: 12px;
+    background: rgba(122, 101, 32, 0.2);
+  }
+  .level-class-bar .bar-id {
+    margin-left: auto;
+    font-family: 'VT323', monospace;
+    font-size: 0.8rem;
+    color: rgba(122, 101, 32, 0.3);
+  }
+
+  /* Corner decorations on level number */
+  .level-number {
+    font-family: 'VT323', monospace;
+    font-size: clamp(4rem, 12vw, 8rem);
+    color: var(--yellow-bright);
+    line-height: 0.85;
+    text-shadow: 0 0 30px rgba(200,168,75,0.4);
+    letter-spacing: -0.02em;
+    position: relative;
+    display: inline-block;
+  }
+  .level-number::before,
+  .level-number::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: rgba(122, 101, 32, 0.3);
+    border-style: solid;
+  }
+  .level-number::before {
+    top: -4px; left: -10px;
+    border-width: 1px 0 0 1px;
+  }
+  .level-number::after {
+    bottom: 6px; right: -6px;
+    border-width: 0 1px 1px 0;
+  }
+
   .level-classification {
     font-size: 0.65rem;
     letter-spacing: 0.4em;
@@ -294,15 +429,6 @@
     width: 2rem;
     height: 1px;
     background: var(--yellow-dim);
-  }
-
-  .level-number {
-    font-family: 'VT323', monospace;
-    font-size: clamp(4rem, 12vw, 8rem);
-    color: var(--yellow-bright);
-    line-height: 0.85;
-    text-shadow: 0 0 30px rgba(200,168,75,0.4);
-    letter-spacing: -0.02em;
   }
 
   .level-name {
@@ -366,24 +492,6 @@
   .section:nth-child(6) { animation-delay: 0.5s; }
   .section:nth-child(7) { animation-delay: 0.6s; }
 
-  .section-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.4em;
-    color: var(--yellow-dim);
-    margin-bottom: 0.8rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(122, 101, 32, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(122, 101, 32, 0.2);
-  }
 
   .body-text {
     font-family: 'Courier Prime', monospace;
@@ -854,6 +962,11 @@
       </button>
     </div>
   </header>
+  <div class="header-ticker">
+    <span class="ticker-inner">
+      ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate"></span> &nbsp;·&nbsp; ENTRIES: 5 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp; ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate2"></span> &nbsp;·&nbsp; ENTRIES: 5 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp;
+    </span>
+  </div>
 
   <!-- DRAWER OVERLAY (closes drawer on outside click) -->
   <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
@@ -896,6 +1009,14 @@
           <div class="level-classification">LEVEL DOCUMENTATION · INITIAL ENTRY POINT · CONFIRMED</div>
           <div class="level-number">LEVEL<br>0</div>
           <div class="level-name">THE LOBBY</div>
+          <div class="level-class-bar">
+            <span class="bar-item">CLASSIFICATION: OPEN</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">RISK: MODERATE</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">ACCOUNTS: 40+</span>
+            <span class="bar-id">DOC-LVL-00</span>
+          </div>
           <div class="level-divider"></div>
         </div>
 
@@ -1089,6 +1210,14 @@
           <div class="level-classification">LEVEL DOCUMENTATION · INDUSTRIAL SECTOR · CONFIRMED</div>
           <div class="level-number">LEVEL<br>1</div>
           <div class="level-name">PARKING ZONE</div>
+          <div class="level-class-bar">
+            <span class="bar-item">CLASSIFICATION: OPEN</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">RISK: HIGH</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">ACCOUNTS: 60+</span>
+            <span class="bar-id">DOC-LVL-01</span>
+          </div>
           <div class="level-divider"></div>
         </div>
 
@@ -1337,6 +1466,14 @@
           <div class="level-classification">LEVEL DOCUMENTATION · SUBTERRANEAN SECTOR · CONFIRMED</div>
           <div class="level-number">LEVEL<br>2</div>
           <div class="level-name">PIPE DREAMS</div>
+          <div class="level-class-bar">
+            <span class="bar-item">CLASSIFICATION: RESTRICTED</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">RISK: VERY HIGH</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">ACCOUNTS: 30+</span>
+            <span class="bar-id">DOC-LVL-02</span>
+          </div>
           <div class="level-divider"></div>
         </div>
 
@@ -1543,6 +1680,14 @@
           <div class="level-classification">LEVEL DOCUMENTATION · INDUSTRIAL SECTOR · CONFIRMED</div>
           <div class="level-number">LEVEL<br>3</div>
           <div class="level-name">THE ELECTRICAL STATION</div>
+          <div class="level-class-bar">
+            <span class="bar-item">CLASSIFICATION: RESTRICTED</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">RISK: EXTREME</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">ACCOUNTS: 18+</span>
+            <span class="bar-id">DOC-LVL-03</span>
+          </div>
           <div class="level-divider"></div>
         </div>
 
@@ -1822,6 +1967,14 @@
           <div class="level-classification">LEVEL DOCUMENTATION · ADMINISTRATIVE SECTOR · CONFIRMED</div>
           <div class="level-number">LEVEL<br>4</div>
           <div class="level-name">ABANDONED OFFICE</div>
+          <div class="level-class-bar">
+            <span class="bar-item">CLASSIFICATION: OPEN</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">RISK: MODERATE</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">ACCOUNTS: 55+</span>
+            <span class="bar-id">DOC-LVL-04</span>
+          </div>
           <div class="level-divider"></div>
         </div>
 
@@ -1836,7 +1989,7 @@
           </div>
           <div class="stat-box">
             <div class="stat-label">ENTITIES</div>
-            <div class="stat-value warning">LOW DENSITY</div>
+            <div class="stat-value safe">MINIMAL</div>
           </div>
           <div class="stat-box">
             <div class="stat-label">ESTIMATED SIZE</div>
@@ -1984,27 +2137,17 @@
           <div class="entities-grid">
             <div class="entity-card">
               <div class="entity-name">FACELINGS</div>
-              <div class="entity-threat passive">● PASSIVE · HIGH DENSITY</div>
-              <div class="entity-desc">More numerous here than any other documented level. They sit at desks, stand in corridors, occupy meeting rooms — present in the postures of office workers without performing any observable action. They do not acknowledge wanderers. Do not disturb them.</div>
+              <div class="entity-threat passive">● PASSIVE · SPARSE</div>
+              <div class="entity-desc">Occasionally encountered seated at desks or standing in corridors, motionless. Far fewer than expected given their prevalence on other levels. They do not acknowledge wanderers. Do not disturb them.</div>
             </div>
             <div class="entity-card">
               <div class="entity-name">WHICH</div>
-              <div class="entity-threat hostile">● HOSTILE · RARE BUT LETHAL</div>
-              <div class="entity-desc">Appear as a seated figure at a desk or workstation. Indistinguishable from a Faceling at a distance. Distinguished only by head orientation — they face the wanderer. If you see one facing you: leave the room immediately. Do not engage.</div>
-            </div>
-            <div class="entity-card">
-              <div class="entity-name">SKIN-STEALERS</div>
-              <div class="entity-threat hostile">● HOSTILE · CONFIRMED</div>
-              <div class="entity-desc">Mimic human appearance and vocal patterns. Reported exclusively on Level 4. Their behavior is socially coherent but contains subtle errors — wrong idioms, slightly mismatched emotional responses. Trust no entity that initiates conversation.</div>
-            </div>
-            <div class="entity-card">
-              <div class="entity-name">DULLERS</div>
-              <div class="entity-threat unknown">● THREAT UNCLEAR · PRESENT</div>
-              <div class="entity-desc">Also present on this level in higher numbers than Level 0. Their relationship to the Facelings is unknown. Some accounts suggest they may be a transitional state. Maintain standard avoidance protocol.</div>
+              <div class="entity-threat hostile">● HOSTILE · RARE</div>
+              <div class="entity-desc">Appear identical to Facelings at a distance. Distinguished only by head orientation — they face you. If you notice one facing your direction: exit the room calmly. Do not look back. Do not run.</div>
             </div>
           </div>
           <div class="warning-box" style="margin-top: 1.5rem;">
-            <p>Skin-Stealers are the primary threat unique to Level 4. If you are traveling with others, establish a verification phrase before entering. If a companion's behavior changes — speech patterns, knowledge of prior events, physical mannerisms — treat the situation as a potential Skin-Stealer encounter and relocate without confrontation.</p>
+            <p>Entity presence on Level 4 is low but not absent. The Which are the primary documented threat. Their rarity makes them easy to underestimate. Do not become complacent in what appears to be an empty room.</p>
           </div>
         </div>
 
@@ -2083,8 +2226,10 @@
 
 <script>
   const d = new Date();
-  document.getElementById('dateStamp').textContent =
-    d.toISOString().split('T')[0].replace(/-/g, '.');
+  const dateStr = d.toISOString().split('T')[0].replace(/-/g, '.');
+  document.getElementById('dateStamp').textContent = dateStr;
+  document.getElementById('tickerDate').textContent = dateStr;
+  document.getElementById('tickerDate2').textContent = dateStr;
 
   function enterDatabase() {
     const overlay = document.getElementById('transitionOverlay');
