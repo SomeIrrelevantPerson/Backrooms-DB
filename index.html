@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE BACKROOMS — FIELD DOCUMENTATION ARCHIVE</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #c8a84b;
+    --yellow-dim: #7a6520;
+    --yellow-bright: #ffe080;
+    --yellow-wall: #d4b483;
+    --bg: #0a0800;
+    --text: #b89a3a;
+    --flicker-speed: 0.12s;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* SCANLINE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.15) 2px,
+      rgba(0,0,0,0.15) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* VIGNETTE */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.85) 100%);
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  /* ===== OPENING SCREEN ===== */
+  #opening {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    animation: screenFlicker 8s infinite;
+  }
+
+  @keyframes screenFlicker {
+    0%, 95%, 100% { opacity: 1; }
+    96% { opacity: 0.7; }
+    97% { opacity: 1; }
+    98% { opacity: 0.4; }
+    99% { opacity: 0.9; }
+  }
+
+  .noise-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .warning-bar {
+    font-family: 'VT323', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: var(--yellow-dim);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeIn 1s 0.5s forwards;
+  }
+
+  .logo-container {
+    text-align: center;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1.5s 1s forwards;
+    z-index: 10;
+  }
+
+  .logo-eyebrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    color: var(--yellow-dim);
+    margin-bottom: 0.5rem;
+  }
+
+  .logo-title {
+    font-family: 'VT323', monospace;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    color: var(--yellow-bright);
+    letter-spacing: 0.05em;
+    line-height: 0.9;
+    text-shadow:
+      0 0 20px rgba(200,168,75,0.8),
+      0 0 60px rgba(200,168,75,0.3),
+      0 0 100px rgba(200,168,75,0.1);
+    animation: titleFlicker 4s 2s infinite;
+  }
+
+  @keyframes titleFlicker {
+    0%, 90%, 100% { text-shadow: 0 0 20px rgba(200,168,75,0.8), 0 0 60px rgba(200,168,75,0.3); }
+    91% { text-shadow: 0 0 5px rgba(200,168,75,0.4); }
+    92% { text-shadow: 0 0 20px rgba(200,168,75,0.8), 0 0 60px rgba(200,168,75,0.3); }
+    93% { text-shadow: none; }
+    94% { text-shadow: 0 0 20px rgba(200,168,75,0.8), 0 0 60px rgba(200,168,75,0.3); }
+  }
+
+  .logo-subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    color: var(--yellow-dim);
+    margin-top: 0.8rem;
+  }
+
+  .divider {
+    width: 400px;
+    max-width: 90vw;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--yellow-dim), transparent);
+    margin: 2.5rem auto;
+    opacity: 0;
+    animation: fadeIn 1s 1.8s forwards;
+  }
+
+  .archive-info {
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s 2.2s forwards;
+    z-index: 10;
+  }
+
+  .archive-info p {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--yellow-dim);
+    line-height: 2;
+  }
+
+  .archive-info .stat {
+    color: var(--yellow);
+  }
+
+  .enter-btn {
+    margin-top: 3rem;
+    padding: 0.8rem 3rem;
+    background: transparent;
+    border: 1px solid var(--yellow-dim);
+    color: var(--yellow);
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    letter-spacing: 0.3em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1s 2.8s forwards;
+    transition: border-color 0.3s, color 0.3s, box-shadow 0.3s;
+    z-index: 10;
+  }
+
+  .enter-btn:hover {
+    border-color: var(--yellow-bright);
+    color: var(--yellow-bright);
+    box-shadow: 0 0 20px rgba(200,168,75,0.3), inset 0 0 20px rgba(200,168,75,0.05);
+  }
+
+  .enter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(200,168,75,0.1), transparent);
+    transition: left 0.4s;
+  }
+
+  .enter-btn:hover::before { left: 100%; }
+
+  .bottom-text {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: rgba(122, 101, 32, 0.5);
+    opacity: 0;
+    animation: fadeIn 1s 3.5s forwards;
+    z-index: 10;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* ===== MAIN DATABASE ===== */
+  #database {
+    display: none;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .db-header {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(122, 101, 32, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: rgba(10, 8, 0, 0.95);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+  }
+
+  .db-header-logo {
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    color: var(--yellow-bright);
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 10px rgba(200,168,75,0.5);
+  }
+
+  .db-header-nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .db-header-nav span {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--yellow-dim);
+  }
+
+  .level-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--yellow-dim);
+    border: 1px solid var(--yellow-dim);
+    padding: 0.2rem 0.6rem;
+  }
+
+  /* ===== LEVEL 0 PAGE ===== */
+  #level0 {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .level-header {
+    margin-bottom: 3rem;
+    animation: slideUp 0.6s ease forwards;
+    opacity: 0;
+  }
+
+  .level-classification {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: var(--yellow-dim);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .level-classification::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--yellow-dim);
+  }
+
+  .level-number {
+    font-family: 'VT323', monospace;
+    font-size: clamp(4rem, 12vw, 8rem);
+    color: var(--yellow-bright);
+    line-height: 0.85;
+    text-shadow: 0 0 30px rgba(200,168,75,0.4);
+    letter-spacing: -0.02em;
+  }
+
+  .level-name {
+    font-family: 'VT323', monospace;
+    font-size: 1.8rem;
+    color: var(--yellow);
+    letter-spacing: 0.2em;
+    margin-top: 0.3rem;
+  }
+
+  .level-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--yellow-dim), transparent);
+    margin-top: 1.5rem;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0;
+    border: 1px solid rgba(122, 101, 32, 0.3);
+    margin: 2.5rem 0;
+    opacity: 0;
+    animation: slideUp 0.6s 0.1s ease forwards;
+  }
+
+  .stat-box {
+    padding: 1rem 1.2rem;
+    border-right: 1px solid rgba(122, 101, 32, 0.3);
+  }
+
+  .stat-box:last-child { border-right: none; }
+
+  .stat-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    color: var(--yellow-dim);
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-value {
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    color: var(--yellow-bright);
+  }
+
+  .stat-value.danger { color: #c84b4b; text-shadow: 0 0 10px rgba(200,75,75,0.4); }
+  .stat-value.warning { color: #c8a84b; }
+  .stat-value.safe { color: #4bc87a; }
+
+  .section {
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: slideUp 0.6s ease forwards;
+  }
+
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.3s; }
+  .section:nth-child(5) { animation-delay: 0.4s; }
+  .section:nth-child(6) { animation-delay: 0.5s; }
+  .section:nth-child(7) { animation-delay: 0.6s; }
+
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: var(--yellow-dim);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(122, 101, 32, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(122, 101, 32, 0.2);
+  }
+
+  .body-text {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    line-height: 1.9;
+    color: rgba(184, 154, 58, 0.85);
+  }
+
+  .body-text p { margin-bottom: 1rem; }
+
+  .body-text .highlight {
+    color: var(--yellow-bright);
+    font-style: italic;
+  }
+
+  .warning-box {
+    border: 1px solid rgba(200, 75, 75, 0.4);
+    padding: 1rem 1.2rem;
+    margin: 1.5rem 0;
+    position: relative;
+    background: rgba(200, 75, 75, 0.03);
+  }
+
+  .warning-box::before {
+    content: '⚠ WARNING';
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    background: var(--bg);
+    padding: 0 0.4rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: #c84b4b;
+  }
+
+  .warning-box p {
+    font-size: 0.8rem;
+    color: rgba(200, 75, 75, 0.8);
+    line-height: 1.7;
+  }
+
+  .entities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: rgba(122, 101, 32, 0.2);
+    border: 1px solid rgba(122, 101, 32, 0.2);
+  }
+
+  .entity-card {
+    background: var(--bg);
+    padding: 1rem;
+    transition: background 0.2s;
+  }
+
+  .entity-card:hover {
+    background: rgba(200, 168, 75, 0.04);
+  }
+
+  .entity-name {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--yellow);
+    margin-bottom: 0.3rem;
+  }
+
+  .entity-threat {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+  }
+
+  .entity-threat.hostile { color: #c84b4b; }
+  .entity-threat.passive { color: #4bc87a; }
+  .entity-threat.unknown { color: var(--yellow-dim); }
+
+  .entity-desc {
+    font-size: 0.72rem;
+    color: rgba(184, 154, 58, 0.6);
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+
+  .survival-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .survival-list li {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.82rem;
+    color: rgba(184, 154, 58, 0.8);
+    line-height: 1.6;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .survival-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--yellow-dim);
+    font-size: 1rem;
+  }
+
+  .image-placeholder {
+    border: 1px solid rgba(122, 101, 32, 0.3);
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 40px,
+        rgba(122, 101, 32, 0.03) 40px,
+        rgba(122, 101, 32, 0.03) 41px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 40px,
+        rgba(122, 101, 32, 0.03) 40px,
+        rgba(122, 101, 32, 0.03) 41px
+      );
+  }
+
+  .image-placeholder::before {
+    content: 'PHOTOGRAPH · FILE CORRUPTED · RECONSTRUCTION UNAVAILABLE';
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    color: rgba(122, 101, 32, 0.3);
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .image-placeholder .img-tag {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.8rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(122, 101, 32, 0.3);
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* TRANSITION OVERLAY */
+  .transition-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg);
+    z-index: 9997;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .transition-overlay.active {
+    animation: transitionOut 1.2s forwards;
+  }
+
+  @keyframes transitionOut {
+    0% { opacity: 0; }
+    30% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  /* FLUORESCENT FLICKER EFFECT */
+  .flicker-text {
+    animation: textFlicker 6s infinite;
+  }
+
+  @keyframes textFlicker {
+    0%, 89%, 91%, 93%, 100% { opacity: 1; }
+    90% { opacity: 0.3; }
+    92% { opacity: 0.7; }
+  }
+
+  /* ===== SIDEBAR + LAYOUT ===== */
+  .db-body {
+    display: flex;
+    min-height: calc(100vh - 57px);
+  }
+
+  .db-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(122, 101, 32, 0.25);
+    padding: 2rem 0;
+    position: sticky;
+    top: 57px;
+    height: calc(100vh - 57px);
+    overflow-y: auto;
+  }
+
+  .sidebar-section-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    color: rgba(122, 101, 32, 0.5);
+    padding: 0 1.2rem;
+    margin-bottom: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .sidebar-section-label:first-child { margin-top: 0; }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.55rem 1.2rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--yellow-dim);
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+    border-left: 2px solid transparent;
+  }
+
+  .sidebar-link:hover {
+    color: var(--yellow);
+    background: rgba(200,168,75,0.03);
+  }
+
+  .sidebar-link.active {
+    color: var(--yellow-bright);
+    border-left-color: var(--yellow-bright);
+    background: rgba(200,168,75,0.05);
+  }
+
+  .sidebar-link .lvl-num {
+    font-family: 'VT323', monospace;
+    font-size: 0.95rem;
+    opacity: 0.7;
+  }
+
+  .db-content {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  /* level pages hidden by default */
+  .level-page { display: none; }
+  .level-page.active { display: block; }
+
+  /* ===== LEVEL 1 SPECIFIC ===== */
+  #level0, #level1 {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .level1-accent { color: #7ab8c8; }
+
+  .objects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: rgba(122, 101, 32, 0.2);
+    border: 1px solid rgba(122, 101, 32, 0.2);
+    margin-top: 0.5rem;
+  }
+
+  .object-card {
+    background: var(--bg);
+    padding: 1rem;
+    transition: background 0.2s;
+  }
+
+  .object-card:hover { background: rgba(200, 168, 75, 0.04); }
+
+  .object-name {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--yellow);
+    margin-bottom: 0.25rem;
+  }
+
+  .object-rarity {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.4rem;
+  }
+
+  .object-rarity.common { color: #4bc87a; }
+  .object-rarity.uncommon { color: var(--yellow); }
+  .object-rarity.rare { color: #c84b4b; }
+
+  .object-desc {
+    font-size: 0.7rem;
+    color: rgba(184, 154, 58, 0.6);
+    line-height: 1.6;
+  }
+
+  .exits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(122, 101, 32, 0.2);
+    border: 1px solid rgba(122, 101, 32, 0.2);
+  }
+
+  .exit-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 2fr;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    background: var(--bg);
+    align-items: start;
+    transition: background 0.2s;
+  }
+
+  .exit-row:hover { background: rgba(200,168,75,0.03); }
+
+  .exit-dest {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--yellow-bright);
+  }
+
+  .exit-method {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--yellow);
+  }
+
+  .exit-notes {
+    font-size: 0.68rem;
+    color: rgba(184, 154, 58, 0.6);
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .db-sidebar { display: none; }
+    #level0, #level1 { padding: 2rem 1rem; }
+    .db-header { padding: 0.8rem 1rem; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .stat-box { border-bottom: 1px solid rgba(122, 101, 32, 0.3); }
+    .exit-row { grid-template-columns: 1fr 1fr; }
+    .exit-dest { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="noise-bg"></div>
+<div class="transition-overlay" id="transitionOverlay"></div>
+
+<!-- ===== OPENING SCREEN ===== -->
+<div id="opening">
+  <div class="warning-bar flicker-text">CLASSIFIED DOCUMENTATION — UNAUTHORIZED ACCESS PROHIBITED</div>
+
+  <div class="logo-container">
+    <div class="logo-eyebrow">FIELD DOCUMENTATION ARCHIVE v0.7.3</div>
+    <div class="logo-title">THE<br>BACKROOMS</div>
+    <div class="logo-subtitle">ANOMALOUS SPACE RESEARCH COLLECTIVE</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="archive-info">
+    <p>LEVELS DOCUMENTED: <span class="stat">2</span> &nbsp;|&nbsp; ENTRIES TOTAL: <span class="stat">2</span> &nbsp;|&nbsp; STATUS: <span class="stat">ONGOING</span></p>
+    <p>LAST UPDATED: <span class="stat" id="dateStamp"></span></p>
+    <p style="margin-top: 0.8rem; color: rgba(122,101,32,0.4); font-size: 0.6rem;">ALL INFORMATION COLLECTED FROM FIRSTHAND ACCOUNTS AND RECOVERED DOCUMENTATION</p>
+    <button class="enter-btn" onclick="enterDatabase()">ACCESS ARCHIVE</button>
+  </div>
+
+  <div class="bottom-text">IF YOU HAVE NOCLIPPED — DO NOT PANIC. LOCATE THE NEAREST EXIT. DO NOT RUN.</div>
+</div>
+
+<!-- ===== DATABASE SCREEN ===== -->
+<div id="database">
+  <header class="db-header">
+    <div class="db-header-logo flicker-text">BACKROOMS ARCHIVE</div>
+    <div class="db-header-nav">
+      <span>LEVELS</span>
+      <span>ENTITIES</span>
+      <span>OBJECTS</span>
+      <span>ACCOUNTS</span>
+    </div>
+    <div class="level-tag" id="activeTag">LEVEL 0 — ACTIVE</div>
+  </header>
+
+  <div class="db-body">
+
+    <!-- SIDEBAR -->
+    <nav class="db-sidebar">
+      <div class="sidebar-section-label">LEVELS</div>
+      <div class="sidebar-link active" onclick="showLevel(0)" id="nav-0">
+        <span class="lvl-num">00</span> THE LOBBY
+      </div>
+      <div class="sidebar-link" onclick="showLevel(1)" id="nav-1">
+        <span class="lvl-num">01</span> THE WAREHOUSE
+      </div>
+    </nav>
+
+    <!-- CONTENT PANE -->
+    <div class="db-content">
+
+      <!-- LEVEL 0 -->
+      <div id="level0" class="level-page active">
+
+        <div class="level-header">
+          <div class="level-classification">LEVEL DOCUMENTATION · INITIAL ENTRY POINT · CONFIRMED</div>
+          <div class="level-number">LEVEL<br>0</div>
+          <div class="level-name">THE LOBBY</div>
+          <div class="level-divider"></div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-label">DANGER CLASS</div>
+            <div class="stat-value warning">MODERATE</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">SURVIVAL RATING</div>
+            <div class="stat-value warning">CLASS 1</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ENTITIES</div>
+            <div class="stat-value danger">CONFIRMED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ESTIMATED SIZE</div>
+            <div class="stat-value">~600M KM²</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">EXITS KNOWN</div>
+            <div class="stat-value safe">1+</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DESCRIPTION</div>
+          <div class="body-text">
+            <p>Level 0 is the <span class="highlight">most commonly reported initial entry point</span> into the Backrooms. It manifests as an enormous, seemingly infinite expanse of empty office space — characterized by aged, mono-yellow wallpaper, stained damp carpet, and the persistent hum of fluorescent lights that stretch endlessly overhead.</p>
+            <p>No windows. No doors. No visible ceiling beyond the light fixtures. The layout follows no architectural logic: corridors fold back on themselves, rooms appear and disappear, and long-term navigation by memory is considered unreliable and potentially dangerous.</p>
+            <p>The smell has been consistently described across hundreds of accounts as <span class="highlight">wet carpet and old adhesive</span>. The fluorescent lights flicker at irregular intervals. Some wanderers have reported brief, complete blackouts lasting seconds to minutes. What happens during these blackouts is largely undocumented.</p>
+          </div>
+          <div class="image-placeholder">
+            <div class="img-tag">IMG_0001 · LEVEL 0 · SECTION UNKNOWN</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">ENVIRONMENT</div>
+          <div class="body-text">
+            <p>Temperature is reported consistently between 18–22°C (64–72°F). Humidity is high, typically above 65%, which accounts for the dampness of surfaces despite no apparent water source. The carpet — a mottled, institutional yellow-beige — shows signs of old staining in many areas but appears structurally intact.</p>
+            <p>Sound does not carry normally. Footsteps are muffled. Voices feel absorbed by the walls. Several accounts describe hearing distant footsteps or sounds that do not belong to the wanderer — though no source has ever been confirmed on Level 0.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">KNOWN ENTITIES</div>
+          <div class="entities-grid">
+            <div class="entity-card">
+              <div class="entity-name">SMILERS</div>
+              <div class="entity-threat hostile">● HOSTILE · CONFIRMED PRESENCE</div>
+              <div class="entity-desc">Detected primarily during light failures. Distinguished by a pair of luminescent eyes visible in darkness. Do not approach. Do not acknowledge. Maintain calm movement toward light.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">FACELINGS</div>
+              <div class="entity-threat passive">● PASSIVE · CONFIRMED PRESENCE</div>
+              <div class="entity-desc">Humanoid figures lacking facial features. Generally non-aggressive. Avoid sustained eye contact and sudden movement. They have not been reported to initiate contact.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">DULLERS</div>
+              <div class="entity-threat unknown">● THREAT LEVEL UNCLEAR</div>
+              <div class="entity-desc">Rare accounts. Described as moving through the environment without sound. Behavioural patterns inconclusive. Treat as potentially hostile until further documentation.</div>
+            </div>
+          </div>
+          <div class="warning-box" style="margin-top: 1.5rem;">
+            <p>Entity encounters on Level 0 increase significantly during light failures. If lights begin to flicker, move immediately toward the brightest accessible area. Do not remain stationary in dimly lit corridors.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">SURVIVAL GUIDELINES</div>
+          <ul class="survival-list">
+            <li>Do not run. Rapid movement draws attention and rapidly depletes caloric reserves in an environment with no confirmed food sources.</li>
+            <li>Move toward sound. Distant hum variations may indicate structural differences — potential exit points or transitions to other levels.</li>
+            <li>Mark your path if possible. The environment is disorienting by nature; physical markers help prevent circular wandering.</li>
+            <li>Maintain psychological stability. Panic has been documented as the primary cause of poor decision-making and fatal outcomes on Level 0.</li>
+            <li>Exit method: Noclipping through a structurally weakened wall section — typically identified by a subtle warping or visual distortion — is the most documented method of progression.</li>
+            <li>Do not separate from companions. Solo wanderers have a significantly lower documented return rate.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-label">EXIT POINTS</div>
+          <div class="body-text">
+            <p>The primary documented exit from Level 0 leads to <span class="highlight">Level 1 (The Warehouse)</span>. Transition occurs via noclipping through certain wall sections — identifiable by a faint visual shimmer or tactile softness in the surface material. The exact conditions that make a wall passable are not fully understood.</p>
+            <p>Some accounts mention spontaneous transitions occurring during light failures, but given the hazard conditions during such events, this method is not recommended.</p>
+          </div>
+        </div>
+
+        <div class="section" style="border-top: 1px solid rgba(122,101,32,0.2); padding-top: 1.5rem;">
+          <div class="section-label">FIELD NOTES</div>
+          <div class="body-text" style="color: rgba(184,154,58,0.5); font-style: italic;">
+            <p>"You know it's real when the smell hits you first. That carpet smell. Like a whole building forgot it existed. I walked for what felt like six hours before I found the wall that let me through. The lights never stopped humming." — Account #0017</p>
+          </div>
+        </div>
+
+      </div><!-- /level0 -->
+
+      <!-- LEVEL 1 -->
+      <div id="level1" class="level-page">
+
+        <div class="level-header">
+          <div class="level-classification">LEVEL DOCUMENTATION · INDUSTRIAL SECTOR · CONFIRMED</div>
+          <div class="level-number">LEVEL<br>1</div>
+          <div class="level-name">THE WAREHOUSE</div>
+          <div class="level-divider"></div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-label">DANGER CLASS</div>
+            <div class="stat-value danger">HIGH</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">SURVIVAL RATING</div>
+            <div class="stat-value warning">CLASS 2</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ENTITIES</div>
+            <div class="stat-value danger">MULTIPLE</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ESTIMATED SIZE</div>
+            <div class="stat-value">UNBOUNDED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">RESOURCES</div>
+            <div class="stat-value safe">PRESENT</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DESCRIPTION</div>
+          <div class="body-text">
+            <p>Level 1 presents a dramatic shift from Level 0. Where the Lobby is intimate and office-like, the Warehouse is <span class="highlight">vast and industrial</span> — an endless concrete expanse of shipping crates, metal shelving, loading bays, and rusted machinery. The ceiling is lost to darkness even during periods of light. The scale is deeply disorienting.</p>
+            <p>Lighting here is inconsistent and unreliable. Functional fluorescent strips illuminate some areas; large sections remain in permanent near-darkness. The source of any light in the dark zones is unknown. Several wanderers have noted that light conditions appear to shift between visits to the same physical location — as though the level is not static.</p>
+            <p>Unlike Level 0, Level 1 contains <span class="highlight">material resources</span>: water is reliably found in pipes throughout the level, and sealed food containers have been recovered from shelving units. This makes Level 1 a critical survival zone for wanderers who establish themselves within it — though the entity presence significantly complicates long-term habitation.</p>
+          </div>
+          <div class="image-placeholder">
+            <div class="img-tag">IMG_0041 · LEVEL 1 · SECTOR 7 APPROXIMATE</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">ENVIRONMENT</div>
+          <div class="body-text">
+            <p>The floor is rough concrete, frequently cracked and uneven. Wanderers have reported <span class="highlight">deep gouges and drag marks</span> in the flooring that pre-date any known human presence. Temperatures range from 12–18°C (54–64°F) — noticeably cooler than Level 0. The air carries a metallic, industrial smell overlaid with rust and machine oil.</p>
+            <p>Sound propagates strangely. In open areas, footsteps echo with unusual persistence. In corridors between shelving units, sound is deadened. Machinery can be heard operating somewhere in the distance — rhythmic, mechanical sounds that never seem to get closer regardless of direction traveled.</p>
+            <p>Several survivors describe discovering what appear to be makeshift campsites — bedding, rationed supplies, notes — apparently left by previous wanderers. The condition of these sites varies wildly. Some appear recently abandoned; others have been undisturbed for what may be years.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">KNOWN ENTITIES</div>
+          <div class="entities-grid">
+            <div class="entity-card">
+              <div class="entity-name">HOUNDS</div>
+              <div class="entity-threat hostile">● HOSTILE · HIGH FREQUENCY</div>
+              <div class="entity-desc">Quadrupedal entities resembling dogs in silhouette, but wrong in proportion and movement. Highly aggressive. Hunt by sound. Silent movement is the primary defense — do not run.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">CRAWLERS</div>
+              <div class="entity-threat hostile">● HOSTILE · CONFIRMED</div>
+              <div class="entity-desc">Encountered in dark zones and under shelving units. Fast-moving on all fours. Have not been clearly observed — accounts describe the sound of movement and impact. Avoid low-light areas entirely.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">FACELINGS</div>
+              <div class="entity-threat passive">● PASSIVE · PRESENT</div>
+              <div class="entity-desc">Also present on Level 1 in higher density than Level 0. Behavior remains non-aggressive. Some wanderers report them clustered near resource locations — water pipes, food shelving.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">CLUMPS</div>
+              <div class="entity-threat unknown">● BEHAVIOR VARIABLE</div>
+              <div class="entity-desc">Large, slow-moving masses of unclear composition. Accounts conflict on threat level. Some report them as passive; others describe aggressive behavior following prolonged proximity. Maintain distance.</div>
+            </div>
+          </div>
+          <div class="warning-box" style="margin-top: 1.5rem;">
+            <p>Hound activity increases dramatically in the dark sectors of Level 1. Current recommendation is to avoid any area where ambient light drops below functional visibility. If caught in darkness — stop moving, control breathing, and wait.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">AVAILABLE RESOURCES</div>
+          <div class="objects-grid">
+            <div class="object-card">
+              <div class="object-name">PIPED WATER</div>
+              <div class="object-rarity common">● COMMON</div>
+              <div class="object-desc">Exposed pipe networks run throughout much of Level 1. Water from functional pipes has been tested and consumed without recorded illness. Boiling is nonetheless advised.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">SEALED RATIONS</div>
+              <div class="object-rarity uncommon">● UNCOMMON</div>
+              <div class="object-desc">Industrial food containers found on shelving units. Contents vary. Most are in adequate condition. Check seals carefully — compromised containers have caused illness.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">ALMOND WATER</div>
+              <div class="object-rarity rare">● RARE · HIGH VALUE</div>
+              <div class="object-desc">Distinctive plastic bottles found infrequently throughout the level. Consumption restores significant energy and appears to have mild calming properties. Source unknown.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">ABANDONED GEAR</div>
+              <div class="object-rarity uncommon">● UNCOMMON</div>
+              <div class="object-desc">Previous wanderers' equipment found at campsites. Quality varies. Torches, rope, clothing, and written notes have all been recovered. Notes may contain navigational value.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">SURVIVAL GUIDELINES</div>
+          <ul class="survival-list">
+            <li>Prioritize light sources immediately upon arrival. A torch or functional lighting dramatically reduces entity encounter risk.</li>
+            <li>Secure water before exploring further. Pipe locations near the entry zone from Level 0 are the most reliably documented.</li>
+            <li>Search abandoned campsites carefully. Prior occupants' notes have navigated wanderers to exits; this information is invaluable.</li>
+            <li>Do not move through dark sectors under any circumstances if Hound activity has been detected in the vicinity.</li>
+            <li>The machinery sounds serve as a rough compass. Wanderers who followed the sound consistently have reported reaching structural anomalies that led to level transitions.</li>
+            <li>If establishing a camp, choose an elevated position with at least one clear sightline. Ground-level positions have a worse documented survival rate.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-label">EXIT POINTS</div>
+          <div class="exits-list">
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 2</div>
+              <div class="exit-method">STAIRWELL DESCENT</div>
+              <div class="exit-notes">Concrete stairwells found in the deeper sections of the level. Descent leads to Level 2 (The Pipe Dreams). Several confirmed — locations shift and are not reliably fixed.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 0</div>
+              <div class="exit-method">NOCLIP / WALL PHASE</div>
+              <div class="exit-notes">Return to Level 0 is possible through the same wall-phasing method used to arrive. Not recommended — Level 0 provides fewer resources.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 37</div>
+              <div class="exit-method">ANOMALOUS DOOR</div>
+              <div class="exit-notes">Single account. A metal loading bay door exhibiting unusual properties — warm to touch, faint blue light along frame seams. Outcome unverified. Document if encountered.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="border-top: 1px solid rgba(122,101,32,0.2); padding-top: 1.5rem;">
+          <div class="section-label">FIELD NOTES</div>
+          <div class="body-text" style="color: rgba(184,154,58,0.5); font-style: italic;">
+            <p>"Found a camp. Sleeping bag, a few tins, a hand-drawn map that didn't make sense. Whoever left it had been there long enough to make a home. The map had one word circled near the bottom: DOWN. I found the stairs two days later." — Account #0041</p>
+            <p style="margin-top: 1rem;">"The hound sounds different from what you'd expect. It's almost gentle. That's what makes it so bad." — Account #0089</p>
+          </div>
+        </div>
+
+      </div><!-- /level1 -->
+
+    </div><!-- /db-content -->
+  </div><!-- /db-body -->
+</div><!-- /database -->
+
+<script>
+  // Date stamp
+  const d = new Date();
+  document.getElementById('dateStamp').textContent =
+    d.toISOString().split('T')[0].replace(/-/g, '.');
+
+  // Enter database
+  function enterDatabase() {
+    const overlay = document.getElementById('transitionOverlay');
+    overlay.classList.add('active');
+
+    setTimeout(() => {
+      document.getElementById('opening').style.display = 'none';
+      document.getElementById('database').style.display = 'block';
+    }, 600);
+
+    setTimeout(() => {
+      overlay.classList.remove('active');
+    }, 1200);
+  }
+
+  // Switch levels
+  function showLevel(num) {
+    // Hide all pages
+    document.querySelectorAll('.level-page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+
+    // Show target
+    document.getElementById('level' + num).classList.add('active');
+    document.getElementById('nav-' + num).classList.add('active');
+
+    // Update header tag
+    const names = { 0: 'THE LOBBY', 1: 'THE WAREHOUSE' };
+    document.getElementById('activeTag').textContent = 'LEVEL ' + num + ' — ' + names[num];
+
+    // Scroll to top
+    document.querySelector('.db-content').scrollTop = 0;
+  }
+</script>
+</body>
+</html>
