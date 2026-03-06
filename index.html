@@ -656,38 +656,40 @@
   /* ===== DRAWER + LAYOUT ===== */
   .back-btn {
     background: transparent;
-    border: 1px solid rgba(122, 101, 32, 0.4);
-    color: var(--yellow-dim);
+    border: 1px solid rgba(232, 200, 74, 0.6);
+    color: #e8c84a;
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.6rem;
     letter-spacing: 0.25em;
     padding: 0.35rem 0.8rem;
     cursor: pointer;
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
   }
   .back-btn:hover {
-    border-color: var(--yellow);
-    color: var(--yellow);
+    border-color: #fff176;
+    color: #fff176;
+    box-shadow: 0 0 10px rgba(232,200,74,0.2);
   }
 
   .levels-btn {
     background: transparent;
-    border: 1px solid rgba(122, 101, 32, 0.4);
-    color: var(--yellow-dim);
+    border: 1px solid rgba(232, 200, 74, 0.6);
+    color: #e8c84a;
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.6rem;
     letter-spacing: 0.25em;
     padding: 0.35rem 0.9rem;
     cursor: pointer;
-    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
   .levels-btn:hover, .levels-btn.open {
-    border-color: var(--yellow);
-    color: var(--yellow);
-    background: rgba(200,168,75,0.04);
+    border-color: #fff176;
+    color: #fff176;
+    background: rgba(232,200,74,0.06);
+    box-shadow: 0 0 10px rgba(232,200,74,0.2);
   }
   .levels-btn .burger {
     display: flex;
