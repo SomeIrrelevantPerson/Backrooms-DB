@@ -816,7 +816,7 @@
   .level-page { display: none; }
   .level-page.active { display: block; }
 
-  #level0, #level1, #level2, #level3, #level4 {
+  #level0, #level1, #level2, #level3, #level4, #level5 {
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem 2rem;
@@ -904,7 +904,7 @@
 
   /* Responsive */
   @media (max-width: 768px) {
-    #level0, #level1, #level2, #level3, #level4 { padding: 2rem 1rem; }
+    #level0, #level1, #level2, #level3, #level4, #level5 { padding: 2rem 1rem; }
     .db-header { padding: 0.8rem 1rem; }
     .db-header-nav { display: none; }
     .stats-row { grid-template-columns: 1fr 1fr; }
@@ -932,7 +932,7 @@
   <div class="divider"></div>
 
   <div class="archive-info">
-    <p>LEVELS DOCUMENTED: <span class="stat">5</span> &nbsp;|&nbsp; ENTRIES TOTAL: <span class="stat">5</span> &nbsp;|&nbsp; STATUS: <span class="stat">ONGOING</span></p>
+    <p>LEVELS DOCUMENTED: <span class="stat">6</span> &nbsp;|&nbsp; ENTRIES TOTAL: <span class="stat">6</span> &nbsp;|&nbsp; STATUS: <span class="stat">ONGOING</span></p>
     <p>LAST UPDATED: <span class="stat" id="dateStamp"></span></p>
     <p style="margin-top: 0.8rem; color: rgba(122,101,32,0.4); font-size: 0.6rem;">ALL INFORMATION COLLECTED FROM FIRSTHAND ACCOUNTS AND RECOVERED DOCUMENTATION</p>
     <button class="enter-btn" onclick="enterDatabase()">ACCESS ARCHIVE</button>
@@ -992,6 +992,9 @@
       </div>
       <div class="drawer-link" onclick="showLevel(4)" id="nav-4">
         <span class="lvl-num">04</span> ABANDONED OFFICE
+      </div>
+      <div class="drawer-link" onclick="showLevel(5)" id="nav-5">
+        <span class="lvl-num">05</span> THE HOTEL
       </div>
     </div>
   </nav>
@@ -2219,6 +2222,264 @@
 
       </div><!-- /level4 -->
 
+      <!-- LEVEL 5 -->
+      <div id="level5" class="level-page">
+
+        <div class="level-header">
+          <div class="level-classification">LEVEL DOCUMENTATION · HOSPITALITY SECTOR · CONFIRMED</div>
+          <div class="level-number">LEVEL<br>5</div>
+          <div class="level-name">THE HOTEL</div>
+          <div class="level-class-bar">
+            <span class="bar-item">CLASSIFICATION: RESTRICTED</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">RISK: HIGH</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">ACCOUNTS: 22+</span>
+            <span class="bar-id">DOC-LVL-05</span>
+          </div>
+          <div class="level-divider"></div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-label">DANGER CLASS</div>
+            <div class="stat-value danger">HIGH</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">SURVIVAL RATING</div>
+            <div class="stat-value danger">CLASS 3</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ENTITIES</div>
+            <div class="stat-value danger">MODERATE</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ESTIMATED SIZE</div>
+            <div class="stat-value">UNBOUNDED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">LIGHT</div>
+            <div class="stat-value warning">INCONSISTENT</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DESCRIPTION</div>
+          <div class="body-text">
+            <p>Level 5 presents as an <span class="highlight">infinite hotel of indeterminate era</span> — long carpeted corridors lined with numbered doors, ice machine alcoves, stairwells, lobbies, function rooms, and the occasional indoor pool glimpsed through porthole windows. The aesthetic is neither modern nor dated but occupies an uncomfortable middle space, like a building remembered rather than built. The carpet pattern is consistent throughout: a deep burgundy and gold diamond weave that has been described in every account with slight variations — as though the pattern subtly differs depending on who is looking at it.</p>
+            <p>The hotel is not empty. This is the critical distinction between Level 5 and Level 4. Level 4 felt abandoned. Level 5 feels <span class="highlight">recently vacated</span>. Ice machines hum. Televisions in rooms left ajar display static or, in some accounts, programming in unknown languages. Room service trays sit in corridors with food in various states — some fresh, some long cold, none explicable. The beds in accessible rooms are made. The towels are folded.</p>
+            <p>No staff have been observed. No guests. The phones in every room connect to a dial tone that does not lead anywhere documented — though one account reports reaching a recorded message in a language the wanderer did not recognize but described as "not unpleasant." The message repeated on a loop and the wanderer listened to it for what they estimated was two hours before hanging up.</p>
+          </div>
+          <div class="image-placeholder">
+            <svg width="100%" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+              <defs>
+                <radialGradient id="vignette5" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="100%" stop-color="#000" stop-opacity="0.92"/>
+                </radialGradient>
+                <radialGradient id="hotelglow" cx="50%" cy="45%" r="55%">
+                  <stop offset="0%" stop-color="#6b1a1a" stop-opacity="0.12"/>
+                  <stop offset="100%" stop-color="transparent"/>
+                </radialGradient>
+                <filter id="softblur5"><feGaussianBlur stdDeviation="2"/></filter>
+                <pattern id="hotelcarpet" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                  <rect width="24" height="24" fill="#0e0608"/>
+                  <rect x="4" y="4" width="16" height="16" fill="#110709" opacity="0.6"/>
+                  <line x1="0" y1="12" x2="24" y2="12" stroke="#160a0b" stroke-width="0.5" opacity="0.5"/>
+                  <line x1="12" y1="0" x2="12" y2="24" stroke="#160a0b" stroke-width="0.5" opacity="0.5"/>
+                </pattern>
+              </defs>
+              <!-- Dark BG -->
+              <rect width="800" height="280" fill="#080406"/>
+              <!-- Deep red ambient glow -->
+              <rect width="800" height="280" fill="url(#hotelglow)"/>
+              <!-- Floor carpet -->
+              <rect x="0" y="210" width="800" height="70" fill="url(#hotelcarpet)"/>
+              <line x1="0" y1="210" x2="800" y2="210" stroke="#1e0e10" stroke-width="1.5"/>
+              <!-- Ceiling -->
+              <rect x="0" y="0" width="800" height="28" fill="#060305"/>
+              <line x1="0" y1="28" x2="800" y2="28" stroke="#1e0e10" stroke-width="1"/>
+              <!-- Crown molding line -->
+              <line x1="0" y1="35" x2="800" y2="35" stroke="#160a0c" stroke-width="0.8" opacity="0.6"/>
+              <line x1="0" y1="202" x2="800" y2="202" stroke="#160a0c" stroke-width="0.8" opacity="0.5"/>
+              <!-- Left wall -->
+              <rect x="0" y="28" width="18" height="182" fill="#0b0508"/>
+              <line x1="18" y1="28" x2="18" y2="210" stroke="#1e0e10" stroke-width="1"/>
+              <!-- Right wall -->
+              <rect x="782" y="28" width="18" height="182" fill="#0b0508"/>
+              <line x1="782" y1="28" x2="782" y2="210" stroke="#1e0e10" stroke-width="1"/>
+              <!-- Wall sconce lights left -->
+              <rect x="18" y="90" width="12" height="20" fill="#0f0608"/>
+              <ellipse cx="24" cy="88" rx="6" ry="4" fill="#c8a84b" opacity="0.35" filter="url(#softblur5)"/>
+              <ellipse cx="24" cy="88" rx="2" ry="1.5" fill="#c8a84b" opacity="0.6"/>
+              <!-- Sconce light cone -->
+              <polygon points="18,90 30,90 60,210 -10,210" fill="#c8a84b" opacity="0.02"/>
+              <!-- Wall sconce right -->
+              <rect x="770" y="90" width="12" height="20" fill="#0f0608"/>
+              <ellipse cx="776" cy="88" rx="6" ry="4" fill="#c8a84b" opacity="0.3" filter="url(#softblur5)"/>
+              <ellipse cx="776" cy="88" rx="2" ry="1.5" fill="#c8a84b" opacity="0.55"/>
+              <!-- Corridor doors left side - perspective receding -->
+              <!-- Door 1 left (close) -->
+              <rect x="18" y="55" width="55" height="155" fill="#0d0609" stroke="#1e0e12" stroke-width="1"/>
+              <rect x="22" y="59" width="47" height="147" fill="#0b0508"/>
+              <line x1="22" y1="130" x2="65" y2="130" stroke="#160a0c" stroke-width="0.8" opacity="0.5"/>
+              <line x1="44" y1="59" x2="44" y2="130" stroke="#160a0c" stroke-width="0.8" opacity="0.5"/>
+              <circle cx="62" cy="127" r="2.5" fill="#1e1208" stroke="#2a1a0a" stroke-width="0.8"/>
+              <!-- Door number plate -->
+              <rect x="30" y="68" width="22" height="10" fill="#100809" stroke="#1e0e12" stroke-width="0.5"/>
+              <text x="41" y="76" font-family="monospace" font-size="5" fill="#2a1510" text-anchor="middle">501</text>
+              <!-- Door 2 left (mid distance) -->
+              <rect x="75" y="68" width="38" height="142" fill="#0b0507" stroke="#180c10" stroke-width="0.8" opacity="0.85"/>
+              <circle cx="108" cy="135" r="1.8" fill="#1a1006" opacity="0.8"/>
+              <rect x="80" y="76" width="15" height="8" fill="#0e0708" stroke="#180c10" stroke-width="0.4" opacity="0.7"/>
+              <!-- Door 3 left (far) -->
+              <rect x="114" y="78" width="26" height="132" fill="#090406" stroke="#160a0e" stroke-width="0.6" opacity="0.7"/>
+              <!-- Door 4 left (very far) -->
+              <rect x="142" y="86" width="18" height="124" fill="#080305" stroke="#140810" stroke-width="0.5" opacity="0.55"/>
+              <!-- Corridor doors right side -->
+              <rect x="727" y="55" width="55" height="155" fill="#0d0609" stroke="#1e0e12" stroke-width="1"/>
+              <rect x="731" y="59" width="47" height="147" fill="#0b0508"/>
+              <line x1="731" y1="130" x2="774" y2="130" stroke="#160a0c" stroke-width="0.8" opacity="0.5"/>
+              <line x1="752" y1="59" x2="752" y2="130" stroke="#160a0c" stroke-width="0.8" opacity="0.5"/>
+              <circle cx="733" cy="127" r="2.5" fill="#1e1208" stroke="#2a1a0a" stroke-width="0.8"/>
+              <rect x="744" y="68" width="22" height="10" fill="#100809" stroke="#1e0e12" stroke-width="0.5"/>
+              <text x="755" y="76" font-family="monospace" font-size="5" fill="#2a1510" text-anchor="middle">502</text>
+              <rect x="687" y="68" width="38" height="142" fill="#0b0507" stroke="#180c10" stroke-width="0.8" opacity="0.85"/>
+              <circle cx="690" cy="135" r="1.8" fill="#1a1006" opacity="0.8"/>
+              <rect x="703" y="76" width="15" height="8" fill="#0e0708" stroke="#180c10" stroke-width="0.4" opacity="0.7"/>
+              <rect x="660" y="78" width="26" height="132" fill="#090406" stroke="#160a0e" stroke-width="0.6" opacity="0.7"/>
+              <rect x="640" y="86" width="18" height="124" fill="#080305" stroke="#140810" stroke-width="0.5" opacity="0.55"/>
+              <!-- Room service tray on floor -->
+              <rect x="68" y="195" width="38" height="16" fill="#0e0709" rx="2"/>
+              <rect x="71" y="190" width="32" height="7" fill="#0d0608" rx="1"/>
+              <ellipse cx="87" cy="190" rx="10" ry="3" fill="#0f0809" opacity="0.8"/>
+              <!-- Distant vanishing corridor center -->
+              <rect x="330" y="50" width="140" height="160" fill="#060304"/>
+              <!-- Dim light at vanishing point -->
+              <ellipse cx="400" cy="130" rx="35" ry="28" fill="#c8a84b" opacity="0.05" filter="url(#softblur5)"/>
+              <ellipse cx="400" cy="130" rx="12" ry="10" fill="#c8a84b" opacity="0.07"/>
+              <!-- Ceiling light fixtures receding -->
+              <ellipse cx="400" cy="36" rx="20" ry="4" fill="#c8a84b" opacity="0.2"/>
+              <ellipse cx="400" cy="36" rx="8" ry="2" fill="#c8a84b" opacity="0.4"/>
+              <polygon points="380,40 420,40 450,210 350,210" fill="#c8a84b" opacity="0.015"/>
+              <!-- Second fixture receding -->
+              <ellipse cx="400" cy="37" rx="8" ry="2" fill="#c8a84b" opacity="0.15"/>
+              <!-- Emergency exit sign glow far right wall -->
+              <rect x="755" y="55" width="22" height="10" fill="#1a0000" stroke="#2a0000" stroke-width="0.5" opacity="0.7"/>
+              <rect x="757" y="57" width="18" height="6" fill="#3a0000" opacity="0.5"/>
+              <ellipse cx="766" cy="60" rx="9" ry="4" fill="#c84b4b" opacity="0.08" filter="url(#softblur5)"/>
+              <!-- Wallpaper wainscoting detail -->
+              <line x1="18" y1="175" x2="782" y2="175" stroke="#160a0c" stroke-width="0.8" opacity="0.4"/>
+              <rect x="18" y="175" width="764" height="27" fill="#0a0407" opacity="0.4"/>
+              <!-- Vignette -->
+              <rect width="800" height="280" fill="url(#vignette5)"/>
+            </svg>
+            <div class="img-tag">IMG_0388 · LEVEL 5 · CORRIDOR 7 · FLOOR UNKNOWN</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">ENVIRONMENT</div>
+          <div class="body-text">
+            <p>The corridor structure is consistent: wide enough for two people side by side, ceiling height approximately 2.6 meters, wall-mounted sconces providing warm but inadequate light at irregular intervals. Between sconces, the light fails almost completely. The carpet absorbs sound aggressively — footsteps are near-silent, which is both an advantage and a source of acute psychological discomfort in the dark stretches.</p>
+            <p>Room doors are numbered but the numbering follows no logical sequence. Floor indicators in elevator banks — functional in some areas, dormant in others — display numbers that do not correspond to any observable architectural floor count. Stairwells connect between corridors but not in predictable ways: descending two flights does not reliably bring a wanderer to a lower floor.</p>
+            <p>The swimming pool areas, where accessed, are filled and <span class="highlight">faintly illuminated from below by lights of unknown origin</span>. The water is warm. Analysis is not possible but no wanderer who has consumed it has reported illness. The pool areas are considered among the safer rest locations on the level — entity presence is low there, possibly due to acoustic properties of the space.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">KNOWN ENTITIES</div>
+          <div class="entities-grid">
+            <div class="entity-card">
+              <div class="entity-name">PARTYGOERS</div>
+              <div class="entity-threat hostile">● HOSTILE · PRIMARY THREAT</div>
+              <div class="entity-desc">Appear human. Dress in formalwear from various eras. Extremely sociable — they will attempt to draw wanderers into conversation, offer food and drink, invite them to join gatherings. Do not eat or drink anything they offer. Do not follow them. Accounts of wanderers who complied are not recoverable accounts.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">CLUMPS</div>
+              <div class="entity-threat unknown">● THREAT VARIABLE · PRESENT</div>
+              <div class="entity-desc">Found in larger rooms and function spaces. Slow-moving, appear to drift between rooms without purpose. Some accounts report passive behavior; others describe sudden aggression following prolonged proximity. Do not linger near them regardless of initial behavior.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">SKIN-STEALERS</div>
+              <div class="entity-threat hostile">● HOSTILE · CONFIRMED</div>
+              <div class="entity-desc">Present here alongside the Partygoers, making entity identification significantly harder. A figure that appears to be a Partygoer may be a Skin-Stealer, and vice versa. The safest protocol: treat all apparent human contact on Level 5 as a potential threat regardless of apparent friendliness.</div>
+            </div>
+          </div>
+          <div class="warning-box" style="margin-top: 1.5rem;">
+            <p>The Partygoers are the most socially sophisticated hostile entity documented in this archive. They do not appear threatening. They are polite, warm, and persistent. Wanderers who have successfully avoided them report that the key is simple: keep moving, make no eye contact, and do not respond to being addressed by name — they will use it.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">AVAILABLE RESOURCES</div>
+          <div class="objects-grid">
+            <div class="object-card">
+              <div class="object-name">ROOM MINIBARS</div>
+              <div class="object-rarity common">● COMMON</div>
+              <div class="object-desc">Found in most accessible rooms. Stocked with water, soft drinks, and small food items. Contents appear to restock over time — the mechanism is unknown. Do not consume anything sourced from a Partygoer regardless of its similarity to minibar items.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">POOL WATER</div>
+              <div class="object-rarity common">● COMMON · USE WITH CAUTION</div>
+              <div class="object-desc">Warm, clear, apparently safe based on documented consumption. The pools also serve as the safest sleeping locations on the level — the tiled acoustics make approaching entities audible at greater distance.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">LINEN & BEDDING</div>
+              <div class="object-rarity common">● COMMON</div>
+              <div class="object-desc">Hotel rooms provide the best sleeping conditions documented in this archive. Made beds, pillows, full linen. The psychological benefit of a proper sleep surface at this stage of descent is significant and should not be underestimated.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">ALMOND WATER</div>
+              <div class="object-rarity uncommon">● UNCOMMON</div>
+              <div class="object-desc">Found in housekeeping carts in corridors. The carts appear to be pushed by no one — they are simply present, stationary, stocked. Almond Water is among the items found within roughly 40% of the time.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">SURVIVAL GUIDELINES</div>
+          <ul class="survival-list">
+            <li>Do not respond to anyone who addresses you by name. The Partygoers know names — how is undocumented. This is your primary indicator of a non-human contact.</li>
+            <li>Do not eat or drink anything offered by another apparent person. Minibar and room service tray items sourced independently are considered safe.</li>
+            <li>Use the rooms. Sleep in the beds. Level 5 is a genuine rest opportunity after the descent through Levels 2–4 — take it seriously. Rest here before continuing.</li>
+            <li>Pool areas are safer for extended stays. Sleep with your back to the water and one ear toward the entrance. Entity movement on tile is audible.</li>
+            <li>The elevators are navigational traps — their floor indicators are unreliable. Use stairwells and map your route physically if possible.</li>
+            <li>If a Partygoer attempts to guide you somewhere, decline and change direction. They do not physically restrain — they only persuade. Do not be persuaded.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-label">EXIT POINTS</div>
+          <div class="exits-list">
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 6</div>
+              <div class="exit-method">BASEMENT STAIRWELL</div>
+              <div class="exit-notes">Service stairwells accessed through kitchen and laundry areas lead to Level 6 (Retrofitted Pools). Identifiable by the change in wall material — exposed concrete replaces the wallpapered hotel corridors. Confirmed by multiple accounts.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 4</div>
+              <div class="exit-method">FIRE STAIR UP</div>
+              <div class="exit-notes">Emergency stairwells marked with red exit signs return to Level 4. The signs on Level 5 are functional — follow genuine red emergency lighting, not corridor sconces. Several documented successful returns.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 5.1</div>
+              <div class="exit-method">BALLROOM DOOR</div>
+              <div class="exit-notes">Large double doors found at the end of certain corridors open onto what appears to be a grand ballroom — classified as Level 5.1. This space is where Partygoer density is highest. Entry is strongly discouraged. Return from Level 5.1 has not been documented.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="border-top: 1px solid rgba(122,101,32,0.2); padding-top: 1.5rem;">
+          <div class="section-label">FIELD NOTES</div>
+          <div class="body-text" style="color: rgba(184,154,58,0.5); font-style: italic;">
+            <p>"She was wearing a black dress. She looked completely normal. She said 'there you are' like she'd been waiting for me. She knew my name. I walked the other way and she didn't follow, just called after me that dinner was at eight. I didn't go to dinner." — Account #0401</p>
+            <p style="margin-top: 1rem;">"I slept in a real bed for the first time since I got here. I don't know how long that's been. I cried a little. I'm not ashamed of it. Then I got up and kept moving." — Account #0388</p>
+          </div>
+        </div>
+
+      </div><!-- /level5 -->
+
     </div><!-- /db-content -->
   </div><!-- /db-body -->
 </div><!-- /database -->
@@ -2281,7 +2542,7 @@
     document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
     document.getElementById('level' + num).classList.add('active');
     document.getElementById('nav-' + num).classList.add('active');
-    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE' };
+    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'THE HOTEL' };
     document.getElementById('activeTag').textContent = 'LEVEL ' + num + ' — ' + names[num];
     window.scrollTo(0, 0);
     closeDrawer();
