@@ -708,7 +708,7 @@
   .level-page { display: none; }
   .level-page.active { display: block; }
 
-  #level0, #level1, #level2, #level3 {
+  #level0, #level1, #level2, #level3, #level4 {
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem 2rem;
@@ -796,7 +796,7 @@
 
   /* Responsive */
   @media (max-width: 768px) {
-    #level0, #level1, #level2, #level3 { padding: 2rem 1rem; }
+    #level0, #level1, #level2, #level3, #level4 { padding: 2rem 1rem; }
     .db-header { padding: 0.8rem 1rem; }
     .db-header-nav { display: none; }
     .stats-row { grid-template-columns: 1fr 1fr; }
@@ -824,7 +824,7 @@
   <div class="divider"></div>
 
   <div class="archive-info">
-    <p>LEVELS DOCUMENTED: <span class="stat">4</span> &nbsp;|&nbsp; ENTRIES TOTAL: <span class="stat">4</span> &nbsp;|&nbsp; STATUS: <span class="stat">ONGOING</span></p>
+    <p>LEVELS DOCUMENTED: <span class="stat">5</span> &nbsp;|&nbsp; ENTRIES TOTAL: <span class="stat">5</span> &nbsp;|&nbsp; STATUS: <span class="stat">ONGOING</span></p>
     <p>LAST UPDATED: <span class="stat" id="dateStamp"></span></p>
     <p style="margin-top: 0.8rem; color: rgba(122,101,32,0.4); font-size: 0.6rem;">ALL INFORMATION COLLECTED FROM FIRSTHAND ACCOUNTS AND RECOVERED DOCUMENTATION</p>
     <button class="enter-btn" onclick="enterDatabase()">ACCESS ARCHIVE</button>
@@ -870,13 +870,16 @@
         <span class="lvl-num">00</span> THE LOBBY
       </div>
       <div class="drawer-link" onclick="showLevel(1)" id="nav-1">
-        <span class="lvl-num">01</span> THE WAREHOUSE
+        <span class="lvl-num">01</span> PARKING ZONE
       </div>
       <div class="drawer-link" onclick="showLevel(2)" id="nav-2">
         <span class="lvl-num">02</span> PIPE DREAMS
       </div>
       <div class="drawer-link" onclick="showLevel(3)" id="nav-3">
         <span class="lvl-num">03</span> ELECTRICAL STATION
+      </div>
+      <div class="drawer-link" onclick="showLevel(4)" id="nav-4">
+        <span class="lvl-num">04</span> ABANDONED OFFICE
       </div>
     </div>
   </nav>
@@ -1085,7 +1088,7 @@
         <div class="level-header">
           <div class="level-classification">LEVEL DOCUMENTATION · INDUSTRIAL SECTOR · CONFIRMED</div>
           <div class="level-number">LEVEL<br>1</div>
-          <div class="level-name">THE WAREHOUSE</div>
+          <div class="level-name">PARKING ZONE</div>
           <div class="level-divider"></div>
         </div>
 
@@ -1812,6 +1815,268 @@
 
       </div><!-- /level3 -->
 
+      <!-- LEVEL 4 -->
+      <div id="level4" class="level-page">
+
+        <div class="level-header">
+          <div class="level-classification">LEVEL DOCUMENTATION · ADMINISTRATIVE SECTOR · CONFIRMED</div>
+          <div class="level-number">LEVEL<br>4</div>
+          <div class="level-name">ABANDONED OFFICE</div>
+          <div class="level-divider"></div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-label">DANGER CLASS</div>
+            <div class="stat-value warning">MODERATE</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">SURVIVAL RATING</div>
+            <div class="stat-value warning">CLASS 2</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ENTITIES</div>
+            <div class="stat-value warning">LOW DENSITY</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ESTIMATED SIZE</div>
+            <div class="stat-value">UNBOUNDED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">RESOURCES</div>
+            <div class="stat-value safe">ABUNDANT</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DESCRIPTION</div>
+          <div class="body-text">
+            <p>Level 4 represents a disquieting return to the familiar — an endless sprawl of <span class="highlight">abandoned office space</span>, far more developed than Level 0. Where Level 0 was empty and featureless, Level 4 is furnished: rows of desks, filing cabinets, cubicle partitions, break rooms, meeting rooms, server racks, and corridors lined with closed office doors. Every detail suggests a building that was once occupied and simply… wasn't anymore.</p>
+            <p>Nothing is overtly wrong with Level 4. That is part of what makes it unsettling. The fluorescent lights work. The carpet, though dusty, is intact. Clocks hang on walls — none of them running, but none of them broken either, needles stopped at times that differ from room to room. Coffee mugs sit on desks. Filing cabinets hold papers in languages wanderers have been unable to identify. The computers, where found, display only a blank cursor on a black screen.</p>
+            <p>Despite its relative comfort compared to Levels 2 and 3, Level 4 is not safe. Its entity population is sparse but specifically dangerous in enclosed spaces, and the <span class="highlight">psychological weight of the level is well documented</span> — long-term habitation produces a creeping disorientation that wanderers describe as forgetting what they were doing here, or why they left wherever they came from.</p>
+          </div>
+          <div class="image-placeholder">
+            <svg width="100%" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+              <defs>
+                <radialGradient id="vignette4" cx="50%" cy="50%" r="68%">
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="100%" stop-color="#000" stop-opacity="0.88"/>
+                </radialGradient>
+                <radialGradient id="officeglow" cx="50%" cy="30%" r="60%">
+                  <stop offset="0%" stop-color="#c8a84b" stop-opacity="0.07"/>
+                  <stop offset="100%" stop-color="transparent"/>
+                </radialGradient>
+                <filter id="softblur4"><feGaussianBlur stdDeviation="1.5"/></filter>
+                <pattern id="carpet4" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <rect width="20" height="20" fill="#0d0b07"/>
+                  <rect x="0" y="0" width="10" height="10" fill="#0e0c08"/>
+                  <rect x="10" y="10" width="10" height="10" fill="#0e0c08"/>
+                </pattern>
+              </defs>
+              <!-- Background -->
+              <rect width="800" height="280" fill="#0a0900"/>
+              <rect width="800" height="280" fill="url(#officeglow)"/>
+              <!-- Floor carpet -->
+              <rect x="0" y="200" width="800" height="80" fill="url(#carpet4)"/>
+              <line x1="0" y1="200" x2="800" y2="200" stroke="#181408" stroke-width="1"/>
+              <!-- Ceiling -->
+              <rect x="0" y="0" width="800" height="25" fill="#080700"/>
+              <line x1="0" y1="25" x2="800" y2="25" stroke="#181408" stroke-width="1"/>
+              <!-- Ceiling tiles grid -->
+              <line x1="0" y1="35" x2="800" y2="35" stroke="#111000" stroke-width="0.6" opacity="0.6"/>
+              <line x1="100" y1="25" x2="100" y2="50" stroke="#111000" stroke-width="0.6" opacity="0.6"/>
+              <line x1="200" y1="25" x2="200" y2="50" stroke="#111000" stroke-width="0.6" opacity="0.6"/>
+              <line x1="300" y1="25" x2="300" y2="50" stroke="#111000" stroke-width="0.6" opacity="0.6"/>
+              <line x1="400" y1="25" x2="400" y2="50" stroke="#111000" stroke-width="0.6" opacity="0.6"/>
+              <line x1="500" y1="25" x2="500" y2="50" stroke="#111000" stroke-width="0.6" opacity="0.6"/>
+              <line x1="600" y1="25" x2="600" y2="50" stroke="#111000" stroke-width="0.6" opacity="0.6"/>
+              <line x1="700" y1="25" x2="700" y2="50" stroke="#111000" stroke-width="0.6" opacity="0.6"/>
+              <!-- Fluorescent ceiling lights - working -->
+              <rect x="90" y="25" width="120" height="5" fill="#c8a84b" opacity="0.55"/>
+              <polygon points="90,30 210,30 240,200 60,200" fill="#c8a84b" opacity="0.025"/>
+              <rect x="350" y="25" width="100" height="5" fill="#c8a84b" opacity="0.45"/>
+              <polygon points="350,30 450,30 470,200 330,200" fill="#c8a84b" opacity="0.02"/>
+              <rect x="590" y="25" width="120" height="5" fill="#c8a84b" opacity="0.4"/>
+              <!-- Floor ambient glow under lights -->
+              <ellipse cx="150" cy="200" rx="90" ry="18" fill="#c8a84b" opacity="0.04"/>
+              <ellipse cx="400" cy="200" rx="75" ry="15" fill="#c8a84b" opacity="0.03"/>
+              <ellipse cx="650" cy="200" rx="80" ry="15" fill="#c8a84b" opacity="0.03"/>
+              <!-- Left wall -->
+              <rect x="0" y="25" width="20" height="175" fill="#0c0a06"/>
+              <line x1="20" y1="25" x2="20" y2="200" stroke="#181408" stroke-width="1"/>
+              <!-- Right wall -->
+              <rect x="780" y="25" width="20" height="175" fill="#0c0a06"/>
+              <line x1="780" y1="25" x2="780" y2="200" stroke="#181408" stroke-width="1"/>
+              <!-- Cubicle partitions left side -->
+              <rect x="20" y="70" width="4" height="130" fill="#131008"/>
+              <rect x="100" y="70" width="4" height="130" fill="#131008"/>
+              <rect x="20" y="70" width="84" height="4" fill="#131008"/>
+              <!-- Desk left cubicle -->
+              <rect x="25" y="155" width="74" height="8" fill="#161208"/>
+              <!-- Monitor on desk -->
+              <rect x="40" y="125" width="35" height="25" fill="#0e0c08" stroke="#1c1810" stroke-width="1"/>
+              <rect x="42" y="127" width="31" height="21" fill="#080700"/>
+              <!-- Cursor blink on screen -->
+              <rect x="45" y="143" width="4" height="3" fill="#c8a84b" opacity="0.3"/>
+              <!-- Coffee mug on desk -->
+              <rect x="82" y="151" width="8" height="9" fill="#111" rx="1"/>
+              <line x1="90" y1="153" x2="93" y2="153" stroke="#111" stroke-width="1.5"/>
+              <!-- Second cubicle -->
+              <rect x="104" y="70" width="4" height="130" fill="#131008"/>
+              <rect x="184" y="70" width="4" height="130" fill="#131008"/>
+              <rect x="104" y="70" width="84" height="4" fill="#131008"/>
+              <rect x="109" y="155" width="74" height="8" fill="#161208"/>
+              <rect x="124" y="128" width="35" height="22" fill="#0e0c08" stroke="#1c1810" stroke-width="1"/>
+              <rect x="126" y="130" width="31" height="18" fill="#080700"/>
+              <!-- Filing cabinet mid -->
+              <rect x="200" y="110" width="40" height="90" fill="#0f0d08" stroke="#1a1610" stroke-width="1"/>
+              <line x1="200" y1="140" x2="240" y2="140" stroke="#1a1610" stroke-width="1"/>
+              <line x1="200" y1="170" x2="240" y2="170" stroke="#1a1610" stroke-width="1"/>
+              <rect x="217" y="132" width="6" height="3" fill="#1a1610" rx="1"/>
+              <rect x="217" y="162" width="6" height="3" fill="#1a1610" rx="1"/>
+              <!-- Open door in corridor -->
+              <rect x="310" y="50" width="6" height="150" fill="#0a0900"/>
+              <rect x="316" y="50" width="60" height="150" fill="#080700"/>
+              <line x1="316" y1="50" x2="376" y2="50" stroke="#181408" stroke-width="1"/>
+              <line x1="376" y1="50" x2="376" y2="200" stroke="#181408" stroke-width="1"/>
+              <!-- Door frame glow - another room beyond -->
+              <rect x="317" y="51" width="58" height="148" fill="#0a0900"/>
+              <ellipse cx="346" cy="125" rx="25" ry="40" fill="#c8a84b" opacity="0.04" filter="url(#softblur4)"/>
+              <!-- Door handle -->
+              <circle cx="370" cy="130" r="2" fill="#1c1810"/>
+              <!-- Clock on wall -->
+              <circle cx="270" cy="80" r="12" fill="none" stroke="#1c1810" stroke-width="1.5"/>
+              <circle cx="270" cy="80" r="1.5" fill="#1c1810"/>
+              <!-- Clock hands - stopped -->
+              <line x1="270" y1="80" x2="270" y2="70" stroke="#1c1810" stroke-width="1.2"/>
+              <line x1="270" y1="80" x2="278" y2="83" stroke="#1c1810" stroke-width="1"/>
+              <!-- Right side: more cubicles receding into distance -->
+              <rect x="450" y="80" width="3" height="120" fill="#111009" opacity="0.8"/>
+              <rect x="520" y="80" width="3" height="120" fill="#111009" opacity="0.7"/>
+              <rect x="580" y="85" width="2" height="115" fill="#111009" opacity="0.6"/>
+              <rect x="630" y="88" width="2" height="112" fill="#111009" opacity="0.5"/>
+              <rect x="450" y="80" width="73" height="3" fill="#111009" opacity="0.8"/>
+              <rect x="520" y="80" width="63" height="3" fill="#111009" opacity="0.7"/>
+              <!-- Distant figure standing between cubicles - very faint -->
+              <rect x="548" y="110" width="10" height="45" fill="#0d0c08" opacity="0.5"/>
+              <ellipse cx="553" cy="107" rx="6" ry="7" fill="#0d0c08" opacity="0.5"/>
+              <!-- Papers on floor -->
+              <rect x="390" y="192" width="25" height="15" fill="#0f0d09" opacity="0.7" transform="rotate(-8,402,199)"/>
+              <rect x="420" y="188" width="20" height="14" fill="#0f0d09" opacity="0.6" transform="rotate(5,430,195)"/>
+              <!-- Vignette -->
+              <rect width="800" height="280" fill="url(#vignette4)"/>
+            </svg>
+            <div class="img-tag">IMG_0231 · LEVEL 4 · ADMINISTRATIVE WING · SECTION C</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">ENVIRONMENT</div>
+          <div class="body-text">
+            <p>The office infrastructure is extensive. Functioning water coolers have been found — still cold, still dispensing, with no apparent power connection. Vending machines exist in break rooms, some operational, dispensing products whose branding is unfamiliar and whose contents, while apparently safe, have an indeterminate taste described as "almost right." Bathrooms are present and functional, though mirrors in these spaces have been reported to behave anomalously — not visually, but in a subtler way wanderers struggle to articulate.</p>
+            <p>Temperature is mild and consistent, around 20°C. The air is stale but breathable. Sound is muffled by the carpet and cubicle partitions, creating pockets of near-complete silence. In these silence zones, some wanderers report hearing <span class="highlight">typing from adjacent rooms</span> — rhythmic, consistent, stopping immediately if approached. Investigation has never identified a source.</p>
+            <p>Papers and documents are found throughout, but their content is universally either in unrecognizable scripts or in English that is grammatically correct but semantically incoherent — professional-sounding text that conveys no meaning on inspection. Wanderers are advised not to spend significant time attempting to parse these documents.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">KNOWN ENTITIES</div>
+          <div class="entities-grid">
+            <div class="entity-card">
+              <div class="entity-name">FACELINGS</div>
+              <div class="entity-threat passive">● PASSIVE · HIGH DENSITY</div>
+              <div class="entity-desc">More numerous here than any other documented level. They sit at desks, stand in corridors, occupy meeting rooms — present in the postures of office workers without performing any observable action. They do not acknowledge wanderers. Do not disturb them.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">WHICH</div>
+              <div class="entity-threat hostile">● HOSTILE · RARE BUT LETHAL</div>
+              <div class="entity-desc">Appear as a seated figure at a desk or workstation. Indistinguishable from a Faceling at a distance. Distinguished only by head orientation — they face the wanderer. If you see one facing you: leave the room immediately. Do not engage.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">SKIN-STEALERS</div>
+              <div class="entity-threat hostile">● HOSTILE · CONFIRMED</div>
+              <div class="entity-desc">Mimic human appearance and vocal patterns. Reported exclusively on Level 4. Their behavior is socially coherent but contains subtle errors — wrong idioms, slightly mismatched emotional responses. Trust no entity that initiates conversation.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">DULLERS</div>
+              <div class="entity-threat unknown">● THREAT UNCLEAR · PRESENT</div>
+              <div class="entity-desc">Also present on this level in higher numbers than Level 0. Their relationship to the Facelings is unknown. Some accounts suggest they may be a transitional state. Maintain standard avoidance protocol.</div>
+            </div>
+          </div>
+          <div class="warning-box" style="margin-top: 1.5rem;">
+            <p>Skin-Stealers are the primary threat unique to Level 4. If you are traveling with others, establish a verification phrase before entering. If a companion's behavior changes — speech patterns, knowledge of prior events, physical mannerisms — treat the situation as a potential Skin-Stealer encounter and relocate without confrontation.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">AVAILABLE RESOURCES</div>
+          <div class="objects-grid">
+            <div class="object-card">
+              <div class="object-name">WATER COOLERS</div>
+              <div class="object-rarity common">● COMMON · RELIABLE</div>
+              <div class="object-desc">Functional and cold. The most reliable water source of any documented level. Source of water is unknown. Consumption has not produced illness in any documented account.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">VENDING MACHINES</div>
+              <div class="object-rarity common">● COMMON</div>
+              <div class="object-desc">Operational. Products are unfamiliar branded items — chips, crackers, bars — that are calorie-dense and edible, though taste descriptions are consistently strange. A significant caloric resource for wanderers reaching this level.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">FIRST AID KITS</div>
+              <div class="object-rarity uncommon">● UNCOMMON</div>
+              <div class="object-desc">Wall-mounted in corridors and break rooms. Fully stocked in most finds — bandages, antiseptic, basic analgesics. The best medical resource documented in the archive to date.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">ALMOND WATER</div>
+              <div class="object-rarity uncommon">● UNCOMMON</div>
+              <div class="object-desc">Found in desk drawers and break room cabinets with unusual regularity compared to other levels. Its psychological stabilizing effect is particularly valuable here given the level's documented cognitive effects on long-term occupants.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">SURVIVAL GUIDELINES</div>
+          <ul class="survival-list">
+            <li>Do not disturb the Facelings. They are present in significant numbers and their passive behavior appears conditional — accounts of provoked Faceling groups are not recoverable accounts.</li>
+            <li>Establish a companion verification protocol before entering any closed room together. Skin-Stealers exploit familiarity — the longer you have been with someone, the more material they have to work with.</li>
+            <li>Do not try to read the documents. The time investment yields nothing and several accounts report a lingering confusion following extended reading attempts.</li>
+            <li>Use the vending machines and water coolers. Level 4 is the best resupply point in the archive. Prioritize caloric intake before continuing descent.</li>
+            <li>Do not sleep in rooms with Facelings present. Relocate to an empty office, barricade the door, and take watch rotations if traveling with others.</li>
+            <li>If you hear typing from a room you know to be empty — do not open the door.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-label">EXIT POINTS</div>
+          <div class="exits-list">
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 5</div>
+              <div class="exit-method">STAIRWELL DOWN</div>
+              <div class="exit-notes">Emergency stairwells at the end of main corridors. Unlike Level 1 stairwells these are fixed in location and consistently documented at corridor endpoints. Leads to Level 5 (The Hotel). Confirmed by numerous accounts.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 3</div>
+              <div class="exit-method">BREAKER ROOM RETURN</div>
+              <div class="exit-notes">The same doors used to exit Level 3 can be re-entered from Level 4. Not recommended — the door location drifts over time and Level 3 offers no recovery value.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 4.1</div>
+              <div class="exit-method">LOCKED OFFICE DOOR</div>
+              <div class="exit-notes">Certain locked office doors with light visible beneath them lead to Level 4.1 (The Office With No Windows). Sub-level is poorly documented. No keys have been recovered — entry is via forced entry only.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="border-top: 1px solid rgba(122,101,32,0.2); padding-top: 1.5rem;">
+          <div class="section-label">FIELD NOTES</div>
+          <div class="body-text" style="color: rgba(184,154,58,0.5); font-style: italic;">
+            <p>"I ate three things from the vending machine. They tasted like someone had described food to a machine and the machine had tried. But I ate them and I kept walking and that's enough." — Account #0298</p>
+            <p style="margin-top: 1rem;">"We had a code word. Lamprey. On the third day Jamie said it wrong — said 'lamp ray' like two words, like he'd only ever seen it written. I didn't say anything. I just started moving toward the stairs." — Account #0317</p>
+          </div>
+        </div>
+
+      </div><!-- /level4 -->
+
     </div><!-- /db-content -->
   </div><!-- /db-body -->
 </div><!-- /database -->
@@ -1872,7 +2137,7 @@
     document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
     document.getElementById('level' + num).classList.add('active');
     document.getElementById('nav-' + num).classList.add('active');
-    const names = { 0: 'THE LOBBY', 1: 'THE WAREHOUSE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION' };
+    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE' };
     document.getElementById('activeTag').textContent = 'LEVEL ' + num + ' — ' + names[num];
     window.scrollTo(0, 0);
     closeDrawer();
