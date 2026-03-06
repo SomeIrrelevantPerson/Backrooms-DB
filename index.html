@@ -818,7 +818,7 @@
   .level-page { display: none; }
   .level-page.active { display: block; }
 
-  #level0, #level1, #level2, #level3, #level4, #level5 {
+  #level0, #level1, #level2, #level3, #level4, #level5, #level6 {
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem 2rem;
@@ -906,7 +906,7 @@
 
   /* Responsive */
   @media (max-width: 768px) {
-    #level0, #level1, #level2, #level3, #level4, #level5 { padding: 2rem 1rem; }
+    #level0, #level1, #level2, #level3, #level4, #level5, #level6 { padding: 2rem 1rem; }
     .db-header { padding: 0.8rem 1rem; }
     .db-header-nav { display: none; }
     .stats-row { grid-template-columns: 1fr 1fr; }
@@ -965,7 +965,7 @@
   </header>
   <div class="header-ticker">
     <span class="ticker-inner">
-      ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate"></span> &nbsp;·&nbsp; ENTRIES: 5 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp; ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate2"></span> &nbsp;·&nbsp; ENTRIES: 5 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp;
+      ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate"></span> &nbsp;·&nbsp; ENTRIES: 6 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp; ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate2"></span> &nbsp;·&nbsp; ENTRIES: 6 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp;
     </span>
   </div>
 
@@ -997,6 +997,9 @@
       </div>
       <div class="drawer-link" onclick="showLevel(5)" id="nav-5">
         <span class="lvl-num">05</span> TERROR HOTEL
+      </div>
+      <div class="drawer-link" onclick="showLevel(6)" id="nav-6">
+        <span class="lvl-num">06</span> LIGHTS OUT
       </div>
     </div>
   </nav>
@@ -2490,6 +2493,215 @@
 
       </div><!-- /level5 -->
 
+      <!-- LEVEL 6 -->
+      <div id="level6" class="level-page">
+
+        <div class="level-header">
+          <div class="level-classification">LEVEL DOCUMENTATION · SENSORY DEPRIVATION SECTOR · EXTREME CAUTION</div>
+          <div class="level-number">LEVEL<br>6</div>
+          <div class="level-name">LIGHTS OUT</div>
+          <div class="level-class-bar">
+            <span class="bar-item">CLASSIFICATION: RESTRICTED</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">RISK: EXTREME</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">ACCOUNTS: 9</span>
+            <span class="bar-id">DOC-LVL-06</span>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-label">CLASS</div>
+            <div class="stat-value danger">4</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">LIGHT SOURCES</div>
+            <div class="stat-value danger">NON-FUNCTIONAL</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ENTITIES</div>
+            <div class="stat-value warning">UNCONFIRMED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ESTIMATED SIZE</div>
+            <div class="stat-value">UNKNOWN</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">TEMPERATURE</div>
+            <div class="stat-value">~8°C (46°F)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">RESOURCES</div>
+            <div class="stat-value danger">SCARCE</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DESCRIPTION</div>
+          <div class="body-text">
+            <p>Level 6 is, structurally, the simplest level in this archive. It is a network of <span class="highlight">tight concrete hallways</span> — smooth walls, low ceilings, cold floors — extending in all directions without apparent logic or terminus. The layout has been partially mapped by wanderers navigating by touch, suggesting corridors roughly 1–1.5 meters (3–5 ft) wide and approximately 2 meters (6.5 ft) tall, occasionally opening into larger chambers before narrowing again. That is all that is known about the physical structure. Everything else is darkness.</p>
+            <p>No light source functions on Level 6. Flashlights, lighters, matches, phone screens, chemical glow sticks — all extinguish or fail immediately upon entry. Wanderers have described holding a lit flame through the threshold and watching it go out before their hand crossed the line. The darkness is not merely the absence of light. Accounts consistently describe it as <span class="highlight">actively present</span> — a weight, a pressure, something that presses back against the eyes. Closing your eyes does not change it.</p>
+            <p>The level is also near-silent. Sound does not carry the way it should. Footsteps are muffled and directionless. Voices decay within meters. Several wanderers report that shouting felt physically wrong — as though the air resisted it. The silence is not total: there are sounds. They are just not explicable.</p>
+          </div>
+          <div class="image-placeholder">
+            <svg width="100%" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+              <defs>
+                <radialGradient id="vignette6" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="100%" stop-color="#000" stop-opacity="0.98"/>
+                </radialGradient>
+                <filter id="grain6">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/>
+                  <feColorMatrix type="saturate" values="0"/>
+                  <feBlend in="SourceGraphic" mode="multiply" result="blend"/>
+                  <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+                </filter>
+                <filter id="blur6"><feGaussianBlur stdDeviation="3"/></filter>
+                <filter id="blur6sm"><feGaussianBlur stdDeviation="1.2"/></filter>
+              </defs>
+              <!-- Total black background -->
+              <rect width="800" height="280" fill="#020202"/>
+              <!-- Extremely faint corridor suggestion — barely perceptible walls -->
+              <!-- Left wall line -->
+              <line x1="180" y1="0" x2="350" y2="280" stroke="#0e0e0e" stroke-width="1.5"/>
+              <!-- Right wall line -->
+              <line x1="620" y1="0" x2="450" y2="280" stroke="#0e0e0e" stroke-width="1.5"/>
+              <!-- Ceiling suggestion -->
+              <line x1="180" y1="0" x2="620" y2="0" stroke="#0c0c0c" stroke-width="1"/>
+              <!-- Floor suggestion -->
+              <line x1="350" y1="280" x2="450" y2="280" stroke="#0c0c0c" stroke-width="1"/>
+              <!-- Very faint corridor interior fill -->
+              <polygon points="180,0 620,0 450,280 350,280" fill="#050505" opacity="0.6"/>
+              <!-- Far end of corridor — almost nothing -->
+              <rect x="370" y="110" width="60" height="60" fill="#060606"/>
+              <!-- The only anomaly: two faint points of light, eye-height, far down the corridor -->
+              <ellipse cx="392" cy="142" rx="2.5" ry="2" fill="#c8c8c8" opacity="0.18" filter="url(#blur6sm)"/>
+              <ellipse cx="392" cy="142" rx="0.8" ry="0.7" fill="#e0e0e0" opacity="0.3"/>
+              <ellipse cx="408" cy="142" rx="2.5" ry="2" fill="#c8c8c8" opacity="0.18" filter="url(#blur6sm)"/>
+              <ellipse cx="408" cy="142" rx="0.8" ry="0.7" fill="#e0e0e0" opacity="0.3"/>
+              <!-- Noise/grain overlay -->
+              <rect width="800" height="280" fill="#111" opacity="0.04" filter="url(#grain6)"/>
+              <!-- Heavy vignette — nearly total -->
+              <rect width="800" height="280" fill="url(#vignette6)"/>
+            </svg>
+            <div class="img-tag">IMG_0412 · LEVEL 6 · CORRIDOR UNKNOWN · DEPTH UNKNOWN</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">ENVIRONMENT</div>
+          <div class="body-text">
+            <p>The concrete of Level 6 is cold to the touch — consistently around 8°C (46°F) — and smooth in a way that feels deliberate, like it was finished rather than poured. No seams, no joints, no pipes on the walls. The floor is flat and slightly uneven in places; several accounts mention unexpected drops of a few centimeters that have caused falls. At least two wanderers report that the floor disappeared entirely — a gap of unknown depth with no audible bottom. Whether these are structural features or anomalous hazards is unknown.</p>
+            <p>The hallways branch frequently. Without light, without sound, and without any distinguishing features, orientation is essentially impossible. Wanderers who attempted to mark their path by touch — scratching walls, leaving objects — report that the marks were present on return passes but that the corridor geometry did not match their memory of it. Several accounts suggest the layout <span class="highlight">changes when unobserved</span>, though this cannot be confirmed given the conditions.</p>
+            <p>The temperature is stable but significant. Extended exposure without appropriate clothing will become physically dangerous within hours. There is no wind, no moisture in the air beyond normal respiration, and no smell of any kind — a detail that multiple accounts specifically noted as deeply unsettling.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">KNOWN ENTITIES</div>
+          <div class="body-text" style="margin-bottom:1.2rem;">
+            <p>No entity has been visually confirmed on Level 6. This is not the same as saying no entities are present. Given that the level is in total darkness and no light source functions, the absence of visual confirmation is not evidence of absence. What follows are the anomalous observations that cannot be otherwise explained.</p>
+          </div>
+          <div class="entities-grid">
+            <div class="entity-card">
+              <div class="entity-name">UNKNOWN · DESIGNATION PENDING</div>
+              <div class="entity-threat unknown">● PRESENCE UNCONFIRMED · ACOUSTIC EVIDENCE ONLY</div>
+              <div class="entity-desc">Six of nine accounts include sounds that cannot be attributed to the wanderer themselves: footsteps not matching their gait, slow rhythmic breathing at close range, a single instance of what was described as "a dry clicking, like someone working their jaw." In two accounts, physical contact was reported — something that brushed against the wanderer's shoulder or back. Neither account describes pursuit. Neither wanderer was able to identify what touched them. Current classification: unconfirmed presence, threat level undetermined.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">THE ADAPTED · COMMUNITY DESIGNATION</div>
+              <div class="entity-threat hostile">● HOSTILE · CONFIRMED HOSTILE INTENT</div>
+              <div class="entity-desc">A small group — no more than four individuals — who claim to have entered Level 6 voluntarily and remained long enough to adapt. They no longer require light. Each has developed an apparently perfect ability to mimic any sound they hear, including voices, footsteps, and breathing patterns of specific individuals. They are aware that they are dangerous. Accounts describe them approaching wanderers in the dark under the guise of another lost person. Do not trust any voice you hear in Level 6.</div>
+            </div>
+          </div>
+          <div class="warning-box" style="margin-top:1.5rem;">
+            <p>The Adapted represent a unique threat profile. They do not attack directly in any documented account — they redirect, misdirect, and disorient. A wanderer who follows a familiar voice in Level 6 may walk in any direction. The level will handle the rest.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">ANOMALOUS FEATURES</div>
+          <div class="body-text">
+            <p>Two anomalous features of Level 6 have been reported with enough consistency to document, though neither has been verified by more than two independent accounts.</p>
+          </div>
+          <div style="border: 1px solid rgba(122,101,32,0.2); padding: 1.2rem; margin-top: 1.5rem; margin-bottom: 1rem;">
+            <div style="font-size:0.58rem; letter-spacing:0.35em; color:var(--yellow-dim); margin-bottom:0.4rem;">ANOMALY · 6-A · RUMOURED</div>
+            <div style="font-family:'VT323',monospace; font-size:1.3rem; color:var(--yellow-bright); margin-bottom:0.6rem; letter-spacing:0.05em;">THE WORLD'S QUIETEST ROOM</div>
+            <div class="body-text">
+              <p>An unspecified hallway in Level 6, reportedly occupied by a single stationary individual who claims to have found a light switch. Attempts to communicate with this person have reportedly been unsuccessful — they do not respond to questions and speak only to repeat the same request: that you flip the switch. The location of the switch is not disclosed. The individual does not appear to move, eat, or sleep in any account that describes extended observation.</p>
+              <p><span class="highlight">Do not flip the switch.</span> This is the only consistent advisory from every account that mentions this anomaly. No account documents what happens if the switch is flipped, because no account that documents flipping the switch has a second entry.</p>
+            </div>
+          </div>
+          <div style="border: 1px solid rgba(122,101,32,0.2); padding: 1.2rem; margin-top: 1.5rem;">
+            <div style="font-size:0.58rem; letter-spacing:0.35em; color:var(--yellow-dim); margin-bottom:0.4rem;">ANOMALY · 6-B · UNVERIFIED</div>
+            <div style="font-family:'VT323',monospace; font-size:1.3rem; color:var(--yellow-bright); margin-bottom:0.6rem; letter-spacing:0.05em;">THE LIGHT ROOMS</div>
+            <div class="body-text">
+              <p>Two accounts describe encountering a room that was lit — not by a functioning light source but by the room itself, emanating a dim, sourceless glow. The accounts describe the relief as overwhelming. Both accounts advise entering to rest and recover sanity. Both also note that extended time in the room results in progressive visual deterioration and that the light becomes painful before it becomes dangerous. Duration recommended: no more than twenty minutes.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">AVAILABLE RESOURCES</div>
+          <div class="objects-grid">
+            <div class="object-card">
+              <div class="object-name">ALMOND WATER</div>
+              <div class="object-rarity uncommon">● UNCOMMON · WALL-MOUNTED PIPES</div>
+              <div class="object-desc">Certain pipe junctions along the walls emit Almond Water at a slow drip. Identifiable by touch and sound — a faint ticking of liquid on concrete. Given the near-total absence of other resources, these pipes are critical. Learn to navigate by sound.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">RATION CACHES</div>
+              <div class="object-rarity rare">● RARE · FLOOR-PLACED</div>
+              <div class="object-desc">Small bundles left by previous wanderers or M.E.G. operatives, identified by touch. Contents vary but typically include sealed food items. Frequency insufficient to sustain extended stays. Do not plan to resupply here.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">THERMAL GEAR</div>
+              <div class="object-rarity rare">● RARE · CACHED</div>
+              <div class="object-desc">Occasionally found alongside ration caches. The cold of Level 6 is consistent and significant — thermal gear meaningfully extends survivable time in the level. Prioritize retrieval if encountered.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">SURVIVAL GUIDELINES</div>
+          <ul class="survival-list">
+            <li>Do not bring light sources expecting them to function. They will not. Accept darkness as the operating condition before entering, not after.</li>
+            <li>Keep one hand on the wall at all times. This is the only reliable navigation method. Establish a consistent direction — left-hand rule or right-hand rule — and do not switch. Switching walls in the dark has caused wanderers to reverse direction without realizing it.</li>
+            <li>Do not trust voices. The Adapted are indistinguishable from a lost wanderer in distress. Establish a verification code with any companion before entering, and use it before following anyone.</li>
+            <li>If you hear breathing that is not yours, stop moving and stop breathing for as long as you can manage. Listen for direction. Do not speak. Whatever is there may not know exactly where you are.</li>
+            <li>Count your steps. It is the only way to estimate distance and maintain any sense of progress. Wanderers who stopped counting report losing all sense of time within the first hour.</li>
+            <li>If you find a Light Room, rest — but set a hard limit. The light will not stay comfortable. Leave before it becomes painful.</li>
+            <li>Do not flip any switch you encounter in the dark. Do not let anyone talk you into it.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-label">EXIT POINTS</div>
+          <div class="exits-list">
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 7</div>
+              <div class="exit-method">THRESHOLD DOOR</div>
+              <div class="exit-notes">A door emitting light from beneath the frame. The only light source that functions in Level 6 — not brought in, but intrinsic to the exit itself. Finding it is the primary objective. Navigating by the right-hand wall rule has the highest documented success rate for locating it.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 5</div>
+              <div class="exit-method">STAIRWELL ASCENT</div>
+              <div class="exit-notes">The same service stairwells used to descend from the Boiler Room can theoretically be used to return. In practice, locating them without light is extremely difficult. Two documented successful returns.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="border-top: 1px solid rgba(122,101,32,0.2); padding-top: 1.5rem;">
+          <div class="section-label">FIELD NOTES</div>
+          <div class="body-text" style="color: rgba(184,154,58,0.5); font-style: italic;">
+            <p>"By hour three I stopped being afraid of what was in the dark with me. I started being afraid there was nothing. That it was just me, and the dark, and the sound of my own breathing, forever. That felt worse." — Account #0451</p>
+            <p style="margin-top: 1rem;">"Someone said my name. My full name. Nobody in the Backrooms knows my full name. I sat down against the wall and didn't move for what I think was six hours. Nothing came. Eventually I got up and kept going. I don't know what that was." — Account #0463</p>
+          </div>
+        </div>
+
+      </div><!-- /level6 -->
+
     </div><!-- /db-content -->
   </div><!-- /db-body -->
 </div><!-- /database -->
@@ -2552,7 +2764,7 @@
     document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
     document.getElementById('level' + num).classList.add('active');
     document.getElementById('nav-' + num).classList.add('active');
-    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'TERROR HOTEL' };
+    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'TERROR HOTEL', 6: 'LIGHTS OUT' };
     document.getElementById('activeTag').textContent = 'LEVEL ' + num + ' — ' + names[num];
     window.scrollTo(0, 0);
     closeDrawer();
@@ -2560,3 +2772,4 @@
 </script>
 </body>
 </html>
+  
