@@ -545,7 +545,7 @@
     92% { opacity: 0.7; }
   }
 
-  /* ===== SIDEBAR + LAYOUT ===== */
+  /* ===== DRAWER + LAYOUT ===== */
   .back-btn {
     background: transparent;
     border: 1px solid rgba(122, 101, 32, 0.4);
@@ -561,64 +561,146 @@
     border-color: var(--yellow);
     color: var(--yellow);
   }
+
+  .levels-btn {
+    background: transparent;
+    border: 1px solid rgba(122, 101, 32, 0.4);
+    color: var(--yellow-dim);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    padding: 0.35rem 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
     display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .levels-btn:hover, .levels-btn.open {
+    border-color: var(--yellow);
+    color: var(--yellow);
+    background: rgba(200,168,75,0.04);
+  }
+  .levels-btn .burger {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .levels-btn .burger span {
+    display: block;
+    width: 12px;
+    height: 1px;
+    background: currentColor;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .levels-btn.open .burger span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+  .levels-btn.open .burger span:nth-child(2) { opacity: 0; }
+  .levels-btn.open .burger span:nth-child(3) { transform: translateY(-4px) rotate(-45deg); }
+
+  /* Drawer overlay */
+  .drawer-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: transparent;
+    z-index: 200;
+    display: none;
+  }
+  .drawer-overlay.open { display: block; }
+
+  /* The drawer panel itself */
+  .db-drawer {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 260px;
+    height: 100vh;
+    background: #08070100;
+    background: rgba(8,7,1,0.97);
+    border-left: 1px solid rgba(122, 101, 32, 0.3);
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s cubic-bezier(0.4,0,0.2,1);
+    backdrop-filter: blur(8px);
+  }
+  .db-drawer.open { right: 0; }
+
+  .drawer-header {
+    padding: 1.2rem 1.4rem;
+    border-bottom: 1px solid rgba(122, 101, 32, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .drawer-title {
+    font-size: 0.58rem;
+    letter-spacing: 0.4em;
+    color: var(--yellow-dim);
+  }
+  .drawer-close {
+    background: transparent;
+    border: none;
+    color: var(--yellow-dim);
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+  .drawer-close:hover { color: var(--yellow-bright); }
+
+  .drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem 0;
+  }
+
+  .drawer-section-label {
+    font-size: 0.53rem;
+    letter-spacing: 0.4em;
+    color: rgba(122, 101, 32, 0.4);
+    padding: 0 1.4rem;
+    margin-bottom: 0.4rem;
+    margin-top: 1.2rem;
+  }
+  .drawer-section-label:first-child { margin-top: 0; }
+
+  .drawer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.6rem 1.4rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--yellow-dim);
+    cursor: pointer;
+    transition: color 0.15s, background 0.15s;
+    border-right: 2px solid transparent;
+  }
+  .drawer-link:hover {
+    color: var(--yellow);
+    background: rgba(200,168,75,0.04);
+  }
+  .drawer-link.active {
+    color: var(--yellow-bright);
+    border-right-color: var(--yellow-bright);
+    background: rgba(200,168,75,0.06);
+  }
+  .drawer-link .lvl-num {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    opacity: 0.6;
+    min-width: 24px;
+  }
+
+  .db-body {
+    display: block;
     min-height: calc(100vh - 57px);
   }
 
-  .db-sidebar {
-    width: 220px;
-    flex-shrink: 0;
-    border-right: 1px solid rgba(122, 101, 32, 0.25);
-    padding: 2rem 0;
-    position: sticky;
-    top: 57px;
-    height: calc(100vh - 57px);
-    overflow-y: auto;
-  }
-
-  .sidebar-section-label {
-    font-size: 0.55rem;
-    letter-spacing: 0.4em;
-    color: rgba(122, 101, 32, 0.5);
-    padding: 0 1.2rem;
-    margin-bottom: 0.6rem;
-    margin-top: 1.5rem;
-  }
-
-  .sidebar-section-label:first-child { margin-top: 0; }
-
-  .sidebar-link {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    padding: 0.55rem 1.2rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
-    color: var(--yellow-dim);
-    cursor: pointer;
-    transition: color 0.2s, background 0.2s;
-    border-left: 2px solid transparent;
-  }
-
-  .sidebar-link:hover {
-    color: var(--yellow);
-    background: rgba(200,168,75,0.03);
-  }
-
-  .sidebar-link.active {
-    color: var(--yellow-bright);
-    border-left-color: var(--yellow-bright);
-    background: rgba(200,168,75,0.05);
-  }
-
-  .sidebar-link .lvl-num {
-    font-family: 'VT323', monospace;
-    font-size: 0.95rem;
-    opacity: 0.7;
-  }
-
   .db-content {
-    flex: 1;
+    width: 100%;
     overflow-y: auto;
   }
 
@@ -626,8 +708,7 @@
   .level-page { display: none; }
   .level-page.active { display: block; }
 
-  /* ===== LEVEL 1 SPECIFIC ===== */
-  #level0, #level1, #level2 {
+  #level0, #level1, #level2, #level3 {
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem 2rem;
@@ -715,9 +796,9 @@
 
   /* Responsive */
   @media (max-width: 768px) {
-    .db-sidebar { display: none; }
-    #level0, #level1, #level2 { padding: 2rem 1rem; }
+    #level0, #level1, #level2, #level3 { padding: 2rem 1rem; }
     .db-header { padding: 0.8rem 1rem; }
+    .db-header-nav { display: none; }
     .stats-row { grid-template-columns: 1fr 1fr; }
     .stat-box { border-bottom: 1px solid rgba(122, 101, 32, 0.3); }
     .exit-row { grid-template-columns: 1fr 1fr; }
@@ -765,27 +846,42 @@
       <span>OBJECTS</span>
       <span>ACCOUNTS</span>
     </div>
-    <div class="level-tag" id="activeTag">LEVEL 0 — ACTIVE</div>
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <div class="level-tag" id="activeTag">LEVEL 0 — ACTIVE</div>
+      <button class="levels-btn" id="levelsBtn" onclick="toggleDrawer()">
+        <div class="burger"><span></span><span></span><span></span></div>
+        LEVELS
+      </button>
+    </div>
   </header>
 
-  <div class="db-body">
+  <!-- DRAWER OVERLAY (closes drawer on outside click) -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
 
-    <!-- SIDEBAR -->
-    <nav class="db-sidebar">
-      <div class="sidebar-section-label">LEVELS</div>
-      <div class="sidebar-link active" onclick="showLevel(0)" id="nav-0">
+  <!-- SLIDE-OUT DRAWER -->
+  <nav class="db-drawer" id="dbDrawer">
+    <div class="drawer-header">
+      <span class="drawer-title">LEVEL DIRECTORY</span>
+      <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-section-label">DOCUMENTED LEVELS</div>
+      <div class="drawer-link active" onclick="showLevel(0)" id="nav-0">
         <span class="lvl-num">00</span> THE LOBBY
       </div>
-      <div class="sidebar-link" onclick="showLevel(1)" id="nav-1">
+      <div class="drawer-link" onclick="showLevel(1)" id="nav-1">
         <span class="lvl-num">01</span> THE WAREHOUSE
       </div>
-      <div class="sidebar-link" onclick="showLevel(2)" id="nav-2">
+      <div class="drawer-link" onclick="showLevel(2)" id="nav-2">
         <span class="lvl-num">02</span> PIPE DREAMS
       </div>
-      <div class="sidebar-link" onclick="showLevel(3)" id="nav-3">
+      <div class="drawer-link" onclick="showLevel(3)" id="nav-3">
         <span class="lvl-num">03</span> ELECTRICAL STATION
       </div>
-    </nav>
+    </div>
+  </nav>
+
+  <div class="db-body">
 
     <!-- CONTENT PANE -->
     <div class="db-content">
@@ -1736,14 +1832,14 @@
   }
 
   function goHome() {
+    closeDrawer();
     const overlay = document.getElementById('transitionOverlay');
     overlay.classList.add('active');
     setTimeout(() => {
       document.getElementById('database').style.display = 'none';
       document.getElementById('opening').style.display = 'flex';
-      // Reset sidebar to level 0
       document.querySelectorAll('.level-page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+      document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
       document.getElementById('level0').classList.add('active');
       document.getElementById('nav-0').classList.add('active');
       document.getElementById('activeTag').textContent = 'LEVEL 0 — ACTIVE';
@@ -1751,14 +1847,35 @@
     setTimeout(() => { overlay.classList.remove('active'); }, 1200);
   }
 
+  function toggleDrawer() {
+    const drawer = document.getElementById('dbDrawer');
+    const overlay = document.getElementById('drawerOverlay');
+    const btn = document.getElementById('levelsBtn');
+    const isOpen = drawer.classList.contains('open');
+    if (isOpen) {
+      closeDrawer();
+    } else {
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+      btn.classList.add('open');
+    }
+  }
+
+  function closeDrawer() {
+    document.getElementById('dbDrawer').classList.remove('open');
+    document.getElementById('drawerOverlay').classList.remove('open');
+    document.getElementById('levelsBtn').classList.remove('open');
+  }
+
   function showLevel(num) {
     document.querySelectorAll('.level-page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
     document.getElementById('level' + num).classList.add('active');
     document.getElementById('nav-' + num).classList.add('active');
     const names = { 0: 'THE LOBBY', 1: 'THE WAREHOUSE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION' };
     document.getElementById('activeTag').textContent = 'LEVEL ' + num + ' — ' + names[num];
-    document.querySelector('.db-content').scrollTop = 0;
+    window.scrollTo(0, 0);
+    closeDrawer();
   }
 </script>
 </body>
