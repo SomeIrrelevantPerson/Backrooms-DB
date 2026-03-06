@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE BACKROOMS — FIELD DOCUMENTATION ARCHIVE</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #c8a84b;
+    --yellow-dim: #7a6520;
+    --yellow-bright: #ffe080;
+    --yellow-wall: #d4b483;
+    --bg: #0a0800;
+    --text: #b89a3a;
+    --flicker-speed: 0.12s;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* SCANLINE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.15) 2px,
+      rgba(0,0,0,0.15) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* VIGNETTE */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.85) 100%);
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  /* ===== OPENING SCREEN ===== */
+  #opening {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    animation: screenFlicker 8s infinite;
+  }
+
+  @keyframes screenFlicker {
+    0%, 95%, 100% { opacity: 1; }
+    96% { opacity: 0.7; }
+    97% { opacity: 1; }
+    98% { opacity: 0.4; }
+    99% { opacity: 0.9; }
+  }
+
+  .noise-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .warning-bar {
+    font-family: 'VT323', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: var(--yellow-dim);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeIn 1s 0.5s forwards;
+  }
+
+  .logo-container {
+    text-align: center;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1.5s 1s forwards;
+    z-index: 10;
+  }
+
+  .logo-eyebrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    color: var(--yellow-dim);
+    margin-bottom: 0.5rem;
+  }
+
+  .logo-title {
+    font-family: 'VT323', monospace;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    color: var(--yellow-bright);
+    letter-spacing: 0.05em;
+    line-height: 0.9;
+    text-shadow:
+      0 0 20px rgba(200,168,75,0.8),
+      0 0 60px rgba(200,168,75,0.3),
+      0 0 100px rgba(200,168,75,0.1);
+    animation: titleFlicker 4s 2s infinite;
+  }
+
+  @keyframes titleFlicker {
+    0%, 90%, 100% { text-shadow: 0 0 20px rgba(200,168,75,0.8), 0 0 60px rgba(200,168,75,0.3); }
+    91% { text-shadow: 0 0 5px rgba(200,168,75,0.4); }
+    92% { text-shadow: 0 0 20px rgba(200,168,75,0.8), 0 0 60px rgba(200,168,75,0.3); }
+    93% { text-shadow: none; }
+    94% { text-shadow: 0 0 20px rgba(200,168,75,0.8), 0 0 60px rgba(200,168,75,0.3); }
+  }
+
+  .logo-subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    color: var(--yellow-dim);
+    margin-top: 0.8rem;
+  }
+
+  .divider {
+    width: 400px;
+    max-width: 90vw;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--yellow-dim), transparent);
+    margin: 2.5rem auto;
+    opacity: 0;
+    animation: fadeIn 1s 1.8s forwards;
+  }
+
+  .archive-info {
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s 2.2s forwards;
+    z-index: 10;
+  }
+
+  .archive-info p {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--yellow-dim);
+    line-height: 2;
+  }
+
+  .archive-info .stat {
+    color: var(--yellow);
+  }
+
+  .enter-btn {
+    margin-top: 3rem;
+    padding: 0.8rem 3rem;
+    background: transparent;
+    border: 1px solid var(--yellow-dim);
+    color: var(--yellow);
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    letter-spacing: 0.3em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1s 2.8s forwards;
+    transition: border-color 0.3s, color 0.3s, box-shadow 0.3s;
+    z-index: 10;
+  }
+
+  .enter-btn:hover {
+    border-color: var(--yellow-bright);
+    color: var(--yellow-bright);
+    box-shadow: 0 0 20px rgba(200,168,75,0.3), inset 0 0 20px rgba(200,168,75,0.05);
+  }
+
+  .enter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(200,168,75,0.1), transparent);
+    transition: left 0.4s;
+  }
+
+  .enter-btn:hover::before { left: 100%; }
+
+  .bottom-text {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: rgba(122, 101, 32, 0.5);
+    opacity: 0;
+    animation: fadeIn 1s 3.5s forwards;
+    z-index: 10;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* ===== MAIN DATABASE ===== */
+  #database {
+    display: none;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .db-header {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(122, 101, 32, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: rgba(10, 8, 0, 0.95);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+  }
+
+  .db-header-logo {
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    color: var(--yellow-bright);
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 10px rgba(200,168,75,0.5);
+  }
+
+  .db-header-nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .db-header-nav span {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--yellow-dim);
+  }
+
+  .level-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--yellow-dim);
+    border: 1px solid var(--yellow-dim);
+    padding: 0.2rem 0.6rem;
+  }
+
+  /* ===== LEVEL 0 PAGE ===== */
+  #level0 {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .level-header {
+    margin-bottom: 3rem;
+    animation: slideUp 0.6s ease forwards;
+    opacity: 0;
+  }
+
+  .level-classification {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: var(--yellow-dim);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .level-classification::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--yellow-dim);
+  }
+
+  .level-number {
+    font-family: 'VT323', monospace;
+    font-size: clamp(4rem, 12vw, 8rem);
+    color: var(--yellow-bright);
+    line-height: 0.85;
+    text-shadow: 0 0 30px rgba(200,168,75,0.4);
+    letter-spacing: -0.02em;
+  }
+
+  .level-name {
+    font-family: 'VT323', monospace;
+    font-size: 1.8rem;
+    color: var(--yellow);
+    letter-spacing: 0.2em;
+    margin-top: 0.3rem;
+  }
+
+  .level-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--yellow-dim), transparent);
+    margin-top: 1.5rem;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0;
+    border: 1px solid rgba(122, 101, 32, 0.3);
+    margin: 2.5rem 0;
+    opacity: 0;
+    animation: slideUp 0.6s 0.1s ease forwards;
+  }
+
+  .stat-box {
+    padding: 1rem 1.2rem;
+    border-right: 1px solid rgba(122, 101, 32, 0.3);
+  }
+
+  .stat-box:last-child { border-right: none; }
+
+  .stat-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.3em;
+    color: var(--yellow-dim);
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-value {
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    color: var(--yellow-bright);
+  }
+
+  .stat-value.danger { color: #c84b4b; text-shadow: 0 0 10px rgba(200,75,75,0.4); }
+  .stat-value.warning { color: #c8a84b; }
+  .stat-value.safe { color: #4bc87a; }
+
+  .section {
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: slideUp 0.6s ease forwards;
+  }
+
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.3s; }
+  .section:nth-child(5) { animation-delay: 0.4s; }
+  .section:nth-child(6) { animation-delay: 0.5s; }
+  .section:nth-child(7) { animation-delay: 0.6s; }
+
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: var(--yellow-dim);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(122, 101, 32, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(122, 101, 32, 0.2);
+  }
+
+  .body-text {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    line-height: 1.9;
+    color: rgba(184, 154, 58, 0.85);
+  }
+
+  .body-text p { margin-bottom: 1rem; }
+
+  .body-text .highlight {
+    color: var(--yellow-bright);
+    font-style: italic;
+  }
+
+  .warning-box {
+    border: 1px solid rgba(200, 75, 75, 0.4);
+    padding: 1rem 1.2rem;
+    margin: 1.5rem 0;
+    position: relative;
+    background: rgba(200, 75, 75, 0.03);
+  }
+
+  .warning-box::before {
+    content: '⚠ WARNING';
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    background: var(--bg);
+    padding: 0 0.4rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: #c84b4b;
+  }
+
+  .warning-box p {
+    font-size: 0.8rem;
+    color: rgba(200, 75, 75, 0.8);
+    line-height: 1.7;
+  }
+
+  .entities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: rgba(122, 101, 32, 0.2);
+    border: 1px solid rgba(122, 101, 32, 0.2);
+  }
+
+  .entity-card {
+    background: var(--bg);
+    padding: 1rem;
+    transition: background 0.2s;
+  }
+
+  .entity-card:hover {
+    background: rgba(200, 168, 75, 0.04);
+  }
+
+  .entity-name {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--yellow);
+    margin-bottom: 0.3rem;
+  }
+
+  .entity-threat {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+  }
+
+  .entity-threat.hostile { color: #c84b4b; }
+  .entity-threat.passive { color: #4bc87a; }
+  .entity-threat.unknown { color: var(--yellow-dim); }
+
+  .entity-desc {
+    font-size: 0.72rem;
+    color: rgba(184, 154, 58, 0.6);
+    line-height: 1.6;
+    margin-top: 0.5rem;
+  }
+
+  .survival-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .survival-list li {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.82rem;
+    color: rgba(184, 154, 58, 0.8);
+    line-height: 1.6;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .survival-list li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--yellow-dim);
+    font-size: 1rem;
+  }
+
+  .image-placeholder {
+    border: 1px solid rgba(122, 101, 32, 0.3);
+    display: block;
+    margin: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+    background: #050400;
+  }
+
+  .image-placeholder .img-tag {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.8rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(122, 101, 32, 0.3);
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* TRANSITION OVERLAY */
+  .transition-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg);
+    z-index: 9997;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .transition-overlay.active {
+    animation: transitionOut 1.2s forwards;
+  }
+
+  @keyframes transitionOut {
+    0% { opacity: 0; }
+    30% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  /* FLUORESCENT FLICKER EFFECT */
+  .flicker-text {
+    animation: textFlicker 6s infinite;
+  }
+
+  @keyframes textFlicker {
+    0%, 89%, 91%, 93%, 100% { opacity: 1; }
+    90% { opacity: 0.3; }
+    92% { opacity: 0.7; }
+  }
+
+  /* ===== SIDEBAR + LAYOUT ===== */
+  .db-body {
+    display: flex;
+    min-height: calc(100vh - 57px);
+  }
+
+  .db-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(122, 101, 32, 0.25);
+    padding: 2rem 0;
+    position: sticky;
+    top: 57px;
+    height: calc(100vh - 57px);
+    overflow-y: auto;
+  }
+
+  .sidebar-section-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.4em;
+    color: rgba(122, 101, 32, 0.5);
+    padding: 0 1.2rem;
+    margin-bottom: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .sidebar-section-label:first-child { margin-top: 0; }
+
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.55rem 1.2rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--yellow-dim);
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+    border-left: 2px solid transparent;
+  }
+
+  .sidebar-link:hover {
+    color: var(--yellow);
+    background: rgba(200,168,75,0.03);
+  }
+
+  .sidebar-link.active {
+    color: var(--yellow-bright);
+    border-left-color: var(--yellow-bright);
+    background: rgba(200,168,75,0.05);
+  }
+
+  .sidebar-link .lvl-num {
+    font-family: 'VT323', monospace;
+    font-size: 0.95rem;
+    opacity: 0.7;
+  }
+
+  .db-content {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  /* level pages hidden by default */
+  .level-page { display: none; }
+  .level-page.active { display: block; }
+
+  /* ===== LEVEL 1 SPECIFIC ===== */
+  #level0, #level1, #level2 {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .level1-accent { color: #7ab8c8; }
+
+  .objects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: rgba(122, 101, 32, 0.2);
+    border: 1px solid rgba(122, 101, 32, 0.2);
+    margin-top: 0.5rem;
+  }
+
+  .object-card {
+    background: var(--bg);
+    padding: 1rem;
+    transition: background 0.2s;
+  }
+
+  .object-card:hover { background: rgba(200, 168, 75, 0.04); }
+
+  .object-name {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--yellow);
+    margin-bottom: 0.25rem;
+  }
+
+  .object-rarity {
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.4rem;
+  }
+
+  .object-rarity.common { color: #4bc87a; }
+  .object-rarity.uncommon { color: var(--yellow); }
+  .object-rarity.rare { color: #c84b4b; }
+
+  .object-desc {
+    font-size: 0.7rem;
+    color: rgba(184, 154, 58, 0.6);
+    line-height: 1.6;
+  }
+
+  .exits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(122, 101, 32, 0.2);
+    border: 1px solid rgba(122, 101, 32, 0.2);
+  }
+
+  .exit-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 2fr;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    background: var(--bg);
+    align-items: start;
+    transition: background 0.2s;
+  }
+
+  .exit-row:hover { background: rgba(200,168,75,0.03); }
+
+  .exit-dest {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--yellow-bright);
+  }
+
+  .exit-method {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--yellow);
+  }
+
+  .exit-notes {
+    font-size: 0.68rem;
+    color: rgba(184, 154, 58, 0.6);
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .db-sidebar { display: none; }
+    #level0, #level1, #level2 { padding: 2rem 1rem; }
+    .db-header { padding: 0.8rem 1rem; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .stat-box { border-bottom: 1px solid rgba(122, 101, 32, 0.3); }
+    .exit-row { grid-template-columns: 1fr 1fr; }
+    .exit-dest { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="noise-bg"></div>
+<div class="transition-overlay" id="transitionOverlay"></div>
+
+<!-- ===== OPENING SCREEN ===== -->
+<div id="opening">
+  <div class="warning-bar flicker-text">CLASSIFIED DOCUMENTATION — UNAUTHORIZED ACCESS PROHIBITED</div>
+
+  <div class="logo-container">
+    <div class="logo-eyebrow">FIELD DOCUMENTATION ARCHIVE v0.7.3</div>
+    <div class="logo-title">THE<br>BACKROOMS</div>
+    <div class="logo-subtitle">ANOMALOUS SPACE RESEARCH COLLECTIVE</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="archive-info">
+    <p>LEVELS DOCUMENTED: <span class="stat">3</span> &nbsp;|&nbsp; ENTRIES TOTAL: <span class="stat">3</span> &nbsp;|&nbsp; STATUS: <span class="stat">ONGOING</span></p>
+    <p>LAST UPDATED: <span class="stat" id="dateStamp"></span></p>
+    <p style="margin-top: 0.8rem; color: rgba(122,101,32,0.4); font-size: 0.6rem;">ALL INFORMATION COLLECTED FROM FIRSTHAND ACCOUNTS AND RECOVERED DOCUMENTATION</p>
+    <button class="enter-btn" onclick="enterDatabase()">ACCESS ARCHIVE</button>
+  </div>
+
+  <div class="bottom-text">IF YOU HAVE NOCLIPPED — DO NOT PANIC. LOCATE THE NEAREST EXIT. DO NOT RUN.</div>
+</div>
+
+<!-- ===== DATABASE SCREEN ===== -->
+<div id="database">
+  <header class="db-header">
+    <div class="db-header-logo flicker-text">BACKROOMS ARCHIVE</div>
+    <div class="db-header-nav">
+      <span>LEVELS</span>
+      <span>ENTITIES</span>
+      <span>OBJECTS</span>
+      <span>ACCOUNTS</span>
+    </div>
+    <div class="level-tag" id="activeTag">LEVEL 0 — ACTIVE</div>
+  </header>
+
+  <div class="db-body">
+
+    <!-- SIDEBAR -->
+    <nav class="db-sidebar">
+      <div class="sidebar-section-label">LEVELS</div>
+      <div class="sidebar-link active" onclick="showLevel(0)" id="nav-0">
+        <span class="lvl-num">00</span> THE LOBBY
+      </div>
+      <div class="sidebar-link" onclick="showLevel(1)" id="nav-1">
+        <span class="lvl-num">01</span> THE WAREHOUSE
+      </div>
+      <div class="sidebar-link" onclick="showLevel(2)" id="nav-2">
+        <span class="lvl-num">02</span> PIPE DREAMS
+      </div>
+    </nav>
+
+    <!-- CONTENT PANE -->
+    <div class="db-content">
+
+      <!-- LEVEL 0 -->
+      <div id="level0" class="level-page active">
+
+        <div class="level-header">
+          <div class="level-classification">LEVEL DOCUMENTATION · INITIAL ENTRY POINT · CONFIRMED</div>
+          <div class="level-number">LEVEL<br>0</div>
+          <div class="level-name">THE LOBBY</div>
+          <div class="level-divider"></div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-label">DANGER CLASS</div>
+            <div class="stat-value warning">MODERATE</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">SURVIVAL RATING</div>
+            <div class="stat-value warning">CLASS 1</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ENTITIES</div>
+            <div class="stat-value danger">CONFIRMED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ESTIMATED SIZE</div>
+            <div class="stat-value">~600M KM²</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">EXITS KNOWN</div>
+            <div class="stat-value safe">1+</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DESCRIPTION</div>
+          <div class="body-text">
+            <p>Level 0 is the <span class="highlight">most commonly reported initial entry point</span> into the Backrooms. It manifests as an enormous, seemingly infinite expanse of empty office space — characterized by aged, mono-yellow wallpaper, stained damp carpet, and the persistent hum of fluorescent lights that stretch endlessly overhead.</p>
+            <p>No windows. No doors. No visible ceiling beyond the light fixtures. The layout follows no architectural logic: corridors fold back on themselves, rooms appear and disappear, and long-term navigation by memory is considered unreliable and potentially dangerous.</p>
+            <p>The smell has been consistently described across hundreds of accounts as <span class="highlight">wet carpet and old adhesive</span>. The fluorescent lights flicker at irregular intervals. Some wanderers have reported brief, complete blackouts lasting seconds to minutes. What happens during these blackouts is largely undocumented.</p>
+          </div>
+          <div class="image-placeholder">
+            <svg width="100%" viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+              <defs>
+                <filter id="grain0">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+                  <feColorMatrix type="saturate" values="0"/>
+                  <feBlend in="SourceGraphic" mode="multiply" result="blend"/>
+                  <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+                </filter>
+                <radialGradient id="vignette0" cx="50%" cy="50%" r="70%">
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="100%" stop-color="#000" stop-opacity="0.85"/>
+                </radialGradient>
+                <pattern id="wallpaper" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                  <rect width="60" height="60" fill="#1a1400"/>
+                  <rect x="5" y="5" width="50" height="50" fill="none" stroke="#2a1f00" stroke-width="0.5"/>
+                  <circle cx="30" cy="30" r="8" fill="none" stroke="#221900" stroke-width="0.8"/>
+                  <circle cx="0" cy="0" r="8" fill="none" stroke="#221900" stroke-width="0.8"/>
+                  <circle cx="60" cy="0" r="8" fill="none" stroke="#221900" stroke-width="0.8"/>
+                  <circle cx="0" cy="60" r="8" fill="none" stroke="#221900" stroke-width="0.8"/>
+                  <circle cx="60" cy="60" r="8" fill="none" stroke="#221900" stroke-width="0.8"/>
+                </pattern>
+              </defs>
+              <!-- Floor -->
+              <rect width="800" height="260" fill="#0d0900"/>
+              <!-- Wall left -->
+              <rect x="0" y="0" width="800" height="260" fill="url(#wallpaper)" opacity="0.9"/>
+              <!-- Perspective corridor lines -->
+              <!-- Left wall perspective -->
+              <polygon points="0,0 320,90 320,170 0,260" fill="#1c1500" opacity="0.95"/>
+              <polygon points="800,0 480,90 480,170 800,260" fill="#1c1500" opacity="0.95"/>
+              <!-- Floor -->
+              <polygon points="320,170 480,170 800,260 0,260" fill="#100d00"/>
+              <!-- Floor tiles -->
+              <line x1="320" y1="170" x2="0" y2="260" stroke="#1a1500" stroke-width="1"/>
+              <line x1="350" y1="170" x2="60" y2="260" stroke="#1a1500" stroke-width="0.6" opacity="0.5"/>
+              <line x1="380" y1="170" x2="150" y2="260" stroke="#1a1500" stroke-width="0.6" opacity="0.5"/>
+              <line x1="410" y1="170" x2="270" y2="260" stroke="#1a1500" stroke-width="0.6" opacity="0.5"/>
+              <line x1="440" y1="170" x2="420" y2="260" stroke="#1a1500" stroke-width="0.6" opacity="0.5"/>
+              <line x1="450" y1="170" x2="530" y2="260" stroke="#1a1500" stroke-width="0.6" opacity="0.5"/>
+              <line x1="470" y1="170" x2="660" y2="260" stroke="#1a1500" stroke-width="0.6" opacity="0.5"/>
+              <line x1="480" y1="170" x2="800" y2="260" stroke="#1a1500" stroke-width="1"/>
+              <!-- Horizontal floor lines -->
+              <line x1="0" y1="210" x2="800" y2="210" stroke="#1a1500" stroke-width="0.5" opacity="0.4"/>
+              <line x1="0" y1="240" x2="800" y2="240" stroke="#1a1500" stroke-width="0.5" opacity="0.3"/>
+              <!-- Ceiling -->
+              <polygon points="320,90 480,90 800,0 0,0" fill="#0f0c00"/>
+              <!-- Ceiling light strips -->
+              <rect x="370" y="0" width="60" height="90" fill="none" stroke="#3d2e00" stroke-width="0.5"/>
+              <rect x="372" y="2" width="56" height="4" fill="#c8a84b" opacity="0.15"/>
+              <rect x="372" y="8" width="56" height="4" fill="#c8a84b" opacity="0.12"/>
+              <rect x="372" y="14" width="56" height="4" fill="#c8a84b" opacity="0.10"/>
+              <!-- Main ceiling light glow -->
+              <ellipse cx="400" cy="90" rx="80" ry="20" fill="#c8a84b" opacity="0.06"/>
+              <!-- Fluorescent fixture -->
+              <rect x="365" y="85" width="70" height="5" fill="#c8a84b" opacity="0.5"/>
+              <rect x="365" y="85" width="70" height="5" fill="#fff" opacity="0.05"/>
+              <!-- Light cone from ceiling -->
+              <polygon points="365,90 435,90 480,170 320,170" fill="#c8a84b" opacity="0.025"/>
+              <!-- Far corridor - deep perspective vanishing point -->
+              <rect x="375" y="93" width="50" height="77" fill="#0a0800"/>
+              <rect x="380" y="97" width="40" height="70" fill="#080600"/>
+              <!-- Distant light in corridor -->
+              <ellipse cx="400" cy="130" rx="15" ry="8" fill="#c8a84b" opacity="0.12"/>
+              <ellipse cx="400" cy="130" rx="6" ry="3" fill="#c8a84b" opacity="0.25"/>
+              <!-- Left wall texture lines -->
+              <line x1="0" y1="60" x2="320" y2="110" stroke="#221900" stroke-width="0.5" opacity="0.6"/>
+              <line x1="0" y1="120" x2="320" y2="130" stroke="#221900" stroke-width="0.5" opacity="0.6"/>
+              <line x1="0" y1="180" x2="320" y2="155" stroke="#221900" stroke-width="0.5" opacity="0.6"/>
+              <!-- Right wall texture lines -->
+              <line x1="800" y1="60" x2="480" y2="110" stroke="#221900" stroke-width="0.5" opacity="0.6"/>
+              <line x1="800" y1="120" x2="480" y2="130" stroke="#221900" stroke-width="0.5" opacity="0.6"/>
+              <line x1="800" y1="180" x2="480" y2="155" stroke="#221900" stroke-width="0.5" opacity="0.6"/>
+              <!-- Wallpaper pattern left -->
+              <line x1="80" y1="0" x2="320" y2="90" stroke="#2a1f00" stroke-width="0.4" opacity="0.5"/>
+              <line x1="160" y1="0" x2="320" y2="90" stroke="#2a1f00" stroke-width="0.4" opacity="0.5"/>
+              <line x1="240" y1="0" x2="320" y2="90" stroke="#2a1f00" stroke-width="0.4" opacity="0.5"/>
+              <!-- Wallpaper pattern right -->
+              <line x1="720" y1="0" x2="480" y2="90" stroke="#2a1f00" stroke-width="0.4" opacity="0.5"/>
+              <line x1="640" y1="0" x2="480" y2="90" stroke="#2a1f00" stroke-width="0.4" opacity="0.5"/>
+              <line x1="560" y1="0" x2="480" y2="90" stroke="#2a1f00" stroke-width="0.4" opacity="0.5"/>
+              <!-- Ambient yellow glow on floor near light -->
+              <ellipse cx="400" cy="200" rx="120" ry="30" fill="#c8a84b" opacity="0.03"/>
+              <!-- Vignette -->
+              <rect width="800" height="260" fill="url(#vignette0)"/>
+              <!-- Scanline overlay -->
+              <rect width="800" height="260" fill="url(#scanlines0)" opacity="0.15"/>
+            </svg>
+            <div class="img-tag">IMG_0001 · LEVEL 0 · SECTION UNKNOWN</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">ENVIRONMENT</div>
+          <div class="body-text">
+            <p>Temperature is reported consistently between 18–22°C (64–72°F). Humidity is high, typically above 65%, which accounts for the dampness of surfaces despite no apparent water source. The carpet — a mottled, institutional yellow-beige — shows signs of old staining in many areas but appears structurally intact.</p>
+            <p>Sound does not carry normally. Footsteps are muffled. Voices feel absorbed by the walls. Several accounts describe hearing distant footsteps or sounds that do not belong to the wanderer — though no source has ever been confirmed on Level 0.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">KNOWN ENTITIES</div>
+          <div class="entities-grid">
+            <div class="entity-card">
+              <div class="entity-name">SMILERS</div>
+              <div class="entity-threat hostile">● HOSTILE · CONFIRMED PRESENCE</div>
+              <div class="entity-desc">Detected primarily during light failures. Distinguished by a pair of luminescent eyes visible in darkness. Do not approach. Do not acknowledge. Maintain calm movement toward light.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">FACELINGS</div>
+              <div class="entity-threat passive">● PASSIVE · CONFIRMED PRESENCE</div>
+              <div class="entity-desc">Humanoid figures lacking facial features. Generally non-aggressive. Avoid sustained eye contact and sudden movement. They have not been reported to initiate contact.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">DULLERS</div>
+              <div class="entity-threat unknown">● THREAT LEVEL UNCLEAR</div>
+              <div class="entity-desc">Rare accounts. Described as moving through the environment without sound. Behavioural patterns inconclusive. Treat as potentially hostile until further documentation.</div>
+            </div>
+          </div>
+          <div class="warning-box" style="margin-top: 1.5rem;">
+            <p>Entity encounters on Level 0 increase significantly during light failures. If lights begin to flicker, move immediately toward the brightest accessible area. Do not remain stationary in dimly lit corridors.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">SURVIVAL GUIDELINES</div>
+          <ul class="survival-list">
+            <li>Do not run. Rapid movement draws attention and rapidly depletes caloric reserves in an environment with no confirmed food sources.</li>
+            <li>Move toward sound. Distant hum variations may indicate structural differences — potential exit points or transitions to other levels.</li>
+            <li>Mark your path if possible. The environment is disorienting by nature; physical markers help prevent circular wandering.</li>
+            <li>Maintain psychological stability. Panic has been documented as the primary cause of poor decision-making and fatal outcomes on Level 0.</li>
+            <li>Exit method: Noclipping through a structurally weakened wall section — typically identified by a subtle warping or visual distortion — is the most documented method of progression.</li>
+            <li>Do not separate from companions. Solo wanderers have a significantly lower documented return rate.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-label">EXIT POINTS</div>
+          <div class="body-text">
+            <p>The primary documented exit from Level 0 leads to <span class="highlight">Level 1 (The Warehouse)</span>. Transition occurs via noclipping through certain wall sections — identifiable by a faint visual shimmer or tactile softness in the surface material. The exact conditions that make a wall passable are not fully understood.</p>
+            <p>Some accounts mention spontaneous transitions occurring during light failures, but given the hazard conditions during such events, this method is not recommended.</p>
+          </div>
+        </div>
+
+        <div class="section" style="border-top: 1px solid rgba(122,101,32,0.2); padding-top: 1.5rem;">
+          <div class="section-label">FIELD NOTES</div>
+          <div class="body-text" style="color: rgba(184,154,58,0.5); font-style: italic;">
+            <p>"You know it's real when the smell hits you first. That carpet smell. Like a whole building forgot it existed. I walked for what felt like six hours before I found the wall that let me through. The lights never stopped humming." — Account #0017</p>
+          </div>
+        </div>
+
+      </div><!-- /level0 -->
+
+      <!-- LEVEL 1 -->
+      <div id="level1" class="level-page">
+
+        <div class="level-header">
+          <div class="level-classification">LEVEL DOCUMENTATION · INDUSTRIAL SECTOR · CONFIRMED</div>
+          <div class="level-number">LEVEL<br>1</div>
+          <div class="level-name">THE WAREHOUSE</div>
+          <div class="level-divider"></div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-label">DANGER CLASS</div>
+            <div class="stat-value danger">HIGH</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">SURVIVAL RATING</div>
+            <div class="stat-value warning">CLASS 2</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ENTITIES</div>
+            <div class="stat-value danger">MULTIPLE</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ESTIMATED SIZE</div>
+            <div class="stat-value">UNBOUNDED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">RESOURCES</div>
+            <div class="stat-value safe">PRESENT</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DESCRIPTION</div>
+          <div class="body-text">
+            <p>Level 1 presents a dramatic shift from Level 0. Where the Lobby is intimate and office-like, the Warehouse is <span class="highlight">vast and industrial</span> — an endless concrete expanse of shipping crates, metal shelving, loading bays, and rusted machinery. The ceiling is lost to darkness even during periods of light. The scale is deeply disorienting.</p>
+            <p>Lighting here is inconsistent and unreliable. Functional fluorescent strips illuminate some areas; large sections remain in permanent near-darkness. The source of any light in the dark zones is unknown. Several wanderers have noted that light conditions appear to shift between visits to the same physical location — as though the level is not static.</p>
+            <p>Unlike Level 0, Level 1 contains <span class="highlight">material resources</span>: water is reliably found in pipes throughout the level, and sealed food containers have been recovered from shelving units. This makes Level 1 a critical survival zone for wanderers who establish themselves within it — though the entity presence significantly complicates long-term habitation.</p>
+          </div>
+          <div class="image-placeholder">
+            <svg width="100%" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+              <defs>
+                <radialGradient id="vignette1" cx="50%" cy="50%" r="70%">
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="100%" stop-color="#000" stop-opacity="0.9"/>
+                </radialGradient>
+                <radialGradient id="lightcone1" cx="50%" cy="0%" r="80%">
+                  <stop offset="0%" stop-color="#c8a84b" stop-opacity="0.18"/>
+                  <stop offset="100%" stop-color="transparent"/>
+                </radialGradient>
+              </defs>
+              <!-- Background - dark concrete -->
+              <rect width="800" height="280" fill="#080808"/>
+              <!-- Concrete floor -->
+              <rect x="0" y="180" width="800" height="100" fill="#0d0d0b"/>
+              <!-- Floor cracks -->
+              <line x1="100" y1="200" x2="180" y2="230" stroke="#111" stroke-width="1.5"/>
+              <line x1="180" y1="230" x2="220" y2="225" stroke="#111" stroke-width="1"/>
+              <line x1="350" y1="210" x2="420" y2="250" stroke="#111" stroke-width="1.5"/>
+              <line x1="600" y1="195" x2="650" y2="240" stroke="#111" stroke-width="1.5"/>
+              <!-- Floor perspective grid lines -->
+              <line x1="400" y1="180" x2="0" y2="280" stroke="#161410" stroke-width="1"/>
+              <line x1="400" y1="180" x2="160" y2="280" stroke="#161410" stroke-width="0.8" opacity="0.6"/>
+              <line x1="400" y1="180" x2="320" y2="280" stroke="#161410" stroke-width="0.8" opacity="0.6"/>
+              <line x1="400" y1="180" x2="480" y2="280" stroke="#161410" stroke-width="0.8" opacity="0.6"/>
+              <line x1="400" y1="180" x2="640" y2="280" stroke="#161410" stroke-width="0.8" opacity="0.6"/>
+              <line x1="400" y1="180" x2="800" y2="280" stroke="#161410" stroke-width="1"/>
+              <!-- Horizontal floor lines -->
+              <line x1="0" y1="210" x2="800" y2="210" stroke="#161410" stroke-width="0.5" opacity="0.5"/>
+              <line x1="0" y1="245" x2="800" y2="245" stroke="#161410" stroke-width="0.5" opacity="0.4"/>
+              <!-- Ceiling structure -->
+              <rect x="0" y="0" width="800" height="30" fill="#060606"/>
+              <!-- Ceiling beams -->
+              <rect x="0" y="0" width="800" height="8" fill="#0a0a09"/>
+              <rect x="150" y="0" width="18" height="180" fill="#090908"/>
+              <rect x="390" y="0" width="20" height="180" fill="#090908"/>
+              <rect x="630" y="0" width="18" height="180" fill="#090908"/>
+              <!-- Shelving units left -->
+              <rect x="20" y="60" width="120" height="120" fill="#0c0c0b" stroke="#1a1a17" stroke-width="1"/>
+              <line x1="20" y1="100" x2="140" y2="100" stroke="#1a1a17" stroke-width="1"/>
+              <line x1="20" y1="140" x2="140" y2="140" stroke="#1a1a17" stroke-width="1"/>
+              <!-- Boxes on shelves left -->
+              <rect x="28" y="65" width="30" height="32" fill="#141410"/>
+              <rect x="62" y="65" width="45" height="32" fill="#111110"/>
+              <rect x="28" y="105" width="50" height="32" fill="#131310"/>
+              <rect x="82" y="108" width="35" height="29" fill="#0f0f0e"/>
+              <rect x="28" y="145" width="40" height="30" fill="#121210"/>
+              <rect x="72" y="147" width="55" height="28" fill="#0e0e0d"/>
+              <!-- Shelving units right -->
+              <rect x="660" y="60" width="120" height="120" fill="#0c0c0b" stroke="#1a1a17" stroke-width="1"/>
+              <line x1="660" y1="100" x2="780" y2="100" stroke="#1a1a17" stroke-width="1"/>
+              <line x1="660" y1="140" x2="780" y2="140" stroke="#1a1a17" stroke-width="1"/>
+              <rect x="668" y="65" width="45" height="32" fill="#141410"/>
+              <rect x="716" y="68" width="55" height="29" fill="#111110"/>
+              <rect x="668" y="105" width="35" height="32" fill="#131310"/>
+              <rect x="707" y="107" width="60" height="30" fill="#0f0f0e"/>
+              <rect x="668" y="145" width="50" height="30" fill="#121210"/>
+              <rect x="722" y="148" width="45" height="27" fill="#0e0e0d"/>
+              <!-- Mid-distance shelving -->
+              <rect x="200" y="90" width="80" height="90" fill="#0b0b0a" stroke="#161614" stroke-width="0.8"/>
+              <line x1="200" y1="120" x2="280" y2="120" stroke="#161614" stroke-width="0.8"/>
+              <line x1="200" y1="150" x2="280" y2="150" stroke="#161614" stroke-width="0.8"/>
+              <rect x="520" y="90" width="80" height="90" fill="#0b0b0a" stroke="#161614" stroke-width="0.8"/>
+              <line x1="520" y1="120" x2="600" y2="120" stroke="#161614" stroke-width="0.8"/>
+              <line x1="520" y1="150" x2="600" y2="150" stroke="#161614" stroke-width="0.8"/>
+              <!-- Functional ceiling lights (sparse) -->
+              <!-- Light 1 - lit -->
+              <rect x="148" y="8" width="22" height="5" fill="#c8a84b" opacity="0.7"/>
+              <polygon points="148,13 170,13 230,180 90,180" fill="#c8a84b" opacity="0.04"/>
+              <ellipse cx="159" cy="180" rx="60" ry="15" fill="#c8a84b" opacity="0.06"/>
+              <!-- Light 2 - dim flicker -->
+              <rect x="388" y="8" width="24" height="5" fill="#c8a84b" opacity="0.25"/>
+              <polygon points="388,13 412,13 450,180 350,180" fill="#c8a84b" opacity="0.02"/>
+              <!-- Light 3 - dark zone ahead -->
+              <rect x="628" y="8" width="22" height="5" fill="#1a1200" opacity="0.9"/>
+              <!-- Deep dark zone right side -->
+              <rect x="620" y="0" width="180" height="280" fill="#000" opacity="0.55"/>
+              <!-- Darkness gradient in middle-distance -->
+              <rect x="300" y="100" width="200" height="180" fill="#000" opacity="0.3"/>
+              <!-- Distant corridor opening -->
+              <rect x="370" y="110" width="60" height="70" fill="#030302"/>
+              <!-- Eyes in darkness - right dark zone -->
+              <ellipse cx="690" cy="140" rx="4" ry="2.5" fill="#c8a84b" opacity="0.6"/>
+              <ellipse cx="705" cy="140" rx="4" ry="2.5" fill="#c8a84b" opacity="0.6"/>
+              <ellipse cx="692" cy="140" rx="2" ry="1.5" fill="#fff" opacity="0.15"/>
+              <ellipse cx="707" cy="140" rx="2" ry="1.5" fill="#fff" opacity="0.15"/>
+              <!-- Drag marks on floor -->
+              <line x1="250" y1="200" x2="400" y2="230" stroke="#0d0d0b" stroke-width="3"/>
+              <line x1="255" y1="205" x2="405" y2="235" stroke="#0d0d0b" stroke-width="2"/>
+              <!-- Abandoned crate on floor -->
+              <rect x="460" y="158" width="40" height="28" fill="#111110" stroke="#1a1a17" stroke-width="1"/>
+              <line x1="460" y1="172" x2="500" y2="172" stroke="#1a1a17" stroke-width="0.8"/>
+              <line x1="480" y1="158" x2="480" y2="186" stroke="#1a1a17" stroke-width="0.8"/>
+              <!-- Vignette -->
+              <rect width="800" height="280" fill="url(#vignette1)"/>
+            </svg>
+            <div class="img-tag">IMG_0041 · LEVEL 1 · SECTOR 7 APPROXIMATE</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">ENVIRONMENT</div>
+          <div class="body-text">
+            <p>The floor is rough concrete, frequently cracked and uneven. Wanderers have reported <span class="highlight">deep gouges and drag marks</span> in the flooring that pre-date any known human presence. Temperatures range from 12–18°C (54–64°F) — noticeably cooler than Level 0. The air carries a metallic, industrial smell overlaid with rust and machine oil.</p>
+            <p>Sound propagates strangely. In open areas, footsteps echo with unusual persistence. In corridors between shelving units, sound is deadened. Machinery can be heard operating somewhere in the distance — rhythmic, mechanical sounds that never seem to get closer regardless of direction traveled.</p>
+            <p>Several survivors describe discovering what appear to be makeshift campsites — bedding, rationed supplies, notes — apparently left by previous wanderers. The condition of these sites varies wildly. Some appear recently abandoned; others have been undisturbed for what may be years.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">KNOWN ENTITIES</div>
+          <div class="entities-grid">
+            <div class="entity-card">
+              <div class="entity-name">HOUNDS</div>
+              <div class="entity-threat hostile">● HOSTILE · HIGH FREQUENCY</div>
+              <div class="entity-desc">Quadrupedal entities resembling dogs in silhouette, but wrong in proportion and movement. Highly aggressive. Hunt by sound. Silent movement is the primary defense — do not run.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">CRAWLERS</div>
+              <div class="entity-threat hostile">● HOSTILE · CONFIRMED</div>
+              <div class="entity-desc">Encountered in dark zones and under shelving units. Fast-moving on all fours. Have not been clearly observed — accounts describe the sound of movement and impact. Avoid low-light areas entirely.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">FACELINGS</div>
+              <div class="entity-threat passive">● PASSIVE · PRESENT</div>
+              <div class="entity-desc">Also present on Level 1 in higher density than Level 0. Behavior remains non-aggressive. Some wanderers report them clustered near resource locations — water pipes, food shelving.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">CLUMPS</div>
+              <div class="entity-threat unknown">● BEHAVIOR VARIABLE</div>
+              <div class="entity-desc">Large, slow-moving masses of unclear composition. Accounts conflict on threat level. Some report them as passive; others describe aggressive behavior following prolonged proximity. Maintain distance.</div>
+            </div>
+          </div>
+          <div class="warning-box" style="margin-top: 1.5rem;">
+            <p>Hound activity increases dramatically in the dark sectors of Level 1. Current recommendation is to avoid any area where ambient light drops below functional visibility. If caught in darkness — stop moving, control breathing, and wait.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">AVAILABLE RESOURCES</div>
+          <div class="objects-grid">
+            <div class="object-card">
+              <div class="object-name">PIPED WATER</div>
+              <div class="object-rarity common">● COMMON</div>
+              <div class="object-desc">Exposed pipe networks run throughout much of Level 1. Water from functional pipes has been tested and consumed without recorded illness. Boiling is nonetheless advised.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">SEALED RATIONS</div>
+              <div class="object-rarity uncommon">● UNCOMMON</div>
+              <div class="object-desc">Industrial food containers found on shelving units. Contents vary. Most are in adequate condition. Check seals carefully — compromised containers have caused illness.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">ALMOND WATER</div>
+              <div class="object-rarity rare">● RARE · HIGH VALUE</div>
+              <div class="object-desc">Distinctive plastic bottles found infrequently throughout the level. Consumption restores significant energy and appears to have mild calming properties. Source unknown.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">ABANDONED GEAR</div>
+              <div class="object-rarity uncommon">● UNCOMMON</div>
+              <div class="object-desc">Previous wanderers' equipment found at campsites. Quality varies. Torches, rope, clothing, and written notes have all been recovered. Notes may contain navigational value.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">SURVIVAL GUIDELINES</div>
+          <ul class="survival-list">
+            <li>Prioritize light sources immediately upon arrival. A torch or functional lighting dramatically reduces entity encounter risk.</li>
+            <li>Secure water before exploring further. Pipe locations near the entry zone from Level 0 are the most reliably documented.</li>
+            <li>Search abandoned campsites carefully. Prior occupants' notes have navigated wanderers to exits; this information is invaluable.</li>
+            <li>Do not move through dark sectors under any circumstances if Hound activity has been detected in the vicinity.</li>
+            <li>The machinery sounds serve as a rough compass. Wanderers who followed the sound consistently have reported reaching structural anomalies that led to level transitions.</li>
+            <li>If establishing a camp, choose an elevated position with at least one clear sightline. Ground-level positions have a worse documented survival rate.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-label">EXIT POINTS</div>
+          <div class="exits-list">
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 2</div>
+              <div class="exit-method">STAIRWELL DESCENT</div>
+              <div class="exit-notes">Concrete stairwells found in the deeper sections of the level. Descent leads to Level 2 (The Pipe Dreams). Several confirmed — locations shift and are not reliably fixed.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 0</div>
+              <div class="exit-method">NOCLIP / WALL PHASE</div>
+              <div class="exit-notes">Return to Level 0 is possible through the same wall-phasing method used to arrive. Not recommended — Level 0 provides fewer resources.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 37</div>
+              <div class="exit-method">ANOMALOUS DOOR</div>
+              <div class="exit-notes">Single account. A metal loading bay door exhibiting unusual properties — warm to touch, faint blue light along frame seams. Outcome unverified. Document if encountered.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="border-top: 1px solid rgba(122,101,32,0.2); padding-top: 1.5rem;">
+          <div class="section-label">FIELD NOTES</div>
+          <div class="body-text" style="color: rgba(184,154,58,0.5); font-style: italic;">
+            <p>"Found a camp. Sleeping bag, a few tins, a hand-drawn map that didn't make sense. Whoever left it had been there long enough to make a home. The map had one word circled near the bottom: DOWN. I found the stairs two days later." — Account #0041</p>
+            <p style="margin-top: 1rem;">"The hound sounds different from what you'd expect. It's almost gentle. That's what makes it so bad." — Account #0089</p>
+          </div>
+        </div>
+
+      </div><!-- /level1 -->
+
+      <!-- LEVEL 2 -->
+      <div id="level2" class="level-page">
+
+        <div class="level-header">
+          <div class="level-classification">LEVEL DOCUMENTATION · SUBTERRANEAN SECTOR · CONFIRMED</div>
+          <div class="level-number">LEVEL<br>2</div>
+          <div class="level-name">PIPE DREAMS</div>
+          <div class="level-divider"></div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-label">DANGER CLASS</div>
+            <div class="stat-value danger">VERY HIGH</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">SURVIVAL RATING</div>
+            <div class="stat-value danger">CLASS 3</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ENTITIES</div>
+            <div class="stat-value danger">DENSE</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ESTIMATED SIZE</div>
+            <div class="stat-value">UNBOUNDED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">LIGHT SOURCES</div>
+            <div class="stat-value danger">MINIMAL</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DESCRIPTION</div>
+          <div class="body-text">
+            <p>Level 2 is a <span class="highlight">vast network of industrial maintenance tunnels</span> — low ceilings, exposed pipework running in all directions, and near-total darkness broken only by the faint glow of heat venting from the pipes themselves. The architecture suggests a massive utility infrastructure, but one that serves no discernible purpose and connects to nothing outside itself.</p>
+            <p>The pipes are hot. Surface temperatures on the larger diameter conduits reach 60–80°C, creating an ambient heat that makes prolonged traversal physically taxing. The air is thick with steam and condensation. Visibility without a light source is effectively zero — and light sources are consumed faster here than on other levels, as though the environment resists illumination.</p>
+            <p>Unlike Levels 0 and 1, Level 2 is <span class="highlight">audibly alive</span>. The pipes groan, clank, and hiss continuously. Some wanderers report rhythmic thumping deep within the walls — consistent, almost mechanical, but never attributable to a known source. This constant noise makes it nearly impossible to detect entity movement by sound alone, which dramatically increases encounter risk.</p>
+          </div>
+          <div class="image-placeholder">
+            <svg width="100%" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+              <defs>
+                <radialGradient id="vignette2" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="100%" stop-color="#000" stop-opacity="0.95"/>
+                </radialGradient>
+                <radialGradient id="heatglow" cx="50%" cy="60%" r="50%">
+                  <stop offset="0%" stop-color="#c84b00" stop-opacity="0.12"/>
+                  <stop offset="100%" stop-color="transparent"/>
+                </radialGradient>
+                <filter id="blur2">
+                  <feGaussianBlur stdDeviation="2"/>
+                </filter>
+              </defs>
+              <rect width="800" height="280" fill="#050404"/>
+              <rect width="800" height="280" fill="url(#heatglow)"/>
+              <rect x="0" y="0" width="800" height="40" fill="#080706"/>
+              <rect x="0" y="240" width="800" height="40" fill="#080706"/>
+              <line x1="0" y1="40" x2="800" y2="40" stroke="#141210" stroke-width="1.5"/>
+              <line x1="0" y1="240" x2="800" y2="240" stroke="#141210" stroke-width="1.5"/>
+              <rect x="0" y="42" width="800" height="22" fill="#0e0c0a"/>
+              <rect x="0" y="43" width="800" height="8" fill="#121008" rx="4"/>
+              <rect x="0" y="54" width="800" height="8" fill="#100e07" rx="4"/>
+              <line x1="0" y1="43" x2="800" y2="43" stroke="#1e1a10" stroke-width="0.8" opacity="0.7"/>
+              <line x1="0" y1="62" x2="800" y2="62" stroke="#0a0806" stroke-width="0.8" opacity="0.5"/>
+              <rect x="0" y="218" width="800" height="22" fill="#0e0c0a"/>
+              <rect x="0" y="219" width="800" height="10" fill="#121008" rx="5"/>
+              <rect x="0" y="231" width="800" height="7" fill="#100e07" rx="3"/>
+              <line x1="0" y1="219" x2="800" y2="219" stroke="#1e1a10" stroke-width="0.8" opacity="0.6"/>
+              <rect x="80" y="40" width="18" height="200" fill="#0d0b09"/>
+              <rect x="81" y="40" width="4" height="200" fill="#1a1612" opacity="0.8"/>
+              <rect x="91" y="40" width="3" height="200" fill="#070605" opacity="0.8"/>
+              <rect x="78" y="130" width="22" height="14" fill="#141210" rx="2"/>
+              <line x1="78" y1="137" x2="100" y2="137" stroke="#201c16" stroke-width="1"/>
+              <rect x="220" y="40" width="14" height="200" fill="#0c0a08"/>
+              <rect x="221" y="40" width="3" height="200" fill="#181410" opacity="0.7"/>
+              <rect x="520" y="40" width="16" height="200" fill="#0d0b09"/>
+              <rect x="521" y="40" width="3" height="200" fill="#1a1612" opacity="0.7"/>
+              <rect x="680" y="40" width="14" height="200" fill="#0c0a08"/>
+              <line x1="0" y1="90" x2="220" y2="65" stroke="#0f0d0b" stroke-width="12"/>
+              <line x1="0" y1="88" x2="220" y2="63" stroke="#1a1612" stroke-width="2"/>
+              <ellipse cx="220" cy="64" rx="10" ry="20" fill="#c8a84b" opacity="0.04" filter="url(#blur2)"/>
+              <ellipse cx="80" cy="130" rx="8" ry="15" fill="#c84b00" opacity="0.05" filter="url(#blur2)"/>
+              <rect x="0" y="43" width="800" height="6" fill="#c84b00" opacity="0.04"/>
+              <rect x="0" y="220" width="800" height="5" fill="#c84b00" opacity="0.03"/>
+              <ellipse cx="400" cy="140" rx="30" ry="25" fill="#c8a84b" opacity="0.06" filter="url(#blur2)"/>
+              <ellipse cx="400" cy="140" rx="12" ry="10" fill="#c8a84b" opacity="0.08"/>
+              <line x1="150" y1="40" x2="152" y2="80" stroke="#0d0d0c" stroke-width="0.8"/>
+              <line x1="300" y1="40" x2="298" y2="65" stroke="#0d0d0c" stroke-width="0.8"/>
+              <line x1="560" y1="40" x2="562" y2="90" stroke="#0d0d0c" stroke-width="0.8"/>
+              <ellipse cx="400" cy="142" rx="7" ry="12" fill="#000" opacity="0.6"/>
+              <ellipse cx="397" cy="133" rx="2.5" ry="1.5" fill="#c84b00" opacity="0.4"/>
+              <ellipse cx="404" cy="133" rx="2.5" ry="1.5" fill="#c84b00" opacity="0.4"/>
+              <rect x="0" y="64" width="75" height="154" fill="#000" opacity="0.7"/>
+              <rect x="240" y="64" width="270" height="154" fill="#000" opacity="0.6"/>
+              <rect x="540" y="64" width="130" height="154" fill="#000" opacity="0.65"/>
+              <rect x="700" y="64" width="100" height="154" fill="#000" opacity="0.75"/>
+              <rect width="800" height="280" fill="url(#vignette2)"/>
+            </svg>
+            <div class="img-tag">IMG_0078 · LEVEL 2 · TUNNEL NETWORK · SECTOR UNKNOWN</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">ENVIRONMENT</div>
+          <div class="body-text">
+            <p>The tunnels range from just over a meter in height to approximately four meters — though most documented passages fall in the 1.8–2.5m range. Wider junctions exist where multiple pipe conduits converge, creating open chambers of ten meters or more. These junction points are simultaneously the most navigable spaces and the most dangerous, given increased entity activity.</p>
+            <p>The floor is slick — a combination of condensation runoff and an unidentified dark liquid that seeps from the lower pipe joints. Falls are common. The footing requires constant attention. Several accounts note that the liquid is warm to the touch and leaves a faint metallic residue, but no chemical analysis has been possible.</p>
+            <p>Heat management is a <span class="highlight">critical survival factor</span>. Core body temperature elevation has been reported in wanderers who remain without rest for over two hours. The heat is not uniform — some corridors are noticeably cooler, and these have been identified as priority resting areas.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">KNOWN ENTITIES</div>
+          <div class="entities-grid">
+            <div class="entity-card">
+              <div class="entity-name">CRAWLERS</div>
+              <div class="entity-threat hostile">● HOSTILE · EXTREMELY HIGH DENSITY</div>
+              <div class="entity-desc">Far more numerous here than Level 1. The pipe network appears to be their native habitat. Exploit the noise of the pipes — you cannot hear them coming. Keep moving. Never stop in a low-clearance section.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">DEATHMOTHS</div>
+              <div class="entity-threat hostile">● HOSTILE · CONFIRMED</div>
+              <div class="entity-desc">Large, dark-winged entities drawn to heat and light. Attacks are disorienting rather than direct — they extinguish light sources. Do not use open flame. LED sources are less likely to attract them but not immune.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">WRETCHES</div>
+              <div class="entity-threat hostile">● HOSTILE · JUNCTION ZONES</div>
+              <div class="entity-desc">Reported exclusively at pipe junction chambers. Humanoid but elongated, moving along the pipes rather than the floor. Avoid junction chambers during perceived high-activity periods. Listen before entering.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">SMILERS</div>
+              <div class="entity-threat hostile">● HOSTILE · DARK ZONES</div>
+              <div class="entity-desc">Present in the darkest tunnel sections. Same behavior as Level 0. The near-total darkness of Level 2 makes avoiding them far more difficult. Maintaining any light source is not optional here.</div>
+            </div>
+          </div>
+          <div class="warning-box" style="margin-top: 1.5rem;">
+            <p>Level 2 has the highest confirmed entity density of any documented level in this archive. Wanderers who stop moving for extended periods in unlit areas have not been heard from again. This is not a level to explore — it is a level to traverse as quickly as possible.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">AVAILABLE RESOURCES</div>
+          <div class="objects-grid">
+            <div class="object-card">
+              <div class="object-name">PIPE WATER</div>
+              <div class="object-rarity uncommon">● UNCOMMON · USE CAUTION</div>
+              <div class="object-desc">Cold water pipes exist alongside the hot ones. Identifiable by condensation on the exterior. Quality is inconsistent — boil if any vessel available. Do not drink the floor liquid under any circumstances.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">ALMOND WATER</div>
+              <div class="object-rarity rare">● RARE · CRITICAL VALUE</div>
+              <div class="object-desc">Found in small alcoves between pipe clusters. More reliably located here than Level 1. Its heat-regulation properties appear more pronounced in this environment — a high priority find.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">EMERGENCY KITS</div>
+              <div class="object-rarity rare">● RARE</div>
+              <div class="object-desc">Industrial safety kits mounted to walls in some sections. Contents include basic first aid, a foil blanket, and occasionally a battery torch. Extremely high priority — search every wall surface.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">SURVIVAL GUIDELINES</div>
+          <ul class="survival-list">
+            <li>Protect your light source above all else. Entering darkness on Level 2 is documented as near-fatal in the majority of accounts.</li>
+            <li>Never stop moving in narrow tunnels. Crawlers exploit the pipe noise as cover — static targets are significantly easier to locate than moving ones.</li>
+            <li>Mark pipe junctions before entering. They look identical in low light and disorientation is rapid and severe.</li>
+            <li>Move toward cooler air. Cool zones indicate either a transition point or a safer resting area. Follow temperature drops deliberately.</li>
+            <li>Do not attempt to climb the pipes. Deathmoths roost above the primary bundles and disturbance triggers aggressive behavior.</li>
+            <li>If light fails: crouch, remain still, control breathing. Wait a minimum of five minutes before moving. Noise discipline is your only defense.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-label">EXIT POINTS</div>
+          <div class="exits-list">
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 3</div>
+              <div class="exit-method">MAINTENANCE HATCH</div>
+              <div class="exit-notes">Floor-level hatches found in larger junction chambers. Heavy, rust-sealed, require significant force. Drop leads to Level 3 (The Electrical Station). Confirmed by multiple accounts.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 1</div>
+              <div class="exit-method">STAIRWELL ASCENT</div>
+              <div class="exit-notes">Return ascent via the same stairwells is possible but not recommended — stairwells attract Crawlers and Level 1 entry points do not remain fixed.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 2.1</div>
+              <div class="exit-method">NARROW CRAWLSPACE</div>
+              <div class="exit-notes">Sub-level accessible via very low crawlspaces branching from main tunnels. Nature of Level 2.1 is poorly documented. Entry is discouraged until further information is available.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="border-top: 1px solid rgba(122,101,32,0.2); padding-top: 1.5rem;">
+          <div class="section-label">FIELD NOTES</div>
+          <div class="body-text" style="color: rgba(184,154,58,0.5); font-style: italic;">
+            <p>"The worst part isn't the dark. It's the noise. The pipes never stop. You can't hear anything else. You can't hear them until they're already there." — Account #0112</p>
+            <p style="margin-top: 1rem;">"I counted eleven cold-water pipes before I found one that wasn't bone dry. Drank from it for five minutes. Tasted like iron. Best water I've ever had." — Account #0134</p>
+          </div>
+        </div>
+
+      </div><!-- /level2 -->
+
+    </div><!-- /db-content -->
+  </div><!-- /db-body -->
+</div><!-- /database -->
+
+<script>
+  const d = new Date();
+  document.getElementById('dateStamp').textContent =
+    d.toISOString().split('T')[0].replace(/-/g, '.');
+
+  function enterDatabase() {
+    const overlay = document.getElementById('transitionOverlay');
+    overlay.classList.add('active');
+    setTimeout(() => {
+      document.getElementById('opening').style.display = 'none';
+      document.getElementById('database').style.display = 'block';
+    }, 600);
+    setTimeout(() => { overlay.classList.remove('active'); }, 1200);
+  }
+
+  function showLevel(num) {
+    document.querySelectorAll('.level-page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+    document.getElementById('level' + num).classList.add('active');
+    document.getElementById('nav-' + num).classList.add('active');
+    const names = { 0: 'THE LOBBY', 1: 'THE WAREHOUSE', 2: 'PIPE DREAMS' };
+    document.getElementById('activeTag').textContent = 'LEVEL ' + num + ' — ' + names[num];
+    document.querySelector('.db-content').scrollTop = 0;
+  }
+</script>
+</body>
+</html>
