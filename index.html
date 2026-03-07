@@ -2900,9 +2900,9 @@
         <div class="section">
           <div class="section-label">DESCRIPTION</div>
           <div class="body-text">
-            <p>Level 7 is an <span class="highlight">impossibly vast ocean</span> enclosed beneath a high concrete ceiling — a body of water that stretches in every direction without any documented boundary. Despite the absence of any fixed light source, a dim, diffuse illumination persists across the surface, as though the water itself holds light. Its origin is unknown. The colour of the water shifts depending on depth: grey-green at the surface, darkening to black well before any diver has reached the bottom.</p>
-            <p>The level is understood to consist of two distinct spaces. The first is the <span class="highlight">entrance room</span> — a small, dim chamber at the base of the stairwell from Level 6, containing a bookcase, a cot, some salvaged supplies, and a door that should not be opened without preparation. This room is the only reliably safe location in the level. The second space is everything beyond that door: the ocean, which begins approximately five meters below the entrance room floor, accessible only by rope or improvised descent. The transition between the two spaces involves a gravitational anomaly — the entrance room floor is effectively the ocean's ceiling, and the water hangs below it like an inverted sea.</p>
-            <p>The ocean has been partially documented through depth-staged exploration. Accounts describe four distinct zones, each significantly more dangerous than the last.</p>
+            <p>Level 7 begins inside a house. It is an ordinary house — wood-framed, single storey, furnished in a style that feels dated without being identifiable. The floors, walls, and most surfaces are submerged under roughly 60–90 cm (2–3 ft) of dark, still water. The water does not drain. It does not rise. It simply exists, filling every room to the same level, as though the house settled into the ocean rather than the ocean flooding into it.</p>
+            <p>The house is dim. Light comes through the windows — grey, overcast, sourceless — and from a doorway at the far end of the main room that opens directly onto the <span class="highlight">open ocean</span>. There is no threshold, no step down, no transition. The doorframe stands in the water and beyond it the ocean stretches in every direction without boundary under an open sky. The sky is always overcast. It has never been reported as dark, but it has never been reported as bright either. It is the colour of old concrete — flat, even, unchanging.</p>
+            <p>The house is the only fixed point on the level. Wanderers who leave through the doorway and lose sight of it report being unable to locate it again. The house does not move — the ocean simply has no landmarks by which to navigate back. The doorway is the boundary between the navigable and the irrecoverable.</p>
           </div>
           <div class="image-placeholder">
             <svg width="100%" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="display:block;">
@@ -2911,72 +2911,74 @@
                   <stop offset="0%" stop-color="transparent"/>
                   <stop offset="100%" stop-color="#000" stop-opacity="0.95"/>
                 </radialGradient>
-                <linearGradient id="oceanDepth" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#0a1a1f"/>
-                  <stop offset="35%" stop-color="#061214"/>
-                  <stop offset="70%" stop-color="#030a0d"/>
-                  <stop offset="100%" stop-color="#010405"/>
+                <linearGradient id="floodwater" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0d1e24" stop-opacity="0.9"/>
+                  <stop offset="100%" stop-color="#060e12"/>
                 </linearGradient>
-                <linearGradient id="surfaceSheen" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#1a3a44" stop-opacity="0.5"/>
-                  <stop offset="100%" stop-color="transparent"/>
+                <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a2228"/>
+                  <stop offset="100%" stop-color="#0e171c"/>
                 </linearGradient>
-                <filter id="waterblur"><feGaussianBlur stdDeviation="1.5"/></filter>
-                <filter id="deepblur"><feGaussianBlur stdDeviation="3"/></filter>
-                <filter id="glow7"><feGaussianBlur stdDeviation="4"/></filter>
+                <linearGradient id="oceanGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0d1e24"/>
+                  <stop offset="100%" stop-color="#060e12"/>
+                </linearGradient>
+                <filter id="blur7sm"><feGaussianBlur stdDeviation="1.5"/></filter>
+                <filter id="blur7md"><feGaussianBlur stdDeviation="3"/></filter>
+                <filter id="glow7"><feGaussianBlur stdDeviation="5"/></filter>
               </defs>
-              <!-- Deep ocean background -->
-              <rect width="800" height="280" fill="url(#oceanDepth)"/>
-              <!-- Concrete ceiling at top -->
-              <rect x="0" y="0" width="800" height="22" fill="#0d0d0d"/>
-              <line x1="0" y1="22" x2="800" y2="22" stroke="#1a1a1a" stroke-width="1.5"/>
-              <!-- Ceiling texture lines -->
-              <line x1="0" y1="8" x2="800" y2="8" stroke="#121212" stroke-width="0.5" opacity="0.6"/>
-              <line x1="200" y1="0" x2="200" y2="22" stroke="#111" stroke-width="0.5" opacity="0.4"/>
-              <line x1="500" y1="0" x2="500" y2="22" stroke="#111" stroke-width="0.5" opacity="0.4"/>
-              <!-- Surface of water — undulating lines -->
-              <path d="M0,38 Q50,32 100,38 Q150,44 200,38 Q250,32 300,38 Q350,44 400,38 Q450,32 500,38 Q550,44 600,38 Q650,32 700,38 Q750,44 800,38" stroke="#1e4a55" stroke-width="1.2" fill="none" opacity="0.7"/>
-              <path d="M0,42 Q60,36 120,42 Q180,48 240,42 Q300,36 360,42 Q420,48 480,42 Q540,36 600,42 Q680,48 740,42 Q780,36 800,42" stroke="#1a3f4a" stroke-width="0.8" fill="none" opacity="0.4"/>
-              <!-- Surface shimmer glow -->
-              <ellipse cx="400" cy="38" rx="300" ry="8" fill="#1e4a55" opacity="0.06" filter="url(#glow7)"/>
-              <!-- Water body gradient fill -->
-              <rect x="0" y="38" width="800" height="242" fill="url(#surfaceSheen)"/>
-              <!-- Depth haze layers -->
-              <rect x="0" y="100" width="800" height="60" fill="#030a0d" opacity="0.3"/>
-              <rect x="0" y="160" width="800" height="60" fill="#020708" opacity="0.4"/>
-              <rect x="0" y="220" width="800" height="60" fill="#010405" opacity="0.6"/>
-              <!-- Faint particle/debris in water -->
-              <circle cx="120" cy="70" r="1" fill="#2a5a6a" opacity="0.4"/>
-              <circle cx="340" cy="95" r="0.8" fill="#224a58" opacity="0.3"/>
-              <circle cx="560" cy="60" r="1.2" fill="#2a5a6a" opacity="0.35"/>
-              <circle cx="680" cy="85" r="0.8" fill="#1e4452" opacity="0.3"/>
-              <circle cx="200" cy="115" r="1" fill="#1a3a46" opacity="0.25"/>
-              <circle cx="450" cy="130" r="0.8" fill="#162e38" opacity="0.2"/>
-              <!-- Humanoid skeleton suggestion at depth — barely visible -->
-              <line x1="390" y1="210" x2="390" y2="250" stroke="#1a2a2e" stroke-width="1" opacity="0.35"/>
-              <circle cx="390" cy="207" r="4" fill="none" stroke="#1a2a2e" stroke-width="0.8" opacity="0.3"/>
-              <line x1="383" y1="222" x2="375" y2="238" stroke="#1a2a2e" stroke-width="0.8" opacity="0.3"/>
-              <line x1="397" y1="222" x2="405" y2="238" stroke="#1a2a2e" stroke-width="0.8" opacity="0.3"/>
-              <!-- Second skeleton further, dimmer -->
-              <line x1="580" y1="230" x2="580" y2="265" stroke="#141e22" stroke-width="0.8" opacity="0.2"/>
-              <circle cx="580" cy="227" r="3" fill="none" stroke="#141e22" stroke-width="0.6" opacity="0.2"/>
-              <!-- The Thing — deep shadow shape, barely perceptible -->
-              <ellipse cx="650" cy="185" rx="55" ry="18" fill="#08181e" opacity="0.5" filter="url(#deepblur)"/>
-              <ellipse cx="650" cy="185" rx="30" ry="9" fill="#061214" opacity="0.4"/>
-              <!-- Thing eye glint — single cold point -->
-              <ellipse cx="635" cy="181" rx="2" ry="1.5" fill="#4a8a9a" opacity="0.25" filter="url(#waterblur)"/>
-              <ellipse cx="635" cy="181" rx="0.7" ry="0.5" fill="#6ab0c0" opacity="0.4"/>
+              <!-- Room background — dark interior walls -->
+              <rect width="800" height="280" fill="#080c0e"/>
+              <!-- Left interior wall -->
+              <rect x="0" y="0" width="160" height="280" fill="#0a0f11"/>
+              <!-- Right interior wall -->
+              <rect x="640" y="0" width="160" height="280" fill="#0a0f11"/>
+              <!-- Ceiling -->
+              <rect x="0" y="0" width="800" height="30" fill="#0d1214"/>
+              <line x1="0" y1="30" x2="160" y2="30" stroke="#141c20" stroke-width="0.8"/>
+              <line x1="640" y1="30" x2="800" y2="30" stroke="#141c20" stroke-width="0.8"/>
+              <!-- Doorframe opening — light source -->
+              <rect x="160" y="0" width="480" height="280" fill="url(#skyGrad)"/>
+              <!-- Overcast sky through door — flat grey -->
+              <rect x="160" y="0" width="480" height="155" fill="#1c2830"/>
+              <!-- Horizon line — ocean surface through door -->
+              <line x1="160" y1="155" x2="640" y2="155" stroke="#1e3a44" stroke-width="1"/>
+              <!-- Ocean visible through doorway -->
+              <rect x="160" y="155" width="480" height="125" fill="url(#oceanGrad)"/>
+              <!-- Ocean surface shimmer through door -->
+              <path d="M160,157 Q240,152 320,157 Q400,162 480,157 Q560,152 640,157" stroke="#1e4050" stroke-width="0.8" fill="none" opacity="0.5"/>
+              <!-- Dim sky cloud suggestion -->
+              <ellipse cx="300" cy="60" rx="80" ry="18" fill="#1e2e38" opacity="0.3"/>
+              <ellipse cx="520" cy="90" rx="60" ry="12" fill="#1a2830" opacity="0.2"/>
+              <!-- Door frame edges -->
+              <rect x="155" y="0" width="8" height="280" fill="#0c1214"/>
+              <rect x="637" y="0" width="8" height="280" fill="#0c1214"/>
+              <!-- Flooded floor water surface -->
+              <rect x="0" y="190" width="800" height="90" fill="url(#floodwater)"/>
+              <path d="M0,190 Q40,186 80,190 Q120,194 160,190 Q200,186 240,190 Q280,194 320,190 Q360,186 400,190 Q440,194 480,190 Q520,186 560,190 Q600,194 640,190 Q680,186 720,190 Q760,194 800,190" stroke="#1a3040" stroke-width="1" fill="none" opacity="0.6"/>
+              <!-- Water reflection of doorway light on interior floor -->
+              <ellipse cx="400" cy="215" rx="180" ry="25" fill="#0d1e28" opacity="0.4" filter="url(#blur7md)"/>
+              <!-- Submerged furniture suggestions — left side -->
+              <rect x="20" y="195" width="90" height="50" fill="#0c1214" rx="2" opacity="0.7"/>
+              <rect x="25" y="190" width="80" height="8" fill="#0e1518" rx="1" opacity="0.6"/>
+              <!-- Chair suggestion right -->
+              <rect x="690" y="200" width="55" height="40" fill="#0c1214" rx="2" opacity="0.6"/>
+              <line x1="695" y1="200" x2="695" y2="175" stroke="#0c1214" stroke-width="3" opacity="0.5"/>
+              <line x1="740" y1="200" x2="740" y2="175" stroke="#0c1214" stroke-width="3" opacity="0.5"/>
+              <!-- Something visible just beneath ocean surface through door — barely -->
+              <ellipse cx="480" cy="175" rx="40" ry="8" fill="#08181e" opacity="0.4" filter="url(#blur7md)"/>
+              <ellipse cx="480" cy="173" rx="1.2" ry="0.8" fill="#4a8899" opacity="0.3"/>
               <!-- Vignette -->
               <rect width="800" height="280" fill="url(#vignette7)"/>
             </svg>
-            <div class="img-tag">IMG_0512 · LEVEL 7 · SURFACE · DEPTH ~0M</div>
+            <div class="img-tag">IMG_0499 · LEVEL 7 · FLOODED INTERIOR · FACING DOORWAY</div>
           </div>
         </div>
 
         <div class="section">
           <div class="section-label">DEPTH ZONES</div>
           <div class="body-text">
-            <p>The ocean has been explored in stages by multiple expeditions. The following zones are documented in order of depth. Exploration beyond the Twilight Zone is considered a voluntary fatality.</p>
+            <p>The ocean beyond the doorway has been explored in stages. The following zones are documented in order of depth. Exploration beyond the Twilight Zone is considered a voluntary fatality.</p>
           </div>
 
           <div style="border: 1px solid rgba(122,101,32,0.2); padding: 1.2rem; margin-top: 1.5rem; margin-bottom: 1rem;">
@@ -3030,9 +3032,9 @@
           <div class="section-label">AVAILABLE RESOURCES</div>
           <div class="objects-grid">
             <div class="object-card">
-              <div class="object-name">ENTRANCE ROOM SUPPLIES</div>
-              <div class="object-rarity uncommon">● PRESENT · PARTIALLY STOCKED</div>
-              <div class="object-desc">The entrance room contains a bookcase, a cot, and a variable cache of salvaged supplies left by previous wanderers. Contents are not guaranteed. The room is the only location where supplies can be safely inventoried.</div>
+              <div class="object-name">FLOODED HOUSE SUPPLIES</div>
+              <div class="object-rarity uncommon">● PRESENT · PARTIALLY USABLE</div>
+              <div class="object-desc">The house contains furniture, cabinets, and shelving — most contents waterlogged and ruined. Sealed or elevated items occasionally remain intact. The upper shelves of the bookcase in the main room are above the waterline. The house is the only location where supplies can be safely searched.</div>
             </div>
             <div class="object-card">
               <div class="object-name">ISLAND SHELTER</div>
@@ -3055,7 +3057,7 @@
         <div class="section">
           <div class="section-label">SURVIVAL GUIDELINES</div>
           <ul class="survival-list">
-            <li>Do not leave the entrance room without a vessel, a rope, and a clear plan for return. The entrance room is the only guaranteed safe location. Treat it accordingly.</li>
+            <li>Do not leave the house without a vessel, a rope tied to the doorframe, and a clear plan for return. The house is the only fixed point on the level. Lose sight of the doorway and you will not find it again.</li>
             <li>Stay on the surface. The Daylight Zone is the only zone where survival is statistically documented. Every meter of depth increases risk non-linearly.</li>
             <li>Do not make loud sounds on the water. Keep movement deliberate and quiet. The Thing has been observed at the surface — noise may draw it up.</li>
             <li>Do not bring a light source into the deep unless you intend to use it against The Thing. A light at depth is a signal — both to what you want to find and what you do not.</li>
@@ -3075,7 +3077,7 @@
             <div class="exit-row">
               <div class="exit-dest">LEVEL 6</div>
               <div class="exit-method">STAIRWELL ASCENT</div>
-              <div class="exit-notes">The entrance room stairwell leads back to Level 6. Ascending requires returning to the entrance room, which requires surviving the crossing. Several documented successful returns.</div>
+              <div class="exit-notes">A stairwell inside the flooded house leads back to Level 6. It is the only interior staircase. The upper steps remain above the waterline. Several documented successful returns.</div>
             </div>
           </div>
         </div>
