@@ -859,7 +859,7 @@
   .level-page { display: none; }
   .level-page.active { display: block; }
 
-  #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7 {
+  #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7, #level8 {
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem 2rem;
@@ -947,7 +947,7 @@
 
   /* Responsive */
   @media (max-width: 768px) {
-    #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7 { padding: 2rem 1rem; }
+    #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7, #level8 { padding: 2rem 1rem; }
     .db-header { padding: 0.8rem 1rem; }
     .db-header-nav { display: none; }
     .stats-row { grid-template-columns: 1fr 1fr; }
@@ -1025,7 +1025,7 @@
   </header>
   <div class="header-ticker">
     <span class="ticker-inner">
-      ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate"></span> &nbsp;·&nbsp; ENTRIES: 8 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp; ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate2"></span> &nbsp;·&nbsp; ENTRIES: 8 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp;
+      ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate"></span> &nbsp;·&nbsp; ENTRIES: 9 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp; ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate2"></span> &nbsp;·&nbsp; ENTRIES: 9 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp;
     </span>
   </div>
 
@@ -1064,6 +1064,9 @@
       <div class="drawer-link" onclick="showLevel(7)" id="nav-7">
         <span class="lvl-num">07</span> THALASSOPHOBIA
       </div>
+      <div class="drawer-link" onclick="showLevel(8)" id="nav-8">
+        <span class="lvl-num">08</span> CAVE SYSTEM
+      </div>
     </div>
   </nav>
 
@@ -1081,7 +1084,7 @@
           <div class="level-class-bar">
             <span class="bar-item">STATUS: ONGOING COLLECTION</span>
             <span class="bar-sep"></span>
-            <span class="bar-item">VERIFIED ENTRIES: 14</span>
+            <span class="bar-item">VERIFIED ENTRIES: 16</span>
             <span class="bar-sep"></span>
             <span class="bar-item">UNVERIFIED: [REDACTED]</span>
             <span class="bar-id">DIR-ACCT-01</span>
@@ -1209,6 +1212,22 @@
               <div class="account-id">ACCOUNT #0519</div>
               <div class="account-level-tag">LEVEL 7 · THALASSOPHOBIA</div>
               <p class="account-text">"We found the boat on day two. It was in better shape than us. We didn't ask where it came from. We got in it and we started rowing. You stop asking questions after a while. You just move."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">LEVEL 8 — CAVE SYSTEM</div>
+          <div class="body-text">
+            <div class="account-entry">
+              <div class="account-id">ACCOUNT #0571</div>
+              <div class="account-level-tag">LEVEL 8 · CAVE SYSTEM</div>
+              <p class="account-text">"The dripping never stops. After a while your brain starts sorting it — that one's water, that one's something moving, that one's water again. Then you're wrong about one of them."</p>
+            </div>
+            <div class="account-entry" style="margin-top:1.2rem;">
+              <div class="account-id">ACCOUNT #0589</div>
+              <div class="account-level-tag">LEVEL 8 · CAVE SYSTEM</div>
+              <p class="account-text">"We found a passage that went straight down for what felt like an hour. The walls were warm. We didn't go further. We came back up and didn't speak about it for two days."</p>
             </div>
           </div>
         </div>
@@ -3092,6 +3111,238 @@
 
       </div><!-- /level7 -->
 
+      <!-- LEVEL 8 -->
+      <div id="level8" class="level-page">
+
+        <div class="level-header">
+          <div class="level-classification">LEVEL DOCUMENTATION · SUBTERRANEAN SECTOR · EXTREME DANGER</div>
+          <div class="level-number">LEVEL<br>8</div>
+          <div class="level-name">CAVE SYSTEM</div>
+          <div class="level-class-bar">
+            <span class="bar-item">CLASSIFICATION: RESTRICTED</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">RISK: EXTREME</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">ACCOUNTS: 14</span>
+            <span class="bar-id">DOC-LVL-08</span>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-label">CLASS</div>
+            <div class="stat-value danger">4</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ENTITIES</div>
+            <div class="stat-value danger">HIGH DENSITY</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ESTIMATED SIZE</div>
+            <div class="stat-value">UNBOUNDED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">LIGHT</div>
+            <div class="stat-value danger">NEAR-ABSENT</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">RESOURCES</div>
+            <div class="stat-value warning">LIMITED</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DESCRIPTION</div>
+          <div class="body-text">
+            <p>Level 8 is an <span class="highlight">infinite subterranean cave network</span> — vast cathedral chambers connected by narrow crawlways, branching tunnels, vertical drops, and passages that double back without warning. The geology is real enough: stalactites hang from ceilings that are sometimes metres overhead and sometimes centimetres, stalagmites cluster on uneven floors, and the walls are cold, damp stone. The level behaves like a cave. It is simply a cave that has no end.</p>
+            <p>The level is almost entirely dark. Scattered points of bioluminescent growth on the walls — pale blue-green, dim, sourceless — provide just enough light in some chambers to confirm that something is there without revealing what. Most passages offer nothing at all. Wanderers without a functioning light source do not last long on Level 8, and the level is not hospitable to light sources. Torches gutter in drafts from unknown origins. Batteries drain faster than expected. Chemical light sticks work but attract the wrong attention.</p>
+            <p>Water is everywhere. Almond Water seeps from the walls and drips from the ceiling throughout the level, collecting in pools on the cave floors. <span class="highlight">These pools are not safe to drink from.</span> The mineral accumulation renders them toxic at concentration. The dripping, however, is constant — and the sound of it fills every passage, masking the sounds of movement, including movement that is not yours.</p>
+          </div>
+          <div class="image-placeholder">
+            <svg width="100%" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+              <defs>
+                <radialGradient id="vignette8" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="100%" stop-color="#000" stop-opacity="0.97"/>
+                </radialGradient>
+                <radialGradient id="caveglow" cx="35%" cy="45%" r="40%">
+                  <stop offset="0%" stop-color="#1a3a2a" stop-opacity="0.2"/>
+                  <stop offset="100%" stop-color="transparent"/>
+                </radialGradient>
+                <filter id="blur8sm"><feGaussianBlur stdDeviation="1.5"/></filter>
+                <filter id="blur8md"><feGaussianBlur stdDeviation="3"/></filter>
+                <filter id="glow8"><feGaussianBlur stdDeviation="5"/></filter>
+              </defs>
+              <!-- Total dark background -->
+              <rect width="800" height="280" fill="#050604"/>
+              <!-- Cave chamber walls — irregular organic shapes -->
+              <!-- Left wall mass -->
+              <path d="M0,0 L0,280 L120,280 Q80,240 90,200 Q110,160 70,130 Q40,100 80,70 Q110,40 90,0 Z" fill="#090b08"/>
+              <!-- Right wall mass -->
+              <path d="M800,0 L800,280 L680,280 Q720,250 710,210 Q690,170 730,140 Q760,110 720,80 Q690,50 710,0 Z" fill="#080a07"/>
+              <!-- Ceiling stalactites -->
+              <path d="M90,0 Q100,35 88,50" stroke="#0c0e0b" stroke-width="8" fill="none"/>
+              <path d="M140,0 Q148,28 140,42" stroke="#0c0e0b" stroke-width="6" fill="none"/>
+              <path d="M200,0 Q210,45 198,62" stroke="#0b0d0a" stroke-width="10" fill="none"/>
+              <path d="M280,0 Q285,20 278,32" stroke="#0c0e0b" stroke-width="5" fill="none"/>
+              <path d="M380,0 Q390,38 382,55" stroke="#0b0d0a" stroke-width="7" fill="none"/>
+              <path d="M460,0 Q455,25 462,40" stroke="#0c0e0b" stroke-width="5" fill="none"/>
+              <path d="M540,0 Q548,42 536,58" stroke="#0b0d0a" stroke-width="9" fill="none"/>
+              <path d="M620,0 Q625,22 618,35" stroke="#0c0e0b" stroke-width="6" fill="none"/>
+              <path d="M680,0 Q690,30 682,44" stroke="#0b0d0a" stroke-width="8" fill="none"/>
+              <!-- Floor stalagmites -->
+              <path d="M160,280 Q168,248 160,232" stroke="#0c0e0b" stroke-width="10" fill="none"/>
+              <path d="M260,280 Q265,258 258,245" stroke="#0b0d0a" stroke-width="7" fill="none"/>
+              <path d="M420,280 Q428,252 420,238" stroke="#0c0e0b" stroke-width="9" fill="none"/>
+              <path d="M580,280 Q586,260 578,248" stroke="#0b0d0a" stroke-width="6" fill="none"/>
+              <path d="M650,280 Q655,255 648,240" stroke="#0c0e0b" stroke-width="8" fill="none"/>
+              <!-- Bioluminescent patches — faint blue-green glow on walls -->
+              <ellipse cx="100" cy="140" rx="18" ry="8" fill="#1a3a2a" opacity="0.35" filter="url(#blur8md)"/>
+              <ellipse cx="100" cy="140" rx="6" ry="3" fill="#2a5a3e" opacity="0.5" filter="url(#blur8sm)"/>
+              <ellipse cx="105" cy="138" rx="2" ry="1" fill="#3a7a52" opacity="0.6"/>
+              <!-- Second patch -->
+              <ellipse cx="310" cy="90" rx="14" ry="6" fill="#162e22" opacity="0.3" filter="url(#blur8md)"/>
+              <ellipse cx="310" cy="90" rx="5" ry="2" fill="#224438" opacity="0.45"/>
+              <!-- Third patch — far right wall -->
+              <ellipse cx="710" cy="160" rx="16" ry="7" fill="#1a3a2a" opacity="0.3" filter="url(#blur8md)"/>
+              <ellipse cx="710" cy="160" rx="5" ry="2.5" fill="#2a5a3e" opacity="0.4"/>
+              <!-- Water drip pool on floor — faint reflection of bioluminescence -->
+              <ellipse cx="100" cy="260" rx="30" ry="8" fill="#0a1610" opacity="0.5" filter="url(#blur8sm)"/>
+              <ellipse cx="100" cy="260" rx="12" ry="3" fill="#0e2018" opacity="0.6"/>
+              <!-- Cave passage opening — deeper darkness ahead -->
+              <ellipse cx="400" cy="155" rx="80" ry="65" fill="#020302" opacity="0.8"/>
+              <ellipse cx="400" cy="155" rx="50" ry="40" fill="#010201"/>
+              <!-- Something in the passage — two faint eyes -->
+              <ellipse cx="388" cy="148" rx="3" ry="2.5" fill="#1a3a2a" opacity="0.2" filter="url(#blur8sm)"/>
+              <ellipse cx="388" cy="148" rx="1" ry="0.8" fill="#2a5a3e" opacity="0.35"/>
+              <ellipse cx="412" cy="148" rx="3" ry="2.5" fill="#1a3a2a" opacity="0.2" filter="url(#blur8sm)"/>
+              <ellipse cx="412" cy="148" rx="1" ry="0.8" fill="#2a5a3e" opacity="0.35"/>
+              <!-- Wall drip streaks -->
+              <line x1="220" y1="0" x2="218" y2="80" stroke="#0a0f0a" stroke-width="0.8" opacity="0.5"/>
+              <line x1="350" y1="0" x2="352" y2="60" stroke="#090e09" stroke-width="0.6" opacity="0.4"/>
+              <line x1="500" y1="0" x2="498" y2="90" stroke="#0a0f0a" stroke-width="0.7" opacity="0.45"/>
+              <!-- Heavy vignette -->
+              <rect width="800" height="280" fill="url(#vignette8)"/>
+            </svg>
+            <div class="img-tag">IMG_0558 · LEVEL 8 · MAIN CHAMBER · PASSAGE UNKNOWN</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">ENVIRONMENT</div>
+          <div class="body-text">
+            <p>The cave geometry varies significantly. Some documented chambers are large enough that the ceiling is not reachable — or even visible. Others are barely passable on hands and knees. The transitions between them are rarely gradual. A wanderer may move from a standing passage directly into a crawlway, or drop unexpectedly into a lower chamber. <span class="highlight">Vertical drops are common and often unmarked.</span> Several accounts describe falls of 3–6 meters (10–20 ft) onto stone, with outcomes ranging from injury to death.</p>
+            <p>Sound behaves unusually in Level 8. Echoes travel further than expected, return from unexpected directions, and occasionally carry sounds from passages that the wanderer did not approach. Several accounts describe hearing voices — not entity vocalisations but intelligible speech — echoing from deep within uncharted passages. No expedition following these sounds has returned with an explanation. A small number have not returned at all.</p>
+            <p>The temperature is consistently cold — approximately 6–10°C (43–50°F) — and humidity is high. Extended exposure without appropriate gear will result in hypothermia. The ground is perpetually wet and frequently uneven. Falls are the second most common cause of documented injury on this level, after entity encounters.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">KNOWN ENTITIES</div>
+          <div class="body-text" style="margin-bottom:1.2rem;">
+            <p>Level 8 has the highest documented entity density of any level in this archive. The cave environment — darkness, echo, and close quarters — favours entities over wanderers in every measurable way. The following are those encountered with enough regularity to document. Others have been reported; not all have been classified.</p>
+          </div>
+          <div class="entities-grid">
+            <div class="entity-card">
+              <div class="entity-name">SMILERS</div>
+              <div class="entity-threat hostile">● HOSTILE · EXTREMELY HIGH DENSITY</div>
+              <div class="entity-desc">Present throughout the level in greater concentration than any previously documented level. The dark passages of Level 8 are functionally ideal habitat. The bioluminescent patches on the walls can be confused with Smiler eyes at distance — do not approach any light source without verification.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">SKIN-STEALERS</div>
+              <div class="entity-threat hostile">● HOSTILE · CONFIRMED</div>
+              <div class="entity-desc">Active in the larger chambers where they can maintain a convincing human silhouette at distance. The darkness of Level 8 makes detection significantly harder than on surface levels. If another person is encountered, maintain distance and verify before approach.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">DEATHMOTHS</div>
+              <div class="entity-threat hostile">● HOSTILE · PHOTOTACTIC</div>
+              <div class="entity-desc">Present in large nesting clusters throughout the cave system. Attracted aggressively to light sources. Carrying an active flashlight on Level 8 is a trade-off between navigation and entity attraction — most experienced wanderers use minimal, directional light and extinguish it when stationary.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">WRETCHES</div>
+              <div class="entity-threat hostile">● HOSTILE · NARROW PASSAGES</div>
+              <div class="entity-desc">The crawlways and tight passages of Level 8 are primary Wretch habitat. The sound of scraping or irregular breathing in a passage ahead should be treated as a Wretch until proven otherwise. Do not enter a passage that is making noise.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">HOUNDS</div>
+              <div class="entity-threat hostile">● HOSTILE · OPEN CHAMBERS</div>
+              <div class="entity-desc">Patrol the larger cave chambers. The acoustic properties of the caves make Hound approach harder to detect than on surface levels — echoes mask direction. Stop and listen frequently. If a Hound is heard, do not run — identify its direction first.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">CLUMPS</div>
+              <div class="entity-threat unknown">● THREAT VARIABLE</div>
+              <div class="entity-desc">Found in the larger chambers, typically stationary near water pools. Behavior on this level has been documented as more aggressive than on higher levels — prolonged proximity appears to escalate faster. Do not approach. Do not linger in chambers where they are present.</div>
+            </div>
+          </div>
+          <div class="warning-box" style="margin-top:1.5rem;">
+            <p>If rumbling is felt or heard from below or from the walls — stop immediately. Leave the passage or chamber as quickly as possible without running. The source of Level 8's seismic activity has not been identified. Expeditions sent to find it have not returned.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">AVAILABLE RESOURCES</div>
+          <div class="objects-grid">
+            <div class="object-card">
+              <div class="object-name">ALMOND WATER · WALL SEEP</div>
+              <div class="object-rarity common">● COMMON · DO NOT DRINK FROM POOLS</div>
+              <div class="object-desc">Fresh seepage directly from the walls is safe to consume in small quantities. Pool water is not — mineral accumulation makes it toxic. Collect from the wall surface directly, not from any standing water on the ground.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">CACHED SUPPLIES</div>
+              <div class="object-rarity rare">● RARE · CHAMBER-HIDDEN</div>
+              <div class="object-desc">Previous wanderers have cached supplies in alcoves and behind rock formations throughout the level. Identifying these caches requires light and time — neither of which Level 8 encourages spending freely.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">BIOLUMINESCENT GROWTH</div>
+              <div class="object-rarity uncommon">● UNCOMMON · NAVIGATION USE ONLY</div>
+              <div class="object-desc">The faint blue-green growth on cave walls provides minimal navigation reference in otherwise total darkness. Not bright enough to attract Deathmoths. Several wanderers have used patches as waypoints. Do not consume — effect unknown.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">SURVIVAL GUIDELINES</div>
+          <ul class="survival-list">
+            <li>Manage your light source as a resource, not a convenience. Active light attracts Deathmoths. Use it in short bursts to orient, then extinguish. Never carry an open flame through a narrow passage.</li>
+            <li>Test the floor before committing weight. Level 8 has numerous unmarked drops. Shuffle forward with one foot in unfamiliar passages rather than stepping confidently.</li>
+            <li>Stop and listen before entering any new passage or chamber. The cave echoes — you will hear entities before you see them if you take the time to listen. Moving continuously removes this advantage.</li>
+            <li>Do not drink from pools. The Almond Water that collects on the cave floor is mineral-saturated and toxic. Collect from the wall surface only, where the seepage is fresh.</li>
+            <li>If you hear rumbling, leave the area. This is not a suggestion. Direction does not matter — move away from the sound as quickly as you can manage without making noise.</li>
+            <li>Do not follow voices echoing from deep passages. This has been documented multiple times. None of the expeditions that did so have filed follow-up reports.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-label">EXIT POINTS</div>
+          <div class="exits-list">
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 9</div>
+              <div class="exit-method">DEEP PASSAGE</div>
+              <div class="exit-notes">A passage leading consistently downward, identifiable by a faint change in air temperature — slightly warmer than the surrounding caves. Located in a lower chamber. Finding it requires significant traversal of the level.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 7</div>
+              <div class="exit-method">CAVE MOUTH · SUBMERGED</div>
+              <div class="exit-notes">The same partially submerged cave entrance used to enter from Level 7's island. Return requires locating the entrance from inside and swimming back up through the cave mouth. Documented as extremely difficult to find from the interior.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 2</div>
+              <div class="exit-method">VENTILATION SHAFT</div>
+              <div class="exit-notes">Ventilation shafts connecting to Level 2's pipe network have been located in the upper portions of several large chambers. Access requires climbing. The shafts are narrow and dark. Wretches have been documented using the same shafts.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="border-top: 1px solid rgba(122,101,32,0.2); padding-top: 1.5rem;">
+          <div class="section-label">FIELD NOTES</div>
+          <div class="body-text" style="color: rgba(184,154,58,0.5); font-style: italic;">
+            <p>"The dripping never stops. After a while your brain starts sorting it — that one's water, that one's something moving, that one's water again. Then you're wrong about one of them." — Account #0571</p>
+            <p style="margin-top: 1rem;">"We found a passage that went straight down for what felt like an hour. The walls were warm. We didn't go further. We came back up and didn't speak about it for two days." — Account #0589</p>
+          </div>
+        </div>
+
+      </div><!-- /level8 -->
+
     </div><!-- /db-content -->
   </div><!-- /db-body -->
 </div><!-- /database -->
@@ -3236,7 +3487,7 @@
                       delay(400, () => {
                         document.getElementById('archive-info').style.opacity = '1';
                         typeInto(document.getElementById('type-line1'),
-                          'LEVELS DOCUMENTED: 8  |  ENTRIES TOTAL: 8  |  STATUS: ONGOING', 22,
+                          'LEVELS DOCUMENTED: 9  |  ENTRIES TOTAL: 9  |  STATUS: ONGOING', 22,
                         () => {
                           delay(100, () => {
                             typeInto(document.getElementById('type-line2'),
@@ -3333,7 +3584,7 @@
     document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
     document.getElementById('level' + num).classList.add('active');
     document.getElementById('nav-' + num).classList.add('active');
-    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'TERROR HOTEL', 6: 'LIGHTS OUT', 7: 'THALASSOPHOBIA' };
+    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'TERROR HOTEL', 6: 'LIGHTS OUT', 7: 'THALASSOPHOBIA', 8: 'CAVE SYSTEM' };
     document.getElementById('activeTag').textContent = 'LEVEL ' + num + ' — ' + names[num];
     window.scrollTo(0, 0);
     closeDrawer();
