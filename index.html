@@ -900,7 +900,7 @@
   .level-page { display: none; }
   .level-page.active { display: block; }
 
-  #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7, #level8 {
+  #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7, #level8, #level9 {
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem 2rem;
@@ -988,7 +988,7 @@
 
   /* Responsive */
   @media (max-width: 768px) {
-    #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7, #level8 { padding: 2rem 1rem; }
+    #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7, #level8, #level9 { padding: 2rem 1rem; }
     .db-header { padding: 0.8rem 1rem; }
     .db-header-nav { display: none; }
     .stats-row { grid-template-columns: 1fr 1fr; }
@@ -1096,7 +1096,7 @@
   </header>
   <div class="header-ticker">
     <span class="ticker-inner">
-      ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate"></span> &nbsp;·&nbsp; ENTRIES: 9 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp; ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate2"></span> &nbsp;·&nbsp; ENTRIES: 9 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp;
+      ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate"></span> &nbsp;·&nbsp; ENTRIES: 10 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp; ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate2"></span> &nbsp;·&nbsp; ENTRIES: 10 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp;
     </span>
   </div>
 
@@ -1138,6 +1138,9 @@
       <div class="drawer-link" onclick="showLevel(8)" id="nav-8">
         <span class="lvl-num">08</span> CAVE SYSTEM
       </div>
+      <div class="drawer-link" onclick="showLevel(9)" id="nav-9">
+        <span class="lvl-num">09</span> DARKENED SUBURBS
+      </div>
     </div>
   </nav>
 
@@ -1158,7 +1161,7 @@
             <div class="level-class-bar">
               <span class="bar-item">STATUS: ONGOING COLLECTION</span>
               <span class="bar-sep"></span>
-              <span class="bar-item">VERIFIED ENTRIES: 48</span>
+              <span class="bar-item">VERIFIED ENTRIES: 52</span>
               <span class="bar-sep"></span>
               <span class="bar-item">UNVERIFIED: [REDACTED]</span>
               <span class="bar-id">DIR-ACCT-01</span>
@@ -1229,6 +1232,12 @@
                 <span class="acct-lvl-num">08</span>
                 <span class="acct-lvl-name">CAVE SYSTEM</span>
                 <span class="acct-lvl-count">6 ACCOUNTS</span>
+                <span class="acct-lvl-arrow">›</span>
+              </div>
+              <div class="acct-level-row" onclick="showAccountLevel(9)">
+                <span class="acct-lvl-num">09</span>
+                <span class="acct-lvl-name">DARKENED SUBURBS</span>
+                <span class="acct-lvl-count">4 ACCOUNTS</span>
                 <span class="acct-lvl-arrow">›</span>
               </div>
             </div>
@@ -3363,6 +3372,238 @@
 
       </div><!-- /level8 -->
 
+      <!-- LEVEL 9 -->
+      <div id="level9" class="level-page">
+
+        <div class="level-header">
+          <div class="level-classification">LEVEL DOCUMENTATION · SUBURBAN SECTOR · EXTREME DANGER</div>
+          <div class="level-number">LEVEL<br>9</div>
+          <div class="level-name">DARKENED SUBURBS</div>
+          <div class="level-class-bar">
+            <span class="bar-item">CLASSIFICATION: RESTRICTED</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">RISK: EXTREME</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">ACCOUNTS: 11</span>
+            <span class="bar-id">DOC-LVL-09</span>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-label">CLASS</div>
+            <div class="stat-value danger">5</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ENTITIES</div>
+            <div class="stat-value danger">HIGH DENSITY</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ESTIMATED SIZE</div>
+            <div class="stat-value">UNBOUNDED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">LIGHT</div>
+            <div class="stat-value danger">NEAR-ABSENT</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">TIME OF DAY</div>
+            <div class="stat-value danger">PERMANENT MIDNIGHT</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DESCRIPTION</div>
+          <div class="body-text">
+            <p>Level 9 is an <span class="highlight">infinite suburban neighbourhood</span> fixed at permanent midnight. There is no sunrise. The sky overhead is a flat, featureless black — no stars, no moon, no cloud. The only light comes from the street lamps that line the roads at irregular intervals, most of which are dead. Those that still function flicker without pattern and cannot be relied upon. The overall effect is a darkness that sits just short of complete — enough to navigate with effort, not enough to feel safe.</p>
+            <p>A thick fog rolls through the streets at all times, reducing visibility to approximately ten metres in open areas and less in tight passages between houses. The fog is not simply a navigational obstacle. <span class="highlight">The Mangled emerge from it.</span> The relationship between the fog and the entity is not understood — whether the fog produces them, conceals their approach, or simply marks their territory is disputed. What is documented is that fog density correlates directly with encounter frequency. Wanderers are advised to seek shelter when fog thickens.</p>
+            <p>The houses are the level's primary feature and its primary resource. They vary widely in architecture and condition — some appear recently built and well-maintained, others are decades into decay, windows broken and doors hanging open. Most are furnished in the style of a standard residential home: sofas, beds, refrigerators, televisions. None of the electrical appliances function. Occasionally, two nearby houses are reported to be architecturally identical — same layout, same furniture in the same positions, same state of decay. No explanation has been confirmed. Extended time on the level appears to increase the frequency of this phenomenon.</p>
+          </div>
+          <div class="image-placeholder">
+            <svg width="100%" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+              <defs>
+                <radialGradient id="vignette9" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="100%" stop-color="#000" stop-opacity="0.97"/>
+                </radialGradient>
+                <linearGradient id="sky9" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#020202"/>
+                  <stop offset="100%" stop-color="#060608"/>
+                </linearGradient>
+                <linearGradient id="road9" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0a0a0c"/>
+                  <stop offset="100%" stop-color="#060608"/>
+                </linearGradient>
+                <filter id="fog9"><feGaussianBlur stdDeviation="4"/></filter>
+                <filter id="glow9sm"><feGaussianBlur stdDeviation="3"/></filter>
+                <filter id="glow9lg"><feGaussianBlur stdDeviation="8"/></filter>
+              </defs>
+              <!-- Sky -->
+              <rect width="800" height="280" fill="url(#sky9)"/>
+              <!-- Road surface -->
+              <rect x="0" y="190" width="800" height="90" fill="url(#road9)"/>
+              <!-- Road centre line dashes -->
+              <line x1="0" y1="215" x2="60" y2="215" stroke="#141416" stroke-width="1.5" stroke-dasharray="30,20"/>
+              <line x1="120" y1="215" x2="220" y2="215" stroke="#141416" stroke-width="1.5" stroke-dasharray="30,20"/>
+              <line x1="280" y1="215" x2="400" y2="215" stroke="#141416" stroke-width="1.5" stroke-dasharray="30,20"/>
+              <!-- Pavement/kerb line -->
+              <line x1="0" y1="190" x2="800" y2="190" stroke="#0e0e10" stroke-width="1"/>
+              <!-- LEFT HOUSE -->
+              <rect x="30" y="90" width="150" height="100" fill="#0c0c10"/>
+              <rect x="20" y="80" width="170" height="18" fill="#0e0e12"/><!-- roof -->
+              <!-- left house windows — dark with faint glow in one -->
+              <rect x="50" y="108" width="32" height="28" fill="#080808" stroke="#141416" stroke-width="0.8"/>
+              <rect x="118" y="108" width="32" height="28" fill="#080808" stroke="#141416" stroke-width="0.8"/>
+              <!-- one window with faint warm light -->
+              <rect x="119" y="109" width="30" height="26" fill="#1a1208" opacity="0.5"/>
+              <rect x="119" y="109" width="30" height="26" fill="#2a1e0a" opacity="0.2" filter="url(#glow9sm)"/>
+              <!-- left house door -->
+              <rect x="78" y="140" width="24" height="50" fill="#0a0a0e" stroke="#141416" stroke-width="0.8"/>
+              <!-- RIGHT HOUSE — further back, smaller -->
+              <rect x="600" y="110" width="130" height="80" fill="#0a0a0e"/>
+              <rect x="592" y="100" width="146" height="16" fill="#0c0c10"/>
+              <rect x="618" y="126" width="26" height="22" fill="#080808" stroke="#131314" stroke-width="0.6"/>
+              <rect x="672" y="126" width="26" height="22" fill="#080808" stroke="#131314" stroke-width="0.6"/>
+              <!-- lamp post left -->
+              <line x1="240" y1="80" x2="240" y2="190" stroke="#141416" stroke-width="2.5"/>
+              <rect x="225" y="75" width="30" height="10" fill="#181818" rx="2"/>
+              <!-- lamp glow — flickering/dim -->
+              <ellipse cx="240" cy="80" rx="35" ry="20" fill="#1a1608" opacity="0.18" filter="url(#glow9lg)"/>
+              <ellipse cx="240" cy="80" rx="12" ry="6" fill="#2a2410" opacity="0.25" filter="url(#glow9sm)"/>
+              <!-- lamp post right — dead -->
+              <line x1="560" y1="95" x2="560" y2="190" stroke="#121214" stroke-width="2"/>
+              <rect x="547" y="90" width="26" height="9" fill="#141416" rx="2"/>
+              <!-- FOG layers -->
+              <rect x="0" y="155" width="800" height="60" fill="#0a0a10" opacity="0.35" filter="url(#fog9)"/>
+              <rect x="0" y="170" width="800" height="40" fill="#0c0c12" opacity="0.25" filter="url(#fog9)"/>
+              <ellipse cx="400" cy="200" rx="350" ry="30" fill="#0c0c14" opacity="0.3" filter="url(#glow9lg)"/>
+              <!-- THE MANGLED — vague shape in fog at street level -->
+              <ellipse cx="460" cy="200" rx="18" ry="28" fill="#0c0a0e" opacity="0.6" filter="url(#fog9)"/>
+              <ellipse cx="460" cy="188" rx="8" ry="10" fill="#0e0c10" opacity="0.5"/>
+              <!-- Mangled limb suggestions -->
+              <line x1="450" y1="205" x2="430" y2="225" stroke="#0e0c10" stroke-width="3" opacity="0.4"/>
+              <line x1="470" y1="208" x2="492" y2="228" stroke="#0e0c10" stroke-width="3" opacity="0.4"/>
+              <line x1="455" y1="200" x2="438" y2="185" stroke="#0c0a0e" stroke-width="2" opacity="0.35"/>
+              <line x1="465" y1="200" x2="482" y2="183" stroke="#0c0a0e" stroke-width="2" opacity="0.35"/>
+              <!-- Vignette -->
+              <rect width="800" height="280" fill="url(#vignette9)"/>
+            </svg>
+            <div class="img-tag">IMG_0644 · LEVEL 9 · RESIDENTIAL STREET · FOG DENSITY: HIGH</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">ENVIRONMENT</div>
+          <div class="body-text">
+            <p>The roads between houses are paved asphalt in varying states of repair. Cracked sections, raised kerbs, and broken pavement are common. The ground is perpetually damp — from the fog, not rain. No precipitation has been documented on Level 9, but moisture accumulates on every surface regardless. Wanderers report that clothing becomes saturated within hours of street-level exposure.</p>
+            <p>The temperature sits consistently around 10°C (50°F) with windchill from irregular gusts dropping the effective temperature further. Hypothermia is a documented cause of death on this level, distinct from entity encounters. Extended outdoor exposure without insulation is not survivable on a long timeline. The houses mitigate this significantly — indoor temperatures are warmer, and the fog does not enter structures. <span class="highlight">The houses are the safest locations on the level.</span> Doors can be barricaded from inside using furniture. No entity has been documented breaching a properly barricaded interior, though the documentation on this point is limited.</p>
+            <p>Some houses have fully furnished back yards — fenced, with overgrown grass and outdoor furniture. These yards connect, via grass fields at their perimeters, to Level 9.1 — a sub-level that is significantly more dangerous and is not covered in this document. Wanderers are advised not to cross into the grass fields under any circumstances.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">KNOWN ENTITIES</div>
+          <div class="body-text" style="margin-bottom:1.2rem;">
+            <p>Level 9 carries a high entity density concentrated on the streets. The interiors of houses are substantially safer, though not entirely free of risk. Three entities are specific to this level — all others documented here are recurring across multiple levels and are considered incidentally present.</p>
+          </div>
+          <div class="entities-grid">
+            <div class="entity-card">
+              <div class="entity-name">THE NEIGHBORHOOD WATCH</div>
+              <div class="entity-threat hostile">● HOSTILE · STREET PATROL · LEVEL SPECIFIC</div>
+              <div class="entity-desc">Humanoid entities that patrol the streets of Level 9 in slow, deliberate circuits. They appear human at distance — standard clothing, upright posture, normal gait. Closer inspection reveals the wrongness: proportions slightly off, movement slightly too smooth, no visible facial features in any documented account. They do not react to sound or light but appear to track wanderers by proximity. If one detects you, it will follow at a fixed distance — neither closing nor retreating — for extended periods. Multiple accounts describe being followed for hours. They do not attack independently, but their presence draws other entities. If one is following you, prioritise entering a structure.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">THE MANGLED</div>
+              <div class="entity-threat hostile">● HOSTILE · FOG-EMERGENT · LEVEL SPECIFIC</div>
+              <div class="entity-desc">Emerge from dense fog patches and are not documented outside of them. Heavily asymmetric body — multiple limbs at irregular angles, movement described as both fast and somehow wrong, like footage played at the incorrect frame rate. No consistent visual account exists because encounters at close range rarely produce survivors capable of describing them clearly. Correlated with fog density: light fog means low risk, dense fog means do not be outdoors. Avoid fog patches. If fog thickens around you while outdoors, enter the nearest structure immediately.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">SMILERS</div>
+              <div class="entity-threat hostile">● HOSTILE · EXTREME DENSITY</div>
+              <div class="entity-desc">Present throughout the level in high concentration, particularly in unlit interior spaces and at the edges of lamplight. The permanent darkness of Level 9 is effectively ideal Smiler habitat. Do not enter an unlighted room without checking the corners first. The flickering of the street lamps produces strobe-like conditions that make detection unreliable at distance — do not trust a space just because nothing was visible a moment ago.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">HOUNDS</div>
+              <div class="entity-threat hostile">● HOSTILE · STREET LEVEL</div>
+              <div class="entity-desc">Active on the streets and in open spaces. The fog limits both the wanderer's ability to detect them and their ability to hunt effectively — this is the only navigational advantage the fog provides. Moving quietly and keeping to lit areas reduces encounter probability. Do not run in fog — Hounds detect by sound and running produces more of it.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">SKIN-STEALERS</div>
+              <div class="entity-threat hostile">● HOSTILE · CONFIRMED</div>
+              <div class="entity-desc">Documented inside houses as well as on the streets — the only entity besides Smilers confirmed to operate indoors on this level. If another person is encountered inside a house, treat it as a Skin-Stealer until verified. The same rules apply as on all levels: maintain distance, test with a specific question they cannot know the answer to, and do not allow physical proximity until confirmed.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">DEATHMOTHS</div>
+              <div class="entity-threat hostile">● HOSTILE · PHOTOTACTIC</div>
+              <div class="entity-desc">Attracted to light sources. The street lamps draw them — wanderers using artificial light outdoors will also draw them. Keep active light sources covered or directed downward. Nesting clusters have been documented in attic spaces of several houses; do not enter an attic without a confirmed clear status.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">AVAILABLE RESOURCES</div>
+          <div class="objects-grid">
+            <div class="object-card">
+              <div class="object-name">HOUSE INTERIORS</div>
+              <div class="object-rarity uncommon">● VARIABLE · SEARCH DEPENDENT</div>
+              <div class="object-desc">Houses contain standard residential furnishings. Non-electrical items may be useful — blankets and clothing address hypothermia risk, kitchen contents occasionally include sealed non-perishables, bathrooms have been a source of first aid supplies. Electrical items do not function. The condition of contents varies directly with the state of the house; derelict exteriors typically mean stripped or ruined interiors.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">ALMOND WATER</div>
+              <div class="object-rarity uncommon">● UNCOMMON · KITCHEN CABINETS</div>
+              <div class="object-desc">Found sealed in kitchen cabinets in a minority of houses. Not present in every house. Not the fog condensation — do not drink standing water that has accumulated from the fog, which carries an unidentified contaminant documented in several accounts as causing severe disorientation within hours of consumption.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">FUNCTIONAL LAMPPOSTS</div>
+              <div class="object-rarity rare">● RARE · NAVIGATION REFERENCE</div>
+              <div class="object-desc">The minority of lampposts that still function provide the only reliable outdoor light source. They attract Deathmoths and, in sufficient density, the Neighborhood Watch. Use them to orient, not to linger under. Moving between lit posts in short dashes is safer than sustained exposure near one.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">SURVIVAL GUIDELINES</div>
+          <ul class="survival-list">
+            <li>Get inside. The houses are the only reliable refuge on Level 9. Find one in adequate structural condition, barricade the doors with furniture, and use it as a base. Entity density on the streets is not compatible with extended outdoor survival.</li>
+            <li>Monitor the fog. Fog density is the single most reliable early warning system available. If it thickens, stop whatever you are doing and find shelter before it reaches full density. The Mangled do not announce themselves.</li>
+            <li>Do not drink fog condensation. Water collected from fog accumulation on surfaces has been documented to cause disorientation and worse. Sealed containers from kitchen cabinets only.</li>
+            <li>If a Neighborhood Watch entity begins following you, do not engage it. Do not run from it. Walk calmly to the nearest house, enter, and barricade. It will not breach the structure. It will wait outside. Leave by a different exit when you do.</li>
+            <li>Do not cross into the grass fields. The documentation on Level 9.1 is significantly worse than for Level 9 itself. The fields look passable. They are not your exit.</li>
+            <li>Verify any person you encounter. Skin-Stealers are documented indoors on this level. This is not a level where another wanderer is a safe assumption.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-label">EXIT POINTS</div>
+          <div class="exits-list">
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 10</div>
+              <div class="exit-method">GRASS FIELDS</div>
+              <div class="exit-notes">Walking off the paved sidewalk into the grass fields that border some back yards leads to Level 10. This transition passes through Level 9.1 — which has a significantly higher entity density and no documented safe structures. This exit is not recommended unless Level 9.1 has been accounted for.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 8</div>
+              <div class="exit-method">DESCENT PASSAGE</div>
+              <div class="exit-notes">The warm downward passage that connects Level 8 to Level 9 can theoretically be traversed in reverse. No confirmed successful return has been logged. The passage is documented as significantly harder to locate from the Level 9 side.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 11</div>
+              <div class="exit-method">ROAD SIGNS</div>
+              <div class="exit-notes">Following road signs deeper into the level leads eventually to Level 11. Extended travel time required — accounts range from several days to over a week of continuous navigation. Entity exposure during this traversal is extreme.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="border-top: 1px solid rgba(122,101,32,0.2); padding-top: 1.5rem;">
+          <div class="section-label">FIELD NOTES</div>
+          <div class="body-text" style="color: rgba(184,154,58,0.5); font-style: italic;">
+            <p>"Every house is the same house. I know that's not true. I can see they're different. But it doesn't feel different. You go inside, you check the rooms, you barricade the door, you sleep badly, you leave. Every house." — Account #0661</p>
+            <p style="margin-top: 1rem;">"The one following me had been there for four hours before I noticed. That's what I can't get past. Four hours. Walking the same distance behind me for four hours and I only noticed when I stopped to check a house number and it stopped too." — Account #0678</p>
+          </div>
+        </div>
+
+      </div><!-- /level9 -->
+
     </div><!-- /db-content -->
   </div><!-- /db-body -->
 </div><!-- /database -->
@@ -3507,7 +3748,7 @@
                       delay(400, () => {
                         document.getElementById('archive-info').style.opacity = '1';
                         typeInto(document.getElementById('type-line1'),
-                          'LEVELS DOCUMENTED: 9  |  ENTRIES TOTAL: 9  |  STATUS: ONGOING', 22,
+                          'LEVELS DOCUMENTED: 10  |  ENTRIES TOTAL: 10  |  STATUS: ONGOING', 22,
                         () => {
                           delay(100, () => {
                             typeInto(document.getElementById('type-line2'),
@@ -3746,6 +3987,15 @@
         { id: '#0628', text: '"The voices are real. I know the documentation says not to follow them. I didn\'t follow them. But I listened, for a long time, and I\'m telling you — it was a real person. Not echoes, not an entity. Someone saying a name, over and over, from somewhere deep in the caves. The same name each time. I don\'t know whose name it was. I don\'t know if I want to."' },
         { id: '#0639', text: '"Made it to the passage out on day nine. The air change is real — you feel it before you\'re sure of it, just a degree of warmth that doesn\'t fit. I followed it for two hours through chambers I don\'t want to describe and it opened into Level 9. I haven\'t written my Level 9 account yet. I\'m not ready to write my Level 9 account yet."' }
       ]
+    },
+    9: {
+      name: 'DARKENED SUBURBS',
+      entries: [
+        { id: '#0661', text: '"Every house is the same house. I know that\'s not true. I can see they\'re different. But it doesn\'t feel different. You go inside, you check the rooms, you barricade the door, you sleep badly, you leave. Every house."' },
+        { id: '#0678', text: '"The one following me had been there for four hours before I noticed. That\'s what I can\'t get past. Four hours. Walking the same distance behind me for four hours and I only noticed when I stopped to check a house number and it stopped too."' },
+        { id: '#0692', text: '"I drank the fog water on day two. I didn\'t know not to. The documentation hadn\'t reached me. I lost maybe six hours — I have no memory of them, just woke up on someone\'s kitchen floor with my shoes on the wrong feet and a headache that lasted three days. Nothing had found me. I still don\'t know why."' },
+        { id: '#0704', text: '"The street went on for what I estimated was four kilometres with no houses on either side. Just road, lamp posts — all dead — and fog. Then a single house, lights on in every window. I stood at the gate for a long time. I did not go inside. I went around it and kept walking. Some things you just know."' }
+      ]
     }
   };
 
@@ -3781,7 +4031,7 @@
     document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
     document.getElementById('level' + num).classList.add('active');
     document.getElementById('nav-' + num).classList.add('active');
-    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'TERROR HOTEL', 6: 'LIGHTS OUT', 7: 'THALASSOPHOBIA', 8: 'CAVE SYSTEM' };
+    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'TERROR HOTEL', 6: 'LIGHTS OUT', 7: 'THALASSOPHOBIA', 8: 'CAVE SYSTEM', 9: 'DARKENED SUBURBS' };
     document.getElementById('activeTag').textContent = 'LEVEL ' + num + ' — ' + names[num];
     window.scrollTo(0, 0);
     closeDrawer();
