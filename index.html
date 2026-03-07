@@ -859,7 +859,7 @@
   .level-page { display: none; }
   .level-page.active { display: block; }
 
-  #level0, #level1, #level2, #level3, #level4, #level5, #level6 {
+  #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7 {
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem 2rem;
@@ -947,7 +947,7 @@
 
   /* Responsive */
   @media (max-width: 768px) {
-    #level0, #level1, #level2, #level3, #level4, #level5, #level6 { padding: 2rem 1rem; }
+    #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7 { padding: 2rem 1rem; }
     .db-header { padding: 0.8rem 1rem; }
     .db-header-nav { display: none; }
     .stats-row { grid-template-columns: 1fr 1fr; }
@@ -1025,7 +1025,7 @@
   </header>
   <div class="header-ticker">
     <span class="ticker-inner">
-      ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate"></span> &nbsp;·&nbsp; ENTRIES: 6 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp; ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate2"></span> &nbsp;·&nbsp; ENTRIES: 6 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp;
+      ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate"></span> &nbsp;·&nbsp; ENTRIES: 7 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp; ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate2"></span> &nbsp;·&nbsp; ENTRIES: 7 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp;
     </span>
   </div>
 
@@ -1061,6 +1061,9 @@
       <div class="drawer-link" onclick="showLevel(6)" id="nav-6">
         <span class="lvl-num">06</span> LIGHTS OUT
       </div>
+      <div class="drawer-link" onclick="showLevel(7)" id="nav-7">
+        <span class="lvl-num">07</span> THALASSOPHOBIA
+      </div>
     </div>
   </nav>
 
@@ -1078,7 +1081,7 @@
           <div class="level-class-bar">
             <span class="bar-item">STATUS: ONGOING COLLECTION</span>
             <span class="bar-sep"></span>
-            <span class="bar-item">VERIFIED ENTRIES: 12</span>
+            <span class="bar-item">VERIFIED ENTRIES: 14</span>
             <span class="bar-sep"></span>
             <span class="bar-item">UNVERIFIED: [REDACTED]</span>
             <span class="bar-id">DIR-ACCT-01</span>
@@ -1190,6 +1193,22 @@
               <div class="account-id">ACCOUNT #0451</div>
               <div class="account-level-tag">LEVEL 6 · LIGHTS OUT</div>
               <p class="account-text">"By hour three I stopped being afraid of what was in the dark with me. I started being afraid there was nothing. That it was just me, and the dark, and the sound of my own breathing, forever. That felt worse."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">LEVEL 7 — THALASSOPHOBIA</div>
+          <div class="body-text">
+            <div class="account-entry">
+              <div class="account-id">ACCOUNT #0502</div>
+              <div class="account-level-tag">LEVEL 7 · THALASSOPHOBIA</div>
+              <p class="account-text">"The ceiling is concrete. I kept looking up at it. An ocean with a ceiling. I don't know why that detail bothered me more than the water itself — but it did. It still does."</p>
+            </div>
+            <div class="account-entry" style="margin-top:1.2rem;">
+              <div class="account-id">ACCOUNT #0519</div>
+              <div class="account-level-tag">LEVEL 7 · THALASSOPHOBIA</div>
+              <p class="account-text">"We found the boat on day two. It was in better shape than us. We didn't ask where it came from. We got in it and we started rowing. You stop asking questions after a while. You just move."</p>
             </div>
           </div>
         </div>
@@ -2838,6 +2857,244 @@
 
       </div><!-- /level6 -->
 
+      <!-- LEVEL 7 -->
+      <div id="level7" class="level-page">
+
+        <div class="level-header">
+          <div class="level-classification">LEVEL DOCUMENTATION · AQUATIC SECTOR · EXTREME DANGER</div>
+          <div class="level-number">LEVEL<br>7</div>
+          <div class="level-name">THALASSOPHOBIA</div>
+          <div class="level-class-bar">
+            <span class="bar-item">CLASSIFICATION: RESTRICTED</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">RISK: EXTREME</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">ACCOUNTS: 11</span>
+            <span class="bar-id">DOC-LVL-07</span>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-label">CLASS</div>
+            <div class="stat-value danger">4</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ENTITIES</div>
+            <div class="stat-value danger">2 · APEX</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ESTIMATED SIZE</div>
+            <div class="stat-value">UNBOUNDED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">LIGHT</div>
+            <div class="stat-value warning">DIM · SOURCELESS</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">RESOURCES</div>
+            <div class="stat-value warning">LIMITED</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DESCRIPTION</div>
+          <div class="body-text">
+            <p>Level 7 is an <span class="highlight">impossibly vast ocean</span> enclosed beneath a high concrete ceiling — a body of water that stretches in every direction without any documented boundary. Despite the absence of any fixed light source, a dim, diffuse illumination persists across the surface, as though the water itself holds light. Its origin is unknown. The colour of the water shifts depending on depth: grey-green at the surface, darkening to black well before any diver has reached the bottom.</p>
+            <p>The level is understood to consist of two distinct spaces. The first is the <span class="highlight">entrance room</span> — a small, dim chamber at the base of the stairwell from Level 6, containing a bookcase, a cot, some salvaged supplies, and a door that should not be opened without preparation. This room is the only reliably safe location in the level. The second space is everything beyond that door: the ocean, which begins approximately five meters below the entrance room floor, accessible only by rope or improvised descent. The transition between the two spaces involves a gravitational anomaly — the entrance room floor is effectively the ocean's ceiling, and the water hangs below it like an inverted sea.</p>
+            <p>The ocean has been partially documented through depth-staged exploration. Accounts describe four distinct zones, each significantly more dangerous than the last.</p>
+          </div>
+          <div class="image-placeholder">
+            <svg width="100%" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+              <defs>
+                <radialGradient id="vignette7" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="100%" stop-color="#000" stop-opacity="0.95"/>
+                </radialGradient>
+                <linearGradient id="oceanDepth" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0a1a1f"/>
+                  <stop offset="35%" stop-color="#061214"/>
+                  <stop offset="70%" stop-color="#030a0d"/>
+                  <stop offset="100%" stop-color="#010405"/>
+                </linearGradient>
+                <linearGradient id="surfaceSheen" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a3a44" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="transparent"/>
+                </linearGradient>
+                <filter id="waterblur"><feGaussianBlur stdDeviation="1.5"/></filter>
+                <filter id="deepblur"><feGaussianBlur stdDeviation="3"/></filter>
+                <filter id="glow7"><feGaussianBlur stdDeviation="4"/></filter>
+              </defs>
+              <!-- Deep ocean background -->
+              <rect width="800" height="280" fill="url(#oceanDepth)"/>
+              <!-- Concrete ceiling at top -->
+              <rect x="0" y="0" width="800" height="22" fill="#0d0d0d"/>
+              <line x1="0" y1="22" x2="800" y2="22" stroke="#1a1a1a" stroke-width="1.5"/>
+              <!-- Ceiling texture lines -->
+              <line x1="0" y1="8" x2="800" y2="8" stroke="#121212" stroke-width="0.5" opacity="0.6"/>
+              <line x1="200" y1="0" x2="200" y2="22" stroke="#111" stroke-width="0.5" opacity="0.4"/>
+              <line x1="500" y1="0" x2="500" y2="22" stroke="#111" stroke-width="0.5" opacity="0.4"/>
+              <!-- Surface of water — undulating lines -->
+              <path d="M0,38 Q50,32 100,38 Q150,44 200,38 Q250,32 300,38 Q350,44 400,38 Q450,32 500,38 Q550,44 600,38 Q650,32 700,38 Q750,44 800,38" stroke="#1e4a55" stroke-width="1.2" fill="none" opacity="0.7"/>
+              <path d="M0,42 Q60,36 120,42 Q180,48 240,42 Q300,36 360,42 Q420,48 480,42 Q540,36 600,42 Q680,48 740,42 Q780,36 800,42" stroke="#1a3f4a" stroke-width="0.8" fill="none" opacity="0.4"/>
+              <!-- Surface shimmer glow -->
+              <ellipse cx="400" cy="38" rx="300" ry="8" fill="#1e4a55" opacity="0.06" filter="url(#glow7)"/>
+              <!-- Water body gradient fill -->
+              <rect x="0" y="38" width="800" height="242" fill="url(#surfaceSheen)"/>
+              <!-- Depth haze layers -->
+              <rect x="0" y="100" width="800" height="60" fill="#030a0d" opacity="0.3"/>
+              <rect x="0" y="160" width="800" height="60" fill="#020708" opacity="0.4"/>
+              <rect x="0" y="220" width="800" height="60" fill="#010405" opacity="0.6"/>
+              <!-- Faint particle/debris in water -->
+              <circle cx="120" cy="70" r="1" fill="#2a5a6a" opacity="0.4"/>
+              <circle cx="340" cy="95" r="0.8" fill="#224a58" opacity="0.3"/>
+              <circle cx="560" cy="60" r="1.2" fill="#2a5a6a" opacity="0.35"/>
+              <circle cx="680" cy="85" r="0.8" fill="#1e4452" opacity="0.3"/>
+              <circle cx="200" cy="115" r="1" fill="#1a3a46" opacity="0.25"/>
+              <circle cx="450" cy="130" r="0.8" fill="#162e38" opacity="0.2"/>
+              <!-- Humanoid skeleton suggestion at depth — barely visible -->
+              <line x1="390" y1="210" x2="390" y2="250" stroke="#1a2a2e" stroke-width="1" opacity="0.35"/>
+              <circle cx="390" cy="207" r="4" fill="none" stroke="#1a2a2e" stroke-width="0.8" opacity="0.3"/>
+              <line x1="383" y1="222" x2="375" y2="238" stroke="#1a2a2e" stroke-width="0.8" opacity="0.3"/>
+              <line x1="397" y1="222" x2="405" y2="238" stroke="#1a2a2e" stroke-width="0.8" opacity="0.3"/>
+              <!-- Second skeleton further, dimmer -->
+              <line x1="580" y1="230" x2="580" y2="265" stroke="#141e22" stroke-width="0.8" opacity="0.2"/>
+              <circle cx="580" cy="227" r="3" fill="none" stroke="#141e22" stroke-width="0.6" opacity="0.2"/>
+              <!-- The Thing — deep shadow shape, barely perceptible -->
+              <ellipse cx="650" cy="185" rx="55" ry="18" fill="#08181e" opacity="0.5" filter="url(#deepblur)"/>
+              <ellipse cx="650" cy="185" rx="30" ry="9" fill="#061214" opacity="0.4"/>
+              <!-- Thing eye glint — single cold point -->
+              <ellipse cx="635" cy="181" rx="2" ry="1.5" fill="#4a8a9a" opacity="0.25" filter="url(#waterblur)"/>
+              <ellipse cx="635" cy="181" rx="0.7" ry="0.5" fill="#6ab0c0" opacity="0.4"/>
+              <!-- Vignette -->
+              <rect width="800" height="280" fill="url(#vignette7)"/>
+            </svg>
+            <div class="img-tag">IMG_0512 · LEVEL 7 · SURFACE · DEPTH ~0M</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DEPTH ZONES</div>
+          <div class="body-text">
+            <p>The ocean has been explored in stages by multiple expeditions. The following zones are documented in order of depth. Exploration beyond the Twilight Zone is considered a voluntary fatality.</p>
+          </div>
+
+          <div style="border: 1px solid rgba(122,101,32,0.2); padding: 1.2rem; margin-top: 1.5rem; margin-bottom: 1rem;">
+            <div style="font-size:0.58rem; letter-spacing:0.35em; color:var(--yellow-dim); margin-bottom:0.4rem;">ZONE · 7-A · NAVIGABLE</div>
+            <div style="font-family:'VT323',monospace; font-size:1.3rem; color:var(--yellow-bright); margin-bottom:0.6rem; letter-spacing:0.05em;">DAYLIGHT ZONE · SURFACE TO ~200M (656 FT)</div>
+            <div class="body-text">
+              <p>The only zone with any meaningful light. The surface is navigable by raft or boat — several vessels have been found drifting in varying states of decay. Scattered islands have been documented at irregular intervals, the largest of which supports a crude outpost. The water here is cold but not lethally so. <span class="highlight">Tiny</span> operates in this zone. Surface travel is possible but not safe.</p>
+            </div>
+          </div>
+
+          <div style="border: 1px solid rgba(122,101,32,0.2); padding: 1.2rem; margin-top: 1.5rem; margin-bottom: 1rem;">
+            <div style="font-size:0.58rem; letter-spacing:0.35em; color:var(--yellow-dim); margin-bottom:0.4rem;">ZONE · 7-B · DANGEROUS</div>
+            <div style="font-family:'VT323',monospace; font-size:1.3rem; color:var(--yellow-bright); margin-bottom:0.6rem; letter-spacing:0.05em;">TWILIGHT ZONE · ~200M TO ~1,000M (656–3,280 FT)</div>
+            <div class="body-text">
+              <p>Light fades to near zero. The water pressure becomes physically taxing without equipment. Humanoid skeletons have been found drifting in this zone in significant numbers — their origin is undocumented. Both entities have been observed at the boundary of this zone. Do not descend without a rebreather and pressure gear.</p>
+            </div>
+          </div>
+
+          <div style="border: 1px solid rgba(122,101,32,0.2); padding: 1.2rem; margin-top: 1.5rem; margin-bottom: 1rem;">
+            <div style="font-size:0.58rem; letter-spacing:0.35em; color:rgba(200,75,75,0.5); margin-bottom:0.4rem;">ZONE · 7-C · LETHAL</div>
+            <div style="font-family:'VT323',monospace; font-size:1.3rem; color:var(--yellow-bright); margin-bottom:0.6rem; letter-spacing:0.05em;">MIDNIGHT ZONE · ~1,000M TO ~7,000M (3,280–22,966 FT)</div>
+            <div class="body-text">
+              <p>Total darkness. <span class="highlight">The Thing on Level 7</span> is native to this zone. Skeletal density increases dramatically here — nearly all humanoid in form. Reports describe enormous fish-like skeletal structures whose anatomy does not correspond to any known creature. No expedition into the Midnight Zone has returned complete.</p>
+            </div>
+          </div>
+
+          <div style="border: 1px solid rgba(200,75,75,0.25); padding: 1.2rem; margin-top: 1.5rem;">
+            <div style="font-size:0.58rem; letter-spacing:0.35em; color:rgba(200,75,75,0.5); margin-bottom:0.4rem;">ZONE · 7-D · DO NOT ENTER</div>
+            <div style="font-family:'VT323',monospace; font-size:1.3rem; color:rgba(200,120,120,0.9); margin-bottom:0.6rem; letter-spacing:0.05em;">THE ABYSS · BELOW ~7,000M (22,966 FT)</div>
+            <div class="body-text">
+              <p>The floor of Level 7, insofar as a floor exists. Mountainous formations of tar and rock. Constant low bubbling from an unknown source. The longest documented exploration of the Abyss lasted under two minutes. The skeletal density here is extreme. The pressure at this depth would be instantly fatal without anomalous intervention — and several accounts suggest the level does not provide one. What the bubbling source is has not been determined. No one who has gone to find it has reported back.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">KNOWN ENTITIES</div>
+          <div class="body-text" style="margin-bottom:1.2rem;">
+            <p>Level 7 contains two entities. They appear to have reached a territorial arrangement — each dominating a different depth range, neither encroaching on the other's zone. This arrangement has resulted in the complete absence of any other life in the ocean. Both are considered apex threats.</p>
+          </div>
+          <div class="entities-grid">
+            <div class="entity-card">
+              <div class="entity-name">TINY</div>
+              <div class="entity-threat hostile">● HOSTILE · DAYLIGHT &amp; TWILIGHT ZONES</div>
+              <div class="entity-desc">A humanoid entity of significant size operating in the upper ocean. Has been observed communicating — accounts describe a warbling, telepathic quality to its vocalisations, expressing what appears to be territorial dominance. Tiny has an extremely acute sense of hearing. Loud sounds can disorient it temporarily. Do not engage. Do not attempt communication from the water. The entrance room and island surfaces are the only documented safe distances.</div>
+            </div>
+            <div class="entity-card">
+              <div class="entity-name">THE THING ON LEVEL 7</div>
+              <div class="entity-threat hostile">● HOSTILE · MIDNIGHT ZONE &amp; ABYSS</div>
+              <div class="entity-desc">Native to the deep ocean. No complete visual account exists — those who have seen it clearly have not submitted reports. Partial accounts describe something very large, moving without displacement of water, with eyes adapted to absolute darkness. Its eyes are correspondingly sensitive to light — a sustained bright source can disorient it. The Thing and Tiny appear to have an agreement neither breaks. Whatever enforces that agreement is not understood.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">AVAILABLE RESOURCES</div>
+          <div class="objects-grid">
+            <div class="object-card">
+              <div class="object-name">ENTRANCE ROOM SUPPLIES</div>
+              <div class="object-rarity uncommon">● PRESENT · PARTIALLY STOCKED</div>
+              <div class="object-desc">The entrance room contains a bookcase, a cot, and a variable cache of salvaged supplies left by previous wanderers or M.E.G. operatives. Contents are not guaranteed. The room is the only location where supplies can be safely inventoried.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">ISLAND OUTPOST</div>
+              <div class="object-rarity rare">● RARE · SINGLE DOCUMENTED LOCATION</div>
+              <div class="object-desc">The closest documented island hosts a crude shelter built from broken furniture sealed with tar. Previous inhabitants are unaccounted for. Accounts note signs of long-term habitation and what appears to be devotional markings directed toward the deep water. Supplies may be present. Inhabitants may also be present. Approach with caution.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">DRIFTING VESSELS</div>
+              <div class="object-rarity uncommon">● UNCOMMON · CONDITION VARIABLE</div>
+              <div class="object-desc">Wooden boats and rafts found adrift on the surface. Some are seaworthy; most are not. All should be checked for structural integrity before use. The origin of these vessels is unknown — no one has documented building them.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">ALMOND WATER</div>
+              <div class="object-rarity rare">● RARE · ISLAND-CACHED</div>
+              <div class="object-desc">Found in sealed caches on the documented islands. The ocean water itself is not safe to consume. Do not drink the ocean water.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">SURVIVAL GUIDELINES</div>
+          <ul class="survival-list">
+            <li>Do not leave the entrance room without a vessel, a rope, and a clear plan for return. The entrance room is the only guaranteed safe location. Treat it accordingly.</li>
+            <li>Stay on the surface. The Daylight Zone is the only zone where survival is statistically documented. Every meter of depth increases risk non-linearly.</li>
+            <li>Do not make loud sounds on the water. Tiny detects by hearing. A calm crossing is an invisible one. If Tiny vocalises nearby, stop all movement and wait.</li>
+            <li>Do not bring a light source into the deep unless you intend to use it against The Thing. A light at depth is a signal — both to what you want to find and what you do not.</li>
+            <li>The island outpost may be inhabited. If it is, do not assume the inhabitants are friendly. Accounts suggest extended exposure to Level 7 produces significant psychological deviation.</li>
+            <li>Do not attempt The Abyss. This is not a caution — it is a statement of documented outcome. There are no recorded returns from depths below 7 km (4.3 mi).</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-label">EXIT POINTS</div>
+          <div class="exits-list">
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 8</div>
+              <div class="exit-method">CAVE MOUTH · ISLAND</div>
+              <div class="exit-notes">A cave entrance on the largest documented island leads to Level 8. The cave is partially submerged. Getting to the island requires crossing Tiny's zone. This is the only confirmed exit from Level 7.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 6</div>
+              <div class="exit-method">STAIRWELL ASCENT</div>
+              <div class="exit-notes">The entrance room stairwell leads back to Level 6. Ascending requires returning to the entrance room, which requires surviving the crossing. Several documented successful returns.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="border-top: 1px solid rgba(122,101,32,0.2); padding-top: 1.5rem;">
+          <div class="section-label">FIELD NOTES</div>
+          <div class="body-text" style="color: rgba(184,154,58,0.5); font-style: italic;">
+            <p>"The ceiling is concrete. I kept looking up at it. An ocean with a ceiling. I don't know why that detail bothered me more than the water itself — but it did. It still does." — Account #0502</p>
+            <p style="margin-top: 1rem;">"We found the boat on day two. It was in better shape than us. We didn't ask where it came from. We got in it and we started rowing. You stop asking questions after a while. You just move." — Account #0519</p>
+          </div>
+        </div>
+
+      </div><!-- /level7 -->
+
     </div><!-- /db-content -->
   </div><!-- /db-body -->
 </div><!-- /database -->
@@ -2982,7 +3239,7 @@
                       delay(400, () => {
                         document.getElementById('archive-info').style.opacity = '1';
                         typeInto(document.getElementById('type-line1'),
-                          'LEVELS DOCUMENTED: 6  |  ENTRIES TOTAL: 6  |  STATUS: ONGOING', 22,
+                          'LEVELS DOCUMENTED: 7  |  ENTRIES TOTAL: 7  |  STATUS: ONGOING', 22,
                         () => {
                           delay(100, () => {
                             typeInto(document.getElementById('type-line2'),
@@ -3079,7 +3336,7 @@
     document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
     document.getElementById('level' + num).classList.add('active');
     document.getElementById('nav-' + num).classList.add('active');
-    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'TERROR HOTEL', 6: 'LIGHTS OUT' };
+    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'TERROR HOTEL', 6: 'LIGHTS OUT', 7: 'THALASSOPHOBIA' };
     document.getElementById('activeTag').textContent = 'LEVEL ' + num + ' — ' + names[num];
     window.scrollTo(0, 0);
     closeDrawer();
