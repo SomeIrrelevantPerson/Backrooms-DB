@@ -657,6 +657,47 @@
     line-height: 1.6;
   }
 
+  .acct-level-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(122,101,32,0.2);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .acct-level-row:hover {
+    background: rgba(122,101,32,0.07);
+    border-color: rgba(122,101,32,0.5);
+  }
+  .acct-lvl-num {
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    color: var(--yellow-dim);
+    min-width: 2rem;
+    letter-spacing: 0.05em;
+  }
+  .acct-lvl-name {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--yellow);
+    flex: 1;
+  }
+  .acct-lvl-count {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--yellow-dim);
+  }
+  .acct-lvl-arrow {
+    font-family: 'VT323', monospace;
+    font-size: 1.4rem;
+    color: var(--yellow-dim);
+    transition: color 0.15s;
+  }
+  .acct-level-row:hover .acct-lvl-arrow {
+    color: var(--yellow-bright);
+  }
+
   @keyframes slideUp {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1109,159 +1150,102 @@
 
       <!-- ACCOUNTS DIRECTORY -->
       <div id="accountsPage" class="level-page" style="max-width:900px;margin:0 auto;padding:4rem 2rem;">
-        <div class="level-header">
-          <div class="level-classification">WANDERER TESTIMONY · FIRSTHAND DOCUMENTATION · CLASSIFIED ARCHIVE</div>
-          <div class="level-number" style="font-size:3rem;">FIELD<br>ACCOUNTS</div>
-          <div class="level-name">SURVIVOR TESTIMONY DIRECTORY</div>
-          <div class="level-class-bar">
-            <span class="bar-item">STATUS: ONGOING COLLECTION</span>
-            <span class="bar-sep"></span>
-            <span class="bar-item">VERIFIED ENTRIES: 16</span>
-            <span class="bar-sep"></span>
-            <span class="bar-item">UNVERIFIED: [REDACTED]</span>
-            <span class="bar-id">DIR-ACCT-01</span>
-          </div>
-        </div>
 
-        <div class="section">
-          <div class="section-label">DIRECTORY NOTE</div>
-          <div class="body-text">
-            <p>The following accounts are excerpts drawn from longer field testimonies submitted to the Archive. Each account has been assigned a permanent identifier. Accounts are listed in order of identifier. All identifying personal information has been removed at the request of submitters. The Archive does not verify the identity of submitters — only the internal consistency of the account against documented level conditions.</p>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="section-label">LEVEL 0 — THE LOBBY</div>
-          <div class="body-text">
-            <div class="account-entry">
-              <div class="account-id">ACCOUNT #0017</div>
-              <div class="account-level-tag">LEVEL 0 · THE LOBBY</div>
-              <p class="account-text">"You know it's real when the smell hits you first. That carpet smell. Like a whole building forgot it existed. I walked for what felt like six hours before I found the wall that let me through. The lights never stopped humming."</p>
+        <!-- INDEX VIEW -->
+        <div id="acct-index">
+          <div class="level-header">
+            <div class="level-classification">WANDERER TESTIMONY · FIRSTHAND DOCUMENTATION · CLASSIFIED ARCHIVE</div>
+            <div class="level-number" style="font-size:3rem;">FIELD<br>ACCOUNTS</div>
+            <div class="level-name">SURVIVOR TESTIMONY DIRECTORY</div>
+            <div class="level-class-bar">
+              <span class="bar-item">STATUS: ONGOING COLLECTION</span>
+              <span class="bar-sep"></span>
+              <span class="bar-item">VERIFIED ENTRIES: 16</span>
+              <span class="bar-sep"></span>
+              <span class="bar-item">UNVERIFIED: [REDACTED]</span>
+              <span class="bar-id">DIR-ACCT-01</span>
             </div>
           </div>
-        </div>
 
-        <div class="section">
-          <div class="section-label">LEVEL 1 — PARKING ZONE</div>
-          <div class="body-text">
-            <div class="account-entry">
-              <div class="account-id">ACCOUNT #0041</div>
-              <div class="account-level-tag">LEVEL 1 · PARKING ZONE</div>
-              <p class="account-text">"Found a camp. Sleeping bag, a few tins, a hand-drawn map that didn't make sense. Whoever left it had been there long enough to make a home. The map had one word circled near the bottom: DOWN. I found the stairs two days later."</p>
-            </div>
-            <div class="account-entry" style="margin-top:1.2rem;">
-              <div class="account-id">ACCOUNT #0089</div>
-              <div class="account-level-tag">LEVEL 1 · PARKING ZONE</div>
-              <p class="account-text">"The hound sounds different from what you'd expect. It's almost gentle. That's what makes it so bad."</p>
+          <div class="section">
+            <div class="section-label">DIRECTORY NOTE</div>
+            <div class="body-text">
+              <p>The following accounts are excerpts drawn from longer field testimonies submitted to the Archive. Select a level to view associated accounts. All identifying personal information has been removed at the request of submitters.</p>
             </div>
           </div>
-        </div>
 
-        <div class="section">
-          <div class="section-label">LEVEL 2 — PIPE DREAMS</div>
-          <div class="body-text">
-            <div class="account-entry">
-              <div class="account-id">ACCOUNT #0112</div>
-              <div class="account-level-tag">LEVEL 2 · PIPE DREAMS</div>
-              <p class="account-text">"The worst part isn't the dark. It's the noise. The pipes never stop. You can't hear anything else. You can't hear them until they're already there."</p>
-            </div>
-            <div class="account-entry" style="margin-top:1.2rem;">
-              <div class="account-id">ACCOUNT #0134</div>
-              <div class="account-level-tag">LEVEL 2 · PIPE DREAMS</div>
-              <p class="account-text">"I counted eleven cold-water pipes before I found one that wasn't bone dry. Drank from it for five minutes. Tasted like iron. Best water I've ever had."</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="section-label">LEVEL 3 — ELECTRICAL STATION</div>
-          <div class="body-text">
-            <div class="account-entry">
-              <div class="account-id">ACCOUNT #0177</div>
-              <div class="account-level-tag">LEVEL 3 · ELECTRICAL STATION</div>
-              <p class="account-text">"I found the gloves in the third locker I tried. The first two were empty. I didn't touch anything until I had them on. I think that's the only reason I'm writing this."</p>
-            </div>
-            <div class="account-entry" style="margin-top:1.2rem;">
-              <div class="account-id">ACCOUNT #0201</div>
-              <div class="account-level-tag">LEVEL 3 · ELECTRICAL STATION</div>
-              <p class="account-text">"The surge happens without warning. One moment it's just humming. Then everything lights up. I saw something in the flash. I don't know what it was. I don't want to know."</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="section-label">LEVEL 4 — ABANDONED OFFICE</div>
-          <div class="body-text">
-            <div class="account-entry">
-              <div class="account-id">ACCOUNT #0298</div>
-              <div class="account-level-tag">LEVEL 4 · ABANDONED OFFICE</div>
-              <p class="account-text">"I ate three things from the vending machine. They tasted like someone had described food to a machine and the machine had tried. But I ate them and I kept walking and that's enough."</p>
-            </div>
-            <div class="account-entry" style="margin-top:1.2rem;">
-              <div class="account-id">ACCOUNT #0317</div>
-              <div class="account-level-tag">LEVEL 4 · ABANDONED OFFICE</div>
-              <p class="account-text">"We had a code word. Lamprey. On the third day Jamie said it wrong — said 'lamp ray' like two words, like he'd only ever seen it written. I didn't say anything. I just started moving toward the stairs."</p>
+          <div class="section">
+            <div class="section-label">SELECT LEVEL</div>
+            <div style="display:flex; flex-direction:column; gap:0.5rem; margin-top:0.5rem;">
+              <div class="acct-level-row" onclick="showAccountLevel(0)">
+                <span class="acct-lvl-num">00</span>
+                <span class="acct-lvl-name">THE LOBBY</span>
+                <span class="acct-lvl-count">1 ACCOUNT</span>
+                <span class="acct-lvl-arrow">›</span>
+              </div>
+              <div class="acct-level-row" onclick="showAccountLevel(1)">
+                <span class="acct-lvl-num">01</span>
+                <span class="acct-lvl-name">PARKING ZONE</span>
+                <span class="acct-lvl-count">2 ACCOUNTS</span>
+                <span class="acct-lvl-arrow">›</span>
+              </div>
+              <div class="acct-level-row" onclick="showAccountLevel(2)">
+                <span class="acct-lvl-num">02</span>
+                <span class="acct-lvl-name">PIPE DREAMS</span>
+                <span class="acct-lvl-count">2 ACCOUNTS</span>
+                <span class="acct-lvl-arrow">›</span>
+              </div>
+              <div class="acct-level-row" onclick="showAccountLevel(3)">
+                <span class="acct-lvl-num">03</span>
+                <span class="acct-lvl-name">ELECTRICAL STATION</span>
+                <span class="acct-lvl-count">2 ACCOUNTS</span>
+                <span class="acct-lvl-arrow">›</span>
+              </div>
+              <div class="acct-level-row" onclick="showAccountLevel(4)">
+                <span class="acct-lvl-num">04</span>
+                <span class="acct-lvl-name">ABANDONED OFFICE</span>
+                <span class="acct-lvl-count">2 ACCOUNTS</span>
+                <span class="acct-lvl-arrow">›</span>
+              </div>
+              <div class="acct-level-row" onclick="showAccountLevel(5)">
+                <span class="acct-lvl-num">05</span>
+                <span class="acct-lvl-name">TERROR HOTEL</span>
+                <span class="acct-lvl-count">2 ACCOUNTS</span>
+                <span class="acct-lvl-arrow">›</span>
+              </div>
+              <div class="acct-level-row" onclick="showAccountLevel(6)">
+                <span class="acct-lvl-num">06</span>
+                <span class="acct-lvl-name">LIGHTS OUT</span>
+                <span class="acct-lvl-count">1 ACCOUNT</span>
+                <span class="acct-lvl-arrow">›</span>
+              </div>
+              <div class="acct-level-row" onclick="showAccountLevel(7)">
+                <span class="acct-lvl-num">07</span>
+                <span class="acct-lvl-name">THALASSOPHOBIA</span>
+                <span class="acct-lvl-count">2 ACCOUNTS</span>
+                <span class="acct-lvl-arrow">›</span>
+              </div>
+              <div class="acct-level-row" onclick="showAccountLevel(8)">
+                <span class="acct-lvl-num">08</span>
+                <span class="acct-lvl-name">CAVE SYSTEM</span>
+                <span class="acct-lvl-count">2 ACCOUNTS</span>
+                <span class="acct-lvl-arrow">›</span>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="section">
-          <div class="section-label">LEVEL 5 — TERROR HOTEL</div>
-          <div class="body-text">
-            <div class="account-entry">
-              <div class="account-id">ACCOUNT #0388</div>
-              <div class="account-level-tag">LEVEL 5 · TERROR HOTEL</div>
-              <p class="account-text">"I slept in a real bed for the first time since I got here. I don't know how long that's been. I cried a little. I'm not ashamed of it. Then I got up and kept moving."</p>
-            </div>
-            <div class="account-entry" style="margin-top:1.2rem;">
-              <div class="account-id">ACCOUNT #0401</div>
-              <div class="account-level-tag">LEVEL 5 · TERROR HOTEL</div>
-              <p class="account-text">"She was wearing a black dress. She looked completely normal. She said 'there you are' like she'd been waiting for me. She knew my name. I walked the other way and she didn't follow, just called after me that dinner was at eight. I didn't go to dinner."</p>
-            </div>
+        <!-- DETAIL VIEW -->
+        <div id="acct-detail" style="display:none;">
+          <div style="margin-bottom:2rem;">
+            <button onclick="backToAccountIndex()" style="background:transparent;border:1px solid rgba(122,101,32,0.4);color:var(--yellow-dim);font-family:'Share Tech Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;padding:0.4rem 0.9rem;cursor:pointer;">← BACK TO INDEX</button>
           </div>
-        </div>
-
-        <div class="section">
-          <div class="section-label">LEVEL 6 — LIGHTS OUT</div>
-          <div class="body-text">
-            <div class="account-entry">
-              <div class="account-id">ACCOUNT #0451</div>
-              <div class="account-level-tag">LEVEL 6 · LIGHTS OUT</div>
-              <p class="account-text">"By hour three I stopped being afraid of what was in the dark with me. I started being afraid there was nothing. That it was just me, and the dark, and the sound of my own breathing, forever. That felt worse."</p>
-            </div>
+          <div class="level-header">
+            <div class="level-classification" id="acct-detail-eyebrow">FIELD ACCOUNTS · LEVEL —</div>
+            <div class="level-number" style="font-size:2.2rem;" id="acct-detail-num">LEVEL<br>—</div>
+            <div class="level-name" id="acct-detail-name">—</div>
           </div>
-        </div>
-
-        <div class="section">
-          <div class="section-label">LEVEL 7 — THALASSOPHOBIA</div>
-          <div class="body-text">
-            <div class="account-entry">
-              <div class="account-id">ACCOUNT #0502</div>
-              <div class="account-level-tag">LEVEL 7 · THALASSOPHOBIA</div>
-              <p class="account-text">"The water doesn't move. I kept waiting for it to move — a wave, a current, something. It just sits there. The whole ocean and it just sits there like it's been waiting for you to notice it."</p>
-            </div>
-            <div class="account-entry" style="margin-top:1.2rem;">
-              <div class="account-id">ACCOUNT #0519</div>
-              <div class="account-level-tag">LEVEL 7 · THALASSOPHOBIA</div>
-              <p class="account-text">"We found the boat on day two. It was in better shape than us. We didn't ask where it came from. We got in it and we started rowing. You stop asking questions after a while. You just move."</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="section">
-          <div class="section-label">LEVEL 8 — CAVE SYSTEM</div>
-          <div class="body-text">
-            <div class="account-entry">
-              <div class="account-id">ACCOUNT #0571</div>
-              <div class="account-level-tag">LEVEL 8 · CAVE SYSTEM</div>
-              <p class="account-text">"The dripping never stops. After a while your brain starts sorting it — that one's water, that one's something moving, that one's water again. Then you're wrong about one of them."</p>
-            </div>
-            <div class="account-entry" style="margin-top:1.2rem;">
-              <div class="account-id">ACCOUNT #0589</div>
-              <div class="account-level-tag">LEVEL 8 · CAVE SYSTEM</div>
-              <p class="account-text">"We found a passage that went straight down for what felt like an hour. The walls were warm. We didn't go further. We came back up and didn't speak about it for two days."</p>
-            </div>
-          </div>
+          <div class="section" id="acct-detail-entries"></div>
         </div>
 
       </div><!-- /accountsPage -->
@@ -3637,8 +3621,102 @@
     document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
     document.getElementById('accountsPage').classList.add('active');
     document.getElementById('activeTag').textContent = 'ACCOUNTS — DIRECTORY';
+    // always return to index view
+    document.getElementById('acct-index').style.display = 'block';
+    document.getElementById('acct-detail').style.display = 'none';
     window.scrollTo(0, 0);
     closeDrawer();
+  }
+
+  const accountData = {
+    0: {
+      name: 'THE LOBBY',
+      entries: [
+        { id: '#0017', text: '"You know it\'s real when the smell hits you first. That carpet smell. Like a whole building forgot it existed. I walked for what felt like six hours before I found the wall that let me through. The lights never stopped humming."' }
+      ]
+    },
+    1: {
+      name: 'PARKING ZONE',
+      entries: [
+        { id: '#0041', text: '"Found a camp. Sleeping bag, a few tins, a hand-drawn map that didn\'t make sense. Whoever left it had been there long enough to make a home. The map had one word circled near the bottom: DOWN. I found the stairs two days later."' },
+        { id: '#0089', text: '"The hound sounds different from what you\'d expect. It\'s almost gentle. That\'s what makes it so bad."' }
+      ]
+    },
+    2: {
+      name: 'PIPE DREAMS',
+      entries: [
+        { id: '#0112', text: '"The worst part isn\'t the dark. It\'s the noise. The pipes never stop. You can\'t hear anything else. You can\'t hear them until they\'re already there."' },
+        { id: '#0134', text: '"I counted eleven cold-water pipes before I found one that wasn\'t bone dry. Drank from it for five minutes. Tasted like iron. Best water I\'ve ever had."' }
+      ]
+    },
+    3: {
+      name: 'ELECTRICAL STATION',
+      entries: [
+        { id: '#0177', text: '"I found the gloves in the third locker I tried. The first two were empty. I didn\'t touch anything until I had them on. I think that\'s the only reason I\'m writing this."' },
+        { id: '#0201', text: '"The surge happens without warning. One moment it\'s just humming. Then everything lights up. I saw something in the flash. I don\'t know what it was. I don\'t want to know."' }
+      ]
+    },
+    4: {
+      name: 'ABANDONED OFFICE',
+      entries: [
+        { id: '#0298', text: '"I ate three things from the vending machine. They tasted like someone had described food to a machine and the machine had tried. But I ate them and I kept walking and that\'s enough."' },
+        { id: '#0317', text: '"We had a code word. Lamprey. On the third day Jamie said it wrong — said \'lamp ray\' like two words, like he\'d only ever seen it written. I didn\'t say anything. I just started moving toward the stairs."' }
+      ]
+    },
+    5: {
+      name: 'TERROR HOTEL',
+      entries: [
+        { id: '#0388', text: '"I slept in a real bed for the first time since I got here. I don\'t know how long that\'s been. I cried a little. I\'m not ashamed of it. Then I got up and kept moving."' },
+        { id: '#0401', text: '"She was wearing a black dress. She looked completely normal. She said \'there you are\' like she\'d been waiting for me. She knew my name. I walked the other way and she didn\'t follow, just called after me that dinner was at eight. I didn\'t go to dinner."' }
+      ]
+    },
+    6: {
+      name: 'LIGHTS OUT',
+      entries: [
+        { id: '#0451', text: '"By hour three I stopped being afraid of what was in the dark with me. I started being afraid there was nothing. That it was just me, and the dark, and the sound of my own breathing, forever. That felt worse."' }
+      ]
+    },
+    7: {
+      name: 'THALASSOPHOBIA',
+      entries: [
+        { id: '#0502', text: '"The water doesn\'t move. I kept waiting for it to move — a wave, a current, something. It just sits there. The whole ocean and it just sits there like it\'s been waiting for you to notice it."' },
+        { id: '#0519', text: '"We found the boat on day two. It was in better shape than us. We didn\'t ask where it came from. We got in it and we started rowing. You stop asking questions after a while. You just move."' }
+      ]
+    },
+    8: {
+      name: 'CAVE SYSTEM',
+      entries: [
+        { id: '#0571', text: '"The dripping never stops. After a while your brain starts sorting it — that one\'s water, that one\'s something moving, that one\'s water again. Then you\'re wrong about one of them."' },
+        { id: '#0589', text: '"We found a passage that went straight down for what felt like an hour. The walls were warm. We didn\'t go further. We came back up and didn\'t speak about it for two days."' }
+      ]
+    }
+  };
+
+  function showAccountLevel(num) {
+    const data = accountData[num];
+    const padded = String(num).padStart(2, '0');
+    document.getElementById('acct-detail-eyebrow').textContent = 'FIELD ACCOUNTS · LEVEL ' + padded + ' · ' + data.name;
+    document.getElementById('acct-detail-num').innerHTML = 'LEVEL<br>' + padded;
+    document.getElementById('acct-detail-name').textContent = data.name;
+    const container = document.getElementById('acct-detail-entries');
+    container.innerHTML = '<div class="section-label">SUBMITTED ACCOUNTS</div><div class="body-text">' +
+      data.entries.map((e, i) =>
+        `<div class="account-entry"${i > 0 ? ' style="margin-top:1.2rem;"' : ''}>
+          <div class="account-id">ACCOUNT ${e.id}</div>
+          <div class="account-level-tag">LEVEL ${padded} · ${data.name}</div>
+          <p class="account-text">${e.text}</p>
+        </div>`
+      ).join('') +
+    '</div>';
+    document.getElementById('acct-index').style.display = 'none';
+    document.getElementById('acct-detail').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+
+  function backToAccountIndex() {
+    document.getElementById('acct-detail').style.display = 'none';
+    document.getElementById('acct-index').style.display = 'block';
+    window.scrollTo(0, 0);
   }
 
   function showLevel(num) {
