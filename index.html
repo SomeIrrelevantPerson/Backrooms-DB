@@ -1139,7 +1139,7 @@
         <span class="lvl-num">08</span> CAVE SYSTEM
       </div>
       <div class="drawer-link" onclick="showLevel(9)" id="nav-9">
-        <span class="lvl-num">09</span> DARKENED SUBURBS
+        <span class="lvl-num">09</span> THE SUBURBS
       </div>
     </div>
   </nav>
@@ -1236,7 +1236,7 @@
               </div>
               <div class="acct-level-row" onclick="showAccountLevel(9)">
                 <span class="acct-lvl-num">09</span>
-                <span class="acct-lvl-name">DARKENED SUBURBS</span>
+                <span class="acct-lvl-name">THE SUBURBS</span>
                 <span class="acct-lvl-count">4 ACCOUNTS</span>
                 <span class="acct-lvl-arrow">›</span>
               </div>
@@ -3378,7 +3378,7 @@
         <div class="level-header">
           <div class="level-classification">LEVEL DOCUMENTATION · SUBURBAN SECTOR · EXTREME DANGER</div>
           <div class="level-number">LEVEL<br>9</div>
-          <div class="level-name">DARKENED SUBURBS</div>
+          <div class="level-name">THE SUBURBS</div>
           <div class="level-class-bar">
             <span class="bar-item">CLASSIFICATION: RESTRICTED</span>
             <span class="bar-sep"></span>
@@ -3989,7 +3989,7 @@
       ]
     },
     9: {
-      name: 'DARKENED SUBURBS',
+      name: 'THE SUBURBS',
       entries: [
         { id: '#0661', text: '"Every house is the same house. I know that\'s not true. I can see they\'re different. But it doesn\'t feel different. You go inside, you check the rooms, you barricade the door, you sleep badly, you leave. Every house."' },
         { id: '#0678', text: '"The one following me had been there for four hours before I noticed. That\'s what I can\'t get past. Four hours. Walking the same distance behind me for four hours and I only noticed when I stopped to check a house number and it stopped too."' },
@@ -4031,7 +4031,7 @@
     document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
     document.getElementById('level' + num).classList.add('active');
     document.getElementById('nav-' + num).classList.add('active');
-    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'TERROR HOTEL', 6: 'LIGHTS OUT', 7: 'THALASSOPHOBIA', 8: 'CAVE SYSTEM', 9: 'DARKENED SUBURBS' };
+    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'TERROR HOTEL', 6: 'LIGHTS OUT', 7: 'THALASSOPHOBIA', 8: 'CAVE SYSTEM', 9: 'THE SUBURBS' };
     document.getElementById('activeTag').textContent = 'LEVEL ' + num + ' — ' + names[num];
     window.scrollTo(0, 0);
     closeDrawer();
