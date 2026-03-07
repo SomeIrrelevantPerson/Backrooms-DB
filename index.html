@@ -1065,9 +1065,7 @@
         placeholder="enter passphrase" />
     </div>
 
-    <div id="loginError" style="display:none; font-size:0.65rem; letter-spacing:0.2em; color:#c0392b; margin-bottom:1.2rem; font-family:'Share Tech Mono',monospace;">
-      ▸ ACCESS DENIED · INCORRECT PASSPHRASE
-    </div>
+    <div id="loginError" style="display:none; font-size:0.65rem; letter-spacing:0.2em; color:#c0392b; margin-bottom:1.2rem; font-family:'Share Tech Mono',monospace;"></div>
 
     <button onclick="submitLogin()"
       style="width:100%; background:transparent; border:1px solid rgba(122,101,32,0.5); color:var(--yellow); font-family:'VT323',monospace; font-size:1.3rem; letter-spacing:0.2em; padding:0.6rem; cursor:pointer;">
@@ -3554,8 +3552,26 @@
   }
 
   function submitLogin() {
+    const user = document.getElementById('loginUser').value.trim();
     const pass = document.getElementById('loginPass').value;
     const err = document.getElementById('loginError');
+
+    if (!user) {
+      err.textContent = '▸ IDENTIFIER REQUIRED · FIELD CANNOT BE BLANK';
+      err.style.display = 'block';
+      document.getElementById('loginUser').focus();
+      shakeModal();
+      return;
+    }
+
+    if (!pass) {
+      err.textContent = '▸ PASSPHRASE REQUIRED · FIELD CANNOT BE BLANK';
+      err.style.display = 'block';
+      document.getElementById('loginPass').focus();
+      shakeModal();
+      return;
+    }
+
     if (pass === 'dontlookback') {
       document.getElementById('loginModal').style.display = 'none';
       document.getElementById('loginUser').value = '';
@@ -3569,15 +3585,19 @@
       }, 600);
       setTimeout(() => { overlay.classList.remove('active'); }, 1200);
     } else {
+      err.textContent = '▸ ACCESS DENIED · INCORRECT PASSPHRASE';
       err.style.display = 'block';
       document.getElementById('loginPass').value = '';
       document.getElementById('loginPass').focus();
-      // shake animation
-      const box = document.getElementById('loginModal').firstElementChild;
-      box.style.transition = 'transform 0.05s';
-      const shakes = ['-6px','6px','-4px','4px','-2px','0'];
-      shakes.forEach((v, i) => setTimeout(() => box.style.transform = `translateX(${v})`, i * 50));
+      shakeModal();
     }
+  }
+
+  function shakeModal() {
+    const box = document.getElementById('loginModal').firstElementChild;
+    box.style.transition = 'transform 0.05s';
+    const shakes = ['-6px','6px','-4px','4px','-2px','0'];
+    shakes.forEach((v, i) => setTimeout(() => box.style.transform = `translateX(${v})`, i * 50));
   }
 
   function goHome() {
