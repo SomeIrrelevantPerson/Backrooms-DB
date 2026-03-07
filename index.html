@@ -89,14 +89,13 @@
     text-transform: uppercase;
     margin-bottom: 3rem;
     opacity: 0;
-    animation: fadeIn 1s 0.5s forwards;
+    min-height: 1.2em;
   }
 
   .logo-container {
     text-align: center;
     position: relative;
     opacity: 0;
-    animation: fadeIn 1.5s 1s forwards;
     z-index: 10;
   }
 
@@ -106,6 +105,7 @@
     letter-spacing: 0.5em;
     color: var(--yellow-dim);
     margin-bottom: 0.5rem;
+    min-height: 1em;
   }
 
   .logo-title {
@@ -118,7 +118,8 @@
       0 0 20px rgba(232,200,74,0.9),
       0 0 60px rgba(232,200,74,0.4),
       0 0 100px rgba(232,200,74,0.15);
-    animation: titleFlicker 4s 2s infinite;
+    animation: titleFlicker 4s 6s infinite;
+    min-height: 1em;
   }
 
   @keyframes titleFlicker {
@@ -135,6 +136,7 @@
     letter-spacing: 0.4em;
     color: var(--yellow-dim);
     margin-top: 0.8rem;
+    min-height: 1em;
   }
 
   .divider {
@@ -144,13 +146,12 @@
     background: linear-gradient(90deg, transparent, var(--yellow-dim), transparent);
     margin: 2.5rem auto;
     opacity: 0;
-    animation: fadeIn 1s 1.8s forwards;
+    transition: opacity 0.4s;
   }
 
   .archive-info {
     text-align: center;
     opacity: 0;
-    animation: fadeIn 1s 2.2s forwards;
     z-index: 10;
   }
 
@@ -159,6 +160,7 @@
     letter-spacing: 0.2em;
     color: var(--yellow-dim);
     line-height: 2;
+    min-height: 1.4em;
   }
 
   .archive-info .stat {
@@ -178,8 +180,7 @@
     position: relative;
     overflow: hidden;
     opacity: 0;
-    animation: fadeIn 1s 2.8s forwards;
-    transition: border-color 0.3s, color 0.3s, box-shadow 0.3s;
+    transition: border-color 0.3s, color 0.3s, box-shadow 0.3s, opacity 0.4s;
     z-index: 10;
   }
 
@@ -209,8 +210,23 @@
     letter-spacing: 0.25em;
     color: rgba(122, 101, 32, 0.5);
     opacity: 0;
-    animation: fadeIn 1s 3.5s forwards;
+    transition: opacity 0.4s;
     z-index: 10;
+  }
+
+  .type-cursor {
+    display: inline-block;
+    width: 0.55em;
+    height: 1em;
+    background: var(--yellow-dim);
+    vertical-align: text-bottom;
+    margin-left: 2px;
+    animation: cursorBlink 0.8s step-end infinite;
+  }
+
+  @keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
   }
 
   @keyframes fadeIn {
@@ -948,24 +964,24 @@
 
 <!-- ===== OPENING SCREEN ===== -->
 <div id="opening">
-  <div class="warning-bar flicker-text">CLASSIFIED DOCUMENTATION — UNAUTHORIZED ACCESS PROHIBITED</div>
+  <div class="warning-bar flicker-text" id="type-warning"></div>
 
-  <div class="logo-container">
-    <div class="logo-eyebrow">FIELD DOCUMENTATION ARCHIVE v0.7.3</div>
-    <div class="logo-title">THE<br>BACKROOMS</div>
-    <div class="logo-subtitle">ANOMALOUS SPACE RESEARCH COLLECTIVE</div>
+  <div class="logo-container" id="logo-container">
+    <div class="logo-eyebrow" id="type-eyebrow"></div>
+    <div class="logo-title" id="type-title"></div>
+    <div class="logo-subtitle" id="type-subtitle"></div>
   </div>
 
-  <div class="divider"></div>
+  <div class="divider" id="divider"></div>
 
-  <div class="archive-info">
-    <p>LEVELS DOCUMENTED: <span class="stat">6</span> &nbsp;|&nbsp; ENTRIES TOTAL: <span class="stat">6</span> &nbsp;|&nbsp; STATUS: <span class="stat">ONGOING</span></p>
-    <p>LAST UPDATED: <span class="stat" id="dateStamp"></span></p>
-    <p style="margin-top: 0.8rem; color: rgba(122,101,32,0.4); font-size: 0.6rem;">ALL INFORMATION COLLECTED FROM FIRSTHAND ACCOUNTS AND RECOVERED DOCUMENTATION</p>
-    <button class="enter-btn" onclick="enterDatabase()">ACCESS ARCHIVE</button>
+  <div class="archive-info" id="archive-info">
+    <p id="type-line1"></p>
+    <p id="type-line2"></p>
+    <p style="margin-top: 0.8rem; color: rgba(122,101,32,0.4); font-size: 0.6rem;" id="type-line3"></p>
+    <button class="enter-btn" id="enter-btn" onclick="enterDatabase()">ACCESS ARCHIVE</button>
   </div>
 
-  <div class="bottom-text">IF YOU HAVE NOCLIPPED — DO NOT PANIC. LOCATE THE NEAREST EXIT. DO NOT RUN.</div>
+  <div class="bottom-text" id="bottom-text">IF YOU HAVE NOCLIPPED — DO NOT PANIC. LOCATE THE NEAREST EXIT. DO NOT RUN.</div>
 </div>
 
 <!-- ===== DATABASE SCREEN ===== -->
@@ -2810,9 +2826,106 @@
 <script>
   const d = new Date();
   const dateStr = d.toISOString().split('T')[0].replace(/-/g, '.');
-  document.getElementById('dateStamp').textContent = dateStr;
   document.getElementById('tickerDate').textContent = dateStr;
   document.getElementById('tickerDate2').textContent = dateStr;
+
+  // ── TYPEWRITER ENGINE ──────────────────────────────────────────
+  function typeInto(el, text, speed, callback) {
+    el.style.opacity = '1';
+    let i = 0;
+    // Add cursor
+    const cursor = document.createElement('span');
+    cursor.className = 'type-cursor';
+    el.appendChild(cursor);
+
+    const interval = setInterval(() => {
+      if (i < text.length) {
+        // Handle <br> tag
+        if (text.slice(i, i + 4) === '<br>') {
+          el.insertBefore(document.createElement('br'), cursor);
+          i += 4;
+        } else {
+          el.insertBefore(document.createTextNode(text[i]), cursor);
+          i++;
+        }
+      } else {
+        clearInterval(interval);
+        cursor.remove();
+        if (callback) callback();
+      }
+    }, speed);
+  }
+
+  function delay(ms, callback) {
+    setTimeout(callback, ms);
+  }
+
+  function runOpeningSequence() {
+    const d2 = new Date();
+    const ds = d2.toISOString().split('T')[0].replace(/-/g, '.');
+
+    // 1. Warning bar
+    delay(200, () => {
+      typeInto(document.getElementById('type-warning'),
+        'CLASSIFIED DOCUMENTATION — UNAUTHORIZED ACCESS PROHIBITED', 28,
+      () => {
+        // 2. Show logo container, type eyebrow
+        delay(300, () => {
+          document.getElementById('logo-container').style.opacity = '1';
+          typeInto(document.getElementById('type-eyebrow'),
+            'FIELD DOCUMENTATION ARCHIVE v0.7.3', 35,
+          () => {
+            // 3. Title — faster, big impact
+            delay(150, () => {
+              typeInto(document.getElementById('type-title'),
+                'THE<br>BACKROOMS', 55,
+              () => {
+                // 4. Subtitle
+                delay(200, () => {
+                  typeInto(document.getElementById('type-subtitle'),
+                    'ANOMALOUS SPACE RESEARCH COLLECTIVE', 30,
+                  () => {
+                    // 5. Divider
+                    delay(300, () => {
+                      document.getElementById('divider').style.opacity = '1';
+                      // 6. Archive info lines
+                      delay(400, () => {
+                        document.getElementById('archive-info').style.opacity = '1';
+                        typeInto(document.getElementById('type-line1'),
+                          'LEVELS DOCUMENTED: 6  |  ENTRIES TOTAL: 6  |  STATUS: ONGOING', 22,
+                        () => {
+                          delay(100, () => {
+                            typeInto(document.getElementById('type-line2'),
+                              'LAST UPDATED: ' + ds, 22,
+                            () => {
+                              delay(100, () => {
+                                typeInto(document.getElementById('type-line3'),
+                                  'ALL INFORMATION COLLECTED FROM FIRSTHAND ACCOUNTS AND RECOVERED DOCUMENTATION', 18,
+                                () => {
+                                  // 7. Button & bottom text
+                                  delay(300, () => {
+                                    document.getElementById('enter-btn').style.opacity = '1';
+                                    document.getElementById('bottom-text').style.opacity = '1';
+                                  });
+                                });
+                              });
+                            });
+                          });
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  }
+
+  window.addEventListener('load', runOpeningSequence);
+  // ─────────────────────────────────────────────────────────────
 
   function enterDatabase() {
     const overlay = document.getElementById('transitionOverlay');
