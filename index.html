@@ -698,6 +698,43 @@
     color: var(--yellow-bright);
   }
 
+  .ent-entry {
+    border: 1px solid rgba(122,101,32,0.2);
+    padding: 1.2rem 1.4rem;
+  }
+  .ent-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .ent-name {
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    color: var(--yellow-bright);
+    letter-spacing: 0.06em;
+  }
+  .ent-threat {
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid;
+  }
+  .ent-threat.hostile { color: #c0392b; border-color: rgba(192,57,43,0.4); }
+  .ent-threat.variable { color: #d4aa38; border-color: rgba(212,170,56,0.4); }
+  .ent-levels {
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: var(--yellow-dim);
+    margin-bottom: 0.6rem;
+  }
+  .ent-desc {
+    font-size: 0.85rem;
+    color: rgba(184,154,58,0.7);
+    line-height: 1.6;
+  }
+
   @keyframes slideUp {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1082,7 +1119,7 @@
       <div class="db-header-logo flicker-text">BACKROOMS ARCHIVE</div>
     </div>
     <div class="db-header-nav">
-      <span>ENTITIES</span>
+      <span onclick="showEntities()" style="cursor:pointer;">ENTITIES</span>
       <span>OBJECTS</span>
       <span onclick="showAccounts()" style="cursor:pointer;">ACCOUNTS</span>
     </div>
@@ -1258,6 +1295,36 @@
         </div>
 
       </div><!-- /accountsPage -->
+
+      <!-- ENTITIES DIRECTORY -->
+      <div id="entitiesPage" class="level-page" style="max-width:900px;margin:0 auto;padding:4rem 2rem;">
+        <div class="level-header">
+          <div class="level-classification">ENTITY DOCUMENTATION · THREAT CLASSIFICATION · CLASSIFIED ARCHIVE</div>
+          <div class="level-number" style="font-size:3rem;">ENTITY<br>INDEX</div>
+          <div class="level-name">KNOWN HOSTILE ORGANISMS</div>
+          <div class="level-class-bar">
+            <span class="bar-item">STATUS: ONGOING DOCUMENTATION</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">CLASSIFIED ENTRIES: 14</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">UNCLASSIFIED: [REDACTED]</span>
+            <span class="bar-id">DIR-ENT-01</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DIRECTORY NOTE</div>
+          <div class="body-text">
+            <p>The following entries document entities confirmed across one or more levels of the Backrooms. Each entry includes the entity's threat classification, known level distribution, and a summary of observed behaviour. Entries are drawn from field accounts, cross-referenced for consistency, and updated as new documentation is received.</p>
+            <p>Behaviour documented here reflects the majority of accounts. Individual entity behaviour has been observed to deviate without explanation. Do not treat any entry as a guarantee of outcome. The Archive documents what has been observed. It cannot account for what has not.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">ENTITY ENTRIES</div>
+          <div style="display:flex;flex-direction:column;gap:1.2rem;margin-top:0.5rem;" id="entity-list"></div>
+        </div>
+      </div><!-- /entitiesPage -->
 
       <!-- LEVEL 0 -->
       <div id="level0" class="level-page active">
@@ -3860,7 +3927,147 @@
     document.getElementById('levelsBtn').classList.remove('open');
   }
 
-  function showAccounts() {
+  function showEntities() {
+    document.querySelectorAll('.level-page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
+    document.getElementById('entitiesPage').classList.add('active');
+    document.getElementById('activeTag').textContent = 'ENTITIES — DIRECTORY';
+    window.scrollTo(0, 0);
+    closeDrawer();
+    renderEntities();
+  }
+
+  const entityData = [
+    {
+      name: 'SMILERS',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · APEX PREDATOR',
+      levels: 'LEVELS 0, 1, 8',
+      desc: 'Appear as two glowing eyes in darkness — no body has ever been clearly documented. Exclusively nocturnal or darkness-dependent. If eye contact is made, the entity attacks immediately and without hesitation. Speed is extreme. Avoidance is the only viable strategy. Never approach an unidentified light source in darkness. Never make eye contact.'
+    },
+    {
+      name: 'FACELINGS',
+      threat: 'variable',
+      threatLabel: 'THREAT VARIABLE · PASSIVE UNLESS PROVOKED',
+      levels: 'LEVEL 0',
+      desc: 'Humanoid entities with no facial features — smooth skin where eyes, nose, and mouth would be. Generally passive and non-aggressive. They move through the environment as though performing routine activity. Do not attempt to interact with them. Provocation or sustained observation has been documented to trigger aggressive behaviour. Ignore them and they will ignore you.'
+    },
+    {
+      name: 'WINDOWS',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · LETHAL · LEVEL SPECIFIC',
+      levels: 'LEVEL 0',
+      desc: 'Appear as ordinary windows set into the walls of Level 0. They are not windows. The space behind them is not a room. Wanderers who approach a Window report a strong compulsion to look through it — accounts describe the view as compelling but never clearly. Those who make prolonged contact are pulled through. No account exists from the other side. Do not approach any window on Level 0. The walls of the Lobby have no exterior. There is nothing to see.'
+    },
+    {
+      name: 'HOUNDS',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · PURSUIT PREDATOR',
+      levels: 'LEVELS 1, 3, 8',
+      desc: 'Large quadruped entities. Hairless, pale, disproportionately muscled. Hunt exclusively by sound — they are effectively blind. Movement is the primary trigger. If a Hound is in the area, stop moving and make no sound. Running is the worst possible response. Their speed over open ground significantly exceeds human capability. Identified by a low, almost gentle vocalisation that experienced wanderers describe as the most unsettling sound they have encountered.'
+    },
+    {
+      name: 'SKIN-STEALERS',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · MIMICRY PREDATOR',
+      levels: 'LEVELS 1, 4, 9',
+      desc: 'Entities capable of assuming the appearance of a human being with high fidelity. Detected only through behavioural inconsistency — wrong phrasing, incorrect knowledge, subtle physical wrongness at close range. Establishing a code word or shared secret with travel companions before entering entity-dense levels is standard practice. If another person is encountered unexpectedly, maintain distance and verify before any physical proximity. Do not allow a suspected Skin-Stealer to touch you.'
+    },
+    {
+      name: 'CLUMPS',
+      threat: 'variable',
+      threatLabel: 'THREAT VARIABLE · ESCALATING',
+      levels: 'LEVELS 1, 3, 8',
+      desc: 'Mass of tangled organic matter — limbs, torsos, and partial bodies fused into a slow-moving cluster. Threat level depends entirely on proximity and duration. At distance, passive. Sustained proximity triggers escalating aggressive behaviour with no clear threshold. Do not approach. Do not linger in areas where Clumps are present. On Level 8, escalation is documented as significantly faster than on higher levels.'
+    },
+    {
+      name: 'CRAWLERS',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · AMBUSH PREDATOR',
+      levels: 'LEVEL 2',
+      desc: 'Large entities adapted to the narrow pipe tunnels of Level 2. Move fast in confined spaces and are near-silent in transit. Detected by vibration in surrounding pipes before audio contact. If a pipe you are touching begins to vibrate, stop moving and press flat against the wall. Crawlers appear to navigate by a combination of heat and vibration — remaining still significantly reduces detection probability. Do not use light sources in tunnels where Crawler activity has been noted.'
+    },
+    {
+      name: 'DEATHMOTHS',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · PHOTOTACTIC',
+      levels: 'LEVELS 2, 3, 8',
+      desc: 'Large moth-like entities that are aggressively attracted to light sources. Present in nesting clusters throughout multiple levels. A single active light source in a dark environment will draw them within minutes. Managing light as a limited resource — using it briefly, directing it downward, extinguishing it when stationary — is the primary mitigation strategy. Nesting clusters in enclosed spaces are particularly dangerous; an entire colony can respond simultaneously to a single light source.'
+    },
+    {
+      name: 'WRETCHES',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · PASSAGE PREDATOR',
+      levels: 'LEVELS 2, 8',
+      desc: 'Entities adapted to crawlways and narrow passages. Irregular breathing and scraping sounds are the primary indicators of a Wretch in a passage ahead. Do not enter a passage that is making noise. If already inside a passage when a Wretch is detected, controlled retreat is preferred over forward movement. Wretches are documented as significantly less effective in open chambers — their advantage is entirely dependent on confined geometry.'
+    },
+    {
+      name: 'BURSTERS',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · APEX · LEVEL SPECIFIC',
+      levels: 'LEVEL 3',
+      desc: 'The apex entity of Level 3. Generates and discharges high-voltage electrical surges capable of instantly killing any living target within range. No effective counter-measure has been documented. Avoidance is the only viable strategy. Bursters appear to patrol fixed routes — experienced wanderers map these routes and move between them. If a Burster is detected ahead, do not proceed. Find an alternate route regardless of time cost. There is no second chance in a Burster encounter.'
+    },
+    {
+      name: 'DULLERS',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · COGNITIVE HAZARD',
+      levels: 'LEVEL 4',
+      desc: 'Entities that appear as ordinary office workers — seated at desks, moving through corridors, performing tasks. Distinguished from Facelings by having faces that are present but wrong: features that shift when not directly observed, expressions that do not match the situation, eyes that track without the head moving. Prolonged exposure causes documented cognitive effects including disorientation, memory disruption, and a compulsion to remain in the level. Minimise exposure time. Do not engage. Do not watch them work.'
+    },
+    {
+      name: 'THE BEAST OF LEVEL 5',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · SINGULAR · LEVEL SPECIFIC',
+      levels: 'LEVEL 5',
+      desc: 'A singular entity confirmed only on Level 5. Human body in a dark suit, cephalopod head — bulbous grey-violet tissue, pale eyes positioned too high and too far apart, never blinking. Approximately 1.9 m (6.2 ft). Does not patrol or hunt actively. Simply present. Wanderers report becoming aware of it in their peripheral vision before consciously registering it. Induces hallucination, sanity attrition, and passive environmental dread. Does not respond to avoidance but does respond to direct approach — do not approach directly. The Boiler Room sub-area of Level 5 has no documented Beast sightings.'
+    },
+    {
+      name: 'THE THING ON LEVEL 7',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · SINGULAR · LEVEL SPECIFIC',
+      levels: 'LEVEL 7',
+      desc: 'Native to the deep ocean of Level 7. No complete visual account exists — partial accounts describe something very large, moving without water displacement, with eyes adapted to absolute darkness that are correspondingly sensitive to sustained bright light. Has been observed at the surface in three accounts. One entity is the reason the ocean of Level 7 is otherwise empty. Do not enter the water without a light source. Do not enter the deep at all.'
+    },
+    {
+      name: 'NGUITHR\'XURH',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · CEILING PREDATOR · LEVEL SPECIFIC',
+      levels: 'LEVEL 8',
+      desc: 'A 16-appendage spider-like creature approximately 10 cm (4 in) wide, found clinging to cave ceilings throughout Level 8. Builds ball-shaped web-sacs filled with sedative suspended from the ceiling. Drops a single sac to begin dosing a wanderer — the effect is subtle, producing a calm or slow-thinking sensation that most targets do not immediately recognise as threat. Once sufficiently dosed, all remaining sacs drop at once. The target becomes unresponsive. The entity descends and feeds before death. Check ceilings before entering any chamber. Pale irregular ceiling bulges are web-sacs. If you feel inexplicably calm, leave immediately.'
+    },
+    {
+      name: 'THE NEIGHBORHOOD WATCH',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · DISINTEGRATION · LEVEL SPECIFIC',
+      levels: 'LEVEL 9',
+      desc: 'Two sub-types — Watchers (levitating) and Striders (legged) — both sharing the same form: a large lidless human eye with optic veins protruding like tendrils. Track exclusively by sight and touch; completely blind to sound and smell. If one sees you, it emits a focused beam of light from its pupil. Living matter fully absorbed by this beam is reduced to grey dust. Additionally, all electronic devices malfunction and fail in proximity. Navigate by landmarks and written notes only — no functioning footage of Level 9 exists for this reason.'
+    },
+    {
+      name: 'THE MANGLED',
+      threat: 'hostile',
+      threatLabel: 'HOSTILE · FOG-EMERGENT · LEVEL SPECIFIC',
+      levels: 'LEVEL 9',
+      desc: 'Emerge exclusively from dense fog on Level 9. Heavily asymmetric body with multiple limbs at irregular angles. Movement is described as fast but somehow wrong — like footage at the incorrect frame rate. No consistent visual account exists; encounters at close range rarely produce survivors capable of describing them clearly. Fog density is the only warning system. Light fog: low risk. Dense fog: do not be outdoors. If fog thickens around you, find shelter before it reaches full density.'
+    }
+  ];
+
+  let entitiesRendered = false;
+  function renderEntities() {
+    if (entitiesRendered) return;
+    entitiesRendered = true;
+    const container = document.getElementById('entity-list');
+    container.innerHTML = entityData.map(e => `
+      <div class="ent-entry">
+        <div class="ent-header">
+          <div class="ent-name">${e.name}</div>
+          <div class="ent-threat ${e.threat}">${e.threatLabel}</div>
+        </div>
+        <div class="ent-levels">DOCUMENTED ON: ${e.levels}</div>
+        <div class="ent-desc">${e.desc}</div>
+      </div>
+    `).join('');
+  }
     document.querySelectorAll('.level-page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
     document.getElementById('accountsPage').classList.add('active');
