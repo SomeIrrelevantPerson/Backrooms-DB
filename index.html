@@ -953,7 +953,7 @@
   .level-page { display: none; }
   .level-page.active { display: block; }
 
-  #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7, #level8, #level9 {
+  #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7, #level8, #level9, #level10 {
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem 2rem;
@@ -1041,7 +1041,7 @@
 
   /* Responsive */
   @media (max-width: 768px) {
-    #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7, #level8, #level9 { padding: 2rem 1rem; }
+    #level0, #level1, #level2, #level3, #level4, #level5, #level6, #level7, #level8, #level9, #level10 { padding: 2rem 1rem; }
     .db-header { padding: 0.8rem 1rem; }
     .db-header-nav { display: none; }
     .stats-row { grid-template-columns: 1fr 1fr; }
@@ -1149,7 +1149,7 @@
   </header>
   <div class="header-ticker">
     <span class="ticker-inner">
-      ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate"></span> &nbsp;·&nbsp; ENTRIES: 10 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp; ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate2"></span> &nbsp;·&nbsp; ENTRIES: 10 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp;
+      ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate"></span> &nbsp;·&nbsp; ENTRIES: 11 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp; ARCHIVE STATUS: ACTIVE &nbsp;·&nbsp; LAST SYNC: <span id="tickerDate2"></span> &nbsp;·&nbsp; ENTRIES: 11 &nbsp;·&nbsp; CLEARANCE REQUIRED: LEVEL Ω &nbsp;·&nbsp; WARNING: UNAUTHORIZED ACCESS IS LOGGED AND TRACED &nbsp;·&nbsp; DO NOT SHARE ARCHIVE CONTENTS &nbsp;·&nbsp; ANOMALOUS SPACE RESEARCH COLLECTIVE &nbsp;·&nbsp; WANDERER COUNT: [REDACTED] &nbsp;·&nbsp; FIELD DOCUMENTATION ONGOING &nbsp;·&nbsp; ALL DATA COLLECTED FROM FIRSTHAND ACCOUNTS &nbsp;·&nbsp; ENTITY BEHAVIOR SUBJECT TO CHANGE &nbsp;·&nbsp;
     </span>
   </div>
 
@@ -1194,6 +1194,9 @@
       <div class="drawer-link" onclick="showLevel(9)" id="nav-9">
         <span class="lvl-num">09</span> THE SUBURBS
       </div>
+      <div class="drawer-link" onclick="showLevel(10)" id="nav-10">
+        <span class="lvl-num">10</span> THE FIELDS
+      </div>
     </div>
   </nav>
 
@@ -1214,7 +1217,7 @@
             <div class="level-class-bar">
               <span class="bar-item">STATUS: ONGOING COLLECTION</span>
               <span class="bar-sep"></span>
-              <span class="bar-item">VERIFIED ENTRIES: 52</span>
+              <span class="bar-item">VERIFIED ENTRIES: 57</span>
               <span class="bar-sep"></span>
               <span class="bar-item">UNVERIFIED: [REDACTED]</span>
               <span class="bar-id">DIR-ACCT-01</span>
@@ -1291,6 +1294,12 @@
                 <span class="acct-lvl-num">09</span>
                 <span class="acct-lvl-name">THE SUBURBS</span>
                 <span class="acct-lvl-count">4 ACCOUNTS</span>
+                <span class="acct-lvl-arrow">›</span>
+              </div>
+              <div class="acct-level-row" onclick="showAccountLevel(10)">
+                <span class="acct-lvl-num">10</span>
+                <span class="acct-lvl-name">THE FIELDS</span>
+                <span class="acct-lvl-count">5 ACCOUNTS</span>
                 <span class="acct-lvl-arrow">›</span>
               </div>
             </div>
@@ -3668,6 +3677,242 @@
 
       </div><!-- /level9 -->
 
+      <!-- LEVEL 10 -->
+      <div id="level10" class="level-page">
+
+        <div class="level-header">
+          <div class="level-classification">LEVEL DOCUMENTATION · AGRARIAN SECTOR · MODERATE DANGER</div>
+          <div class="level-number">LEVEL<br>10</div>
+          <div class="level-name">THE FIELDS</div>
+          <div class="level-class-bar">
+            <span class="bar-item">CLASSIFICATION: OPEN</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">RISK: LOW–MODERATE</span>
+            <span class="bar-sep"></span>
+            <span class="bar-item">ACCOUNTS: 9</span>
+            <span class="bar-id">DOC-LVL-10</span>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-label">CLASS</div>
+            <div class="stat-value warning">2</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ENTITIES</div>
+            <div class="stat-value warning">LOW · SUBSURFACE</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">ESTIMATED SIZE</div>
+            <div class="stat-value">UNBOUNDED</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">LIGHT</div>
+            <div class="stat-value warning">OVERCAST · STABLE</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">RESOURCES</div>
+            <div class="stat-value">ABUNDANT</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">DESCRIPTION</div>
+          <div class="body-text">
+            <p>Level 10 is an <span class="highlight">infinite expanse of wheat and barley fields</span> stretching in every direction without boundary. The fields are divided into plots by lines of trees and low hedgerows — the only vertical reference points in a landscape that is otherwise flat to the horizon. There are no structures. There are no roads. There is no visible sun. The sky is a uniform, leaden overcast that does not change and casts no shadows. Light is present but sourceless, flat and grey, enough to see clearly but wrong in the way that all light is wrong in the Backrooms when no origin can be identified.</p>
+            <p>The climate is cool and damp — temperatures consistently around 12–15°C (54–59°F) — with brief, infrequent spells of light rain that last minutes and leave the crops wet without producing any standing water. A low fog rolls through the field lines at irregular intervals. Wind moves through the wheat in slow, unpredictable waves. The combination of flat light, constant soft sound, and unchanging landscape makes it difficult to track time. Wanderers on Level 10 consistently report losing hours without awareness of it.</p>
+            <p>The wheat and barley are safe to eat. This has been confirmed across enough accounts to be treated as reliable. They appear nutritionally adequate — no deficiency symptoms have been documented in short-to-medium stays. The level is one of the few in the Archive where food is not a survival concern. <span class="highlight">The soil is another matter entirely.</span></p>
+          </div>
+          <div class="image-placeholder">
+            <svg width="100%" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+              <defs>
+                <radialGradient id="vignette10" cx="50%" cy="50%" r="65%">
+                  <stop offset="0%" stop-color="transparent"/>
+                  <stop offset="100%" stop-color="#000" stop-opacity="0.92"/>
+                </radialGradient>
+                <linearGradient id="sky10" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1a1c14"/>
+                  <stop offset="100%" stop-color="#141610"/>
+                </linearGradient>
+                <linearGradient id="field10" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1e2010"/>
+                  <stop offset="100%" stop-color="#0e100a"/>
+                </linearGradient>
+                <filter id="fog10"><feGaussianBlur stdDeviation="2.5"/></filter>
+                <filter id="blur10sm"><feGaussianBlur stdDeviation="1"/></filter>
+              </defs>
+              <!-- Sky -->
+              <rect width="800" height="280" fill="url(#sky10)"/>
+              <!-- Horizon -->
+              <rect x="0" y="140" width="800" height="140" fill="url(#field10)"/>
+              <!-- Horizon line tree silhouettes -->
+              <rect x="0" y="130" width="800" height="12" fill="#141608" opacity="0.6"/>
+              <!-- Trees at horizon - irregular silhouettes -->
+              <rect x="60" y="110" width="8" height="32" fill="#0e1008"/>
+              <ellipse cx="64" cy="108" rx="14" ry="10" fill="#0e1008"/>
+              <rect x="140" y="105" width="6" height="37" fill="#0c0e06"/>
+              <ellipse cx="143" cy="103" rx="12" ry="9" fill="#0c0e06"/>
+              <rect x="220" y="112" width="7" height="30" fill="#0e1008"/>
+              <ellipse cx="223" cy="110" rx="10" ry="8" fill="#0e1008"/>
+              <rect x="350" y="108" width="9" height="34" fill="#0c0e06"/>
+              <ellipse cx="354" cy="106" rx="16" ry="11" fill="#0c0e06"/>
+              <rect x="480" y="111" width="7" height="31" fill="#0e1008"/>
+              <ellipse cx="483" cy="109" rx="11" ry="8" fill="#0e1008"/>
+              <rect x="580" y="106" width="8" height="36" fill="#0c0e06"/>
+              <ellipse cx="584" cy="104" rx="14" ry="10" fill="#0c0e06"/>
+              <rect x="680" y="113" width="6" height="29" fill="#0e1008"/>
+              <ellipse cx="683" cy="111" rx="10" ry="8" fill="#0e1008"/>
+              <rect x="750" y="109" width="7" height="33" fill="#0c0e06"/>
+              <ellipse cx="753" cy="107" rx="12" ry="9" fill="#0c0e06"/>
+              <!-- Wheat stalks foreground - rows -->
+              <!-- Row 1 - closest -->
+              <line x1="20" y1="280" x2="28" y2="200" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="40" y1="280" x2="50" y2="198" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="60" y1="280" x2="68" y2="202" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="80" y1="280" x2="90" y2="199" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="100" y1="280" x2="108" y2="201" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="120" y1="280" x2="130" y2="200" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="140" y1="280" x2="148" y2="203" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="160" y1="280" x2="170" y2="199" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="180" y1="280" x2="188" y2="201" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="200" y1="280" x2="210" y2="200" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="220" y1="280" x2="228" y2="202" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="240" y1="280" x2="250" y2="198" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="260" y1="280" x2="268" y2="201" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="280" y1="280" x2="290" y2="200" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="300" y1="280" x2="308" y2="202" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="320" y1="280" x2="330" y2="199" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="340" y1="280" x2="348" y2="201" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="360" y1="280" x2="370" y2="200" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="380" y1="280" x2="388" y2="202" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="400" y1="280" x2="410" y2="198" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="420" y1="280" x2="428" y2="201" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="440" y1="280" x2="450" y2="200" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="460" y1="280" x2="468" y2="202" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="480" y1="280" x2="490" y2="199" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="500" y1="280" x2="508" y2="201" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="520" y1="280" x2="530" y2="200" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="540" y1="280" x2="548" y2="202" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="560" y1="280" x2="570" y2="198" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="580" y1="280" x2="588" y2="201" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="600" y1="280" x2="610" y2="200" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="620" y1="280" x2="628" y2="202" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="640" y1="280" x2="650" y2="199" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="660" y1="280" x2="668" y2="201" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="680" y1="280" x2="690" y2="200" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="700" y1="280" x2="708" y2="202" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="720" y1="280" x2="730" y2="198" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="740" y1="280" x2="748" y2="201" stroke="#1c1e0e" stroke-width="1.5"/>
+              <line x1="760" y1="280" x2="770" y2="200" stroke="#1e2010" stroke-width="1.5"/>
+              <line x1="780" y1="280" x2="788" y2="202" stroke="#1c1e0e" stroke-width="1.5"/>
+              <!-- Wheat heads - small top clusters -->
+              <ellipse cx="28" cy="198" rx="4" ry="7" fill="#1e2010" opacity="0.8"/>
+              <ellipse cx="50" cy="196" rx="3" ry="6" fill="#1c1e0e" opacity="0.8"/>
+              <ellipse cx="68" cy="200" rx="4" ry="6" fill="#1e2010" opacity="0.8"/>
+              <ellipse cx="90" cy="197" rx="3" ry="7" fill="#1c1e0e" opacity="0.8"/>
+              <ellipse cx="108" cy="199" rx="4" ry="6" fill="#1e2010" opacity="0.8"/>
+              <ellipse cx="130" cy="198" rx="3" ry="6" fill="#1c1e0e" opacity="0.8"/>
+              <ellipse cx="148" cy="201" rx="4" ry="7" fill="#1e2010" opacity="0.8"/>
+              <ellipse cx="170" cy="197" rx="3" ry="6" fill="#1c1e0e" opacity="0.8"/>
+              <!-- Distant field rows - mid distance -->
+              <line x1="0" y1="190" x2="800" y2="185" stroke="#141608" stroke-width="0.8" opacity="0.4"/>
+              <line x1="0" y1="175" x2="800" y2="172" stroke="#121406" stroke-width="0.6" opacity="0.3"/>
+              <!-- Low ground fog -->
+              <rect x="0" y="175" width="800" height="30" fill="#16180e" opacity="0.2" filter="url(#fog10)"/>
+              <ellipse cx="200" cy="185" rx="200" ry="15" fill="#181a0e" opacity="0.2" filter="url(#fog10)"/>
+              <ellipse cx="600" cy="182" rx="180" ry="12" fill="#141608" opacity="0.18" filter="url(#fog10)"/>
+              <!-- Overcast sky texture - subtle cloud banding -->
+              <rect x="0" y="20" width="800" height="25" fill="#1c1e14" opacity="0.15"/>
+              <rect x="0" y="55" width="800" height="20" fill="#181a10" opacity="0.1"/>
+              <rect x="0" y="85" width="800" height="30" fill="#1a1c12" opacity="0.12"/>
+              <!-- Vignette -->
+              <rect width="800" height="280" fill="url(#vignette10)"/>
+            </svg>
+            <div class="img-tag">IMG_0718 · LEVEL 10 · FIELD LINE · LOOKING NORTH</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">THE SOIL</div>
+          <div class="body-text">
+            <p>The soil of Level 10 is dark, dense, and approximately one metre (3.3 ft) deep before the substrate changes entirely. Wanderers who have dug into it report that past the one-metre threshold, the compacted earth gives way to something moving — a dense, writhing mass of wormlike entities packed tightly enough that the soil above them appears stable until it is not.</p>
+            <p>The worms themselves are small, pale, and eyeless. They do not appear to react to light. At shallow disturbance — light surface digging, footsteps, objects resting on the ground — they remain below the one-metre threshold and are not a hazard. <span class="highlight">Digging past one metre triggers a rapid emergence response.</span> The worms surface in quantity through any breach point, and accounts describe them attempting to enter through openings in clothing and skin. Several accounts note that the emergence, once triggered, does not stop quickly — the worms continue surfacing for an extended period after the breach is sealed or abandoned.</p>
+            <p>The practical implication is straightforward: do not dig. Do not drive anything deep into the ground. Do not create holes. The soil is stable as long as it is not disturbed below the threshold. It has supported wanderers, makeshift camps, and at least one documented attempt at a semi-permanent structure without incident. The hazard is entirely contingent on excavation.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">KNOWN ENTITIES</div>
+          <div class="body-text" style="margin-bottom:1.2rem;">
+            <p>Level 10 has one documented entity class. Above-ground entity presence is among the lowest of any documented level. The surface is, by Backrooms standards, safe.</p>
+          </div>
+          <div class="entities-grid" style="justify-content:center;">
+            <div class="entity-card">
+              <div class="entity-name">THE FIELDWORMS</div>
+              <div class="entity-threat hostile">● HOSTILE · SUBSURFACE · EMERGENCE TRIGGERED</div>
+              <div class="entity-desc">Small, pale, eyeless worm-like entities that occupy the soil below one metre (3.3 ft) across the entire level. Passive and contained as long as the one-metre threshold is not breached. Digging past it triggers mass surface emergence through the breach point. Accounts report attempted burrowing into exposed skin. The depth of the worm layer is unknown — no exploration below the threshold has been documented as survivable long enough to produce useful data. Do not dig. The threshold is not a guideline. It is the entire safety condition of this level.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">AVAILABLE RESOURCES</div>
+          <div class="objects-grid">
+            <div class="object-card">
+              <div class="object-name">WHEAT AND BARLEY</div>
+              <div class="object-rarity common">● ABUNDANT · CONFIRMED SAFE</div>
+              <div class="object-desc">The crops covering Level 10 are safe to consume and nutritionally adequate for sustained survival. Raw consumption is documented without adverse effects. The level effectively solves the food problem — the only documented level where this is consistently true. Harvest freely. The crops appear to regenerate; no wanderer has documented a cleared plot remaining bare.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">RAINWATER</div>
+              <div class="object-rarity uncommon">● INTERMITTENT · COLLECTIBLE</div>
+              <div class="object-desc">Brief rain spells produce clean, drinkable water. Collection from leaves and crop heads is the primary method — no standing water accumulates from the rainfall. Timing is irregular and cannot be predicted. Dedicated collection equipment significantly improves water access; improvised collection from clothing and tarps has also been documented.</div>
+            </div>
+            <div class="object-card">
+              <div class="object-name">TREE LINES</div>
+              <div class="object-rarity common">● COMMON · SHELTER AND NAVIGATION</div>
+              <div class="object-desc">The hedgerows and tree lines dividing the field plots provide the only windbreak and structural shelter available on the level. Sleeping at the base of a tree line significantly reduces windchill exposure. They also serve as the only reliable navigation landmarks — the field plots between them are featureless. Plot the tree lines and use them as reference lines.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-label">SURVIVAL GUIDELINES</div>
+          <ul class="survival-list">
+            <li>Do not dig. Not for any reason, not to any depth approaching one metre (3.3 ft). Do not drive stakes into the ground. Do not create holes. The fieldworms are the only significant hazard on this level and they are entirely avoidable as long as this rule is followed.</li>
+            <li>The crops are food. Eat them. Level 10 is one of the only levels in this archive where sustenance is not a survival concern — do not overlook this. Leave carrying as much harvested grain as you can manage.</li>
+            <li>Use the tree lines for navigation. The fields are featureless and the flat light casts no shadows. Without the tree lines as reference, directional drift is inevitable. Establish a heading relative to a tree line and maintain it.</li>
+            <li>Time passes strangely here. Set a regular check interval — every hour, every two hours — and verify your heading. Multiple accounts describe wanderers who intended a short traverse and arrived at the exit having lost significantly more time than expected.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <div class="section-label">EXIT POINTS</div>
+          <div class="exits-list">
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 11</div>
+              <div class="exit-method">CONTINUED TRAVERSAL</div>
+              <div class="exit-notes">Walking in a consistent direction for long enough leads to a transition into Level 11. No specific trigger location has been documented — it appears to occur after sufficient traversal distance, which varies between accounts.</div>
+            </div>
+            <div class="exit-row">
+              <div class="exit-dest">LEVEL 9</div>
+              <div class="exit-method">FIELD PERIMETER</div>
+              <div class="exit-notes">The grass fields at the perimeter of Level 9's suburban back yards connect to Level 10. Return is possible by locating these transitional zones at the outer edges of the level — identifiable by a change in ground texture from field soil to maintained grass. Several wanderers have used this as a return route.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section" style="border-top: 1px solid rgba(122,101,32,0.2); padding-top: 1.5rem;">
+          <div class="section-label">FIELD NOTES</div>
+          <div class="body-text" style="color: rgba(184,154,58,0.5); font-style: italic;">
+            <p>"I slept here for three nights. First real sleep I'd had. The wheat made a sound in the wind — not threatening, just there. I didn't want to leave. That's what worries me about this level. It makes you not want to leave." — Account #0721</p>
+            <p style="margin-top: 1rem;">"Someone had been digging. A trench, maybe two feet wide, running along one of the hedgerows. They'd stopped just before the metre mark — I measured it. I don't know if they stopped because they knew, or because something stopped them. I didn't dig further to find out." — Account #0738</p>
+          </div>
+        </div>
+
+      </div><!-- /level10 -->
+
     </div><!-- /db-content -->
   </div><!-- /db-body -->
 </div><!-- /database -->
@@ -3812,7 +4057,7 @@
                       delay(400, () => {
                         document.getElementById('archive-info').style.opacity = '1';
                         typeInto(document.getElementById('type-line1'),
-                          'LEVELS DOCUMENTED: 10  |  ENTRIES TOTAL: 10  |  STATUS: ONGOING', 22,
+                          'LEVELS DOCUMENTED: 11  |  ENTRIES TOTAL: 11  |  STATUS: ONGOING', 22,
                         () => {
                           delay(100, () => {
                             typeInto(document.getElementById('type-line2'),
@@ -4200,8 +4445,17 @@
         { id: '#0692', text: '"I drank the fog water on day two. I didn\'t know not to. The documentation hadn\'t reached me. I lost maybe six hours — I have no memory of them, just woke up on someone\'s kitchen floor with my shoes on the wrong feet and a headache that lasted three days. Nothing had found me. I still don\'t know why."' },
         { id: '#0704', text: '"The street went on for what I estimated was four kilometres (2.5 miles) with no houses on either side. Just road, lamp posts — all dead — and fog. Then a single house, lights on in every window. I stood at the gate for a long time. I did not go inside. I went around it and kept walking. Some things you just know."' }
       ]
+    },
+    10: {
+      name: 'THE FIELDS',
+      entries: [
+        { id: '#0721', text: '"I slept here for three nights. First real sleep I\'d had. The wheat made a sound in the wind — not threatening, just there. I didn\'t want to leave. That\'s what worries me about this level. It makes you not want to leave."' },
+        { id: '#0738', text: '"Someone had been digging. A trench, maybe two feet wide, running along one of the hedgerows. They\'d stopped just before the metre mark — I measured it. I don\'t know if they stopped because they knew, or because something stopped them. I didn\'t dig further to find out."' },
+        { id: '#0751', text: '"The rain came twice while I was there. Both times about four minutes. I had my jacket spread over a bush and caught maybe a litre from it. Clean. No taste. I started doing that every time I stopped moving."' },
+        { id: '#0763', text: '"I counted eleven tree lines before I reached the edge. Or what I thought was the edge. The twelfth one just led into more field. I\'d been walking for what I calculated was six hours at that point. I stopped counting after that and just kept moving."' },
+        { id: '#0778', text: '"I found a coat. Heavy canvas, folded neatly at the base of a hedgerow. No name, no marks. Someone left it deliberately — it was too careful to be dropped. I wore it for the rest of my time there. I still have it. It smells like rain and something I can\'t place."' }
+      ]
     }
-  };
 
   function showAccountLevel(num) {
     const data = accountData[num];
@@ -4235,7 +4489,7 @@
     document.querySelectorAll('.drawer-link').forEach(l => l.classList.remove('active'));
     document.getElementById('level' + num).classList.add('active');
     document.getElementById('nav-' + num).classList.add('active');
-    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'TERROR HOTEL', 6: 'LIGHTS OUT', 7: 'THALASSOPHOBIA', 8: 'CAVE SYSTEM', 9: 'THE SUBURBS' };
+    const names = { 0: 'THE LOBBY', 1: 'PARKING ZONE', 2: 'PIPE DREAMS', 3: 'ELECTRICAL STATION', 4: 'ABANDONED OFFICE', 5: 'TERROR HOTEL', 6: 'LIGHTS OUT', 7: 'THALASSOPHOBIA', 8: 'CAVE SYSTEM', 9: 'THE SUBURBS', 10: 'THE FIELDS' };
     document.getElementById('activeTag').textContent = 'LEVEL ' + num + ' — ' + names[num];
     window.scrollTo(0, 0);
     closeDrawer();
